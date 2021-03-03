@@ -13,7 +13,21 @@ The acceleration of the protons is achieved by radio-frequency cavities. These c
 
 The crown jewel of LHC technology is its magnets. 1,232 superconducting NbTi dipole magnets kept at 1.9 K, each spanning 14.3 m and weighinh 35 tonnes, create an 8.3 Tesla magnetic. This field lies perpendicular to the beam path, bending it to its desired route. The bending dipole magnets are complemented by 392 quadrupole magnets that focus the beams to a small aperture, and many higher-order multipole magnets which provide small beam corrections.
 
+Allong with the collisional energy of the accelerated particles, the other most important measure of a particle acceletator is the luminosity it achieves. \textbf{Luminosity ($\mathcal{L}$)} is used to determine the rate ($R$) at which a given interaction occurs using:
 
+$$R = \mathcal{L}\sigma$$
+
+where $\sigma$ is the cross-section of the desired interaction. As a result, when searching for rare processes, a obtaining a high luminosity is crucial.
+
+The integrated luminosity, $L$, gives the total number of interactions over a period of time, and is defined as:
+
+$$ L = \int \mathcal{L}\, dt$$
+
+At the LHC, the luminosity is controlled by the number of bunches circulating $n_b$, the frequency of revolution $f_r$, $N_{1,2}$ the number of particles in each colliding bunch, and the cross sectional area of the colliding beams. This results in the equation:
+
+$$\mathcal{L}  = \frac{ f_rn_bN_1N_2 }{4\pi\sigma_x\sigma_y}R_{\phi} $$
+
+where $R_{\phi}$ is a geometrical loss factor caused by the beams crossing at an angle, and $\sigma_{x,y}$ are the horizontal and vertical widths of the beams, whiich are estimated to have a Gaussian profile. The LHC currently has a nominal peak luminosity of $\mathcal{L} = 10^{34} cm^{-2}s^{-1}$.
 
 \section{The ATLAS Experiment}
 \label{section:atlas}
