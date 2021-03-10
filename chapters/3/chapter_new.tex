@@ -27,18 +27,51 @@ At the LHC, the luminosity is controlled by the number of bunches circulating $n
 
 $$\mathcal{L}  = \frac{ f_rn_bN_1N_2 }{4\pi\sigma_x\sigma_y}R_{\phi} $$
 
-where $R_{\phi}$ is a geometrical loss factor caused by the beams crossing at an angle, and $\sigma_{x,y}$ are the horizontal and vertical widths of the beams, whiich are estimated to have a Gaussian profile. The LHC currently has a nominal peak luminosity of $\mathcal{L} = 10^{34} cm^{-2}s^{-1}$.
+where $R_{\phi}$ is a geometrical loss factor caused by the beams crossing at an angle, and $\sigma_{x,y}$ are the horizontal and vertical widths of the beams, which are estimated to have a Gaussian profile. The LHC currently has a nominal peak luminosity of $\mathcal{L} = 10^{34} cm^{-2}s^{-1}$.
 
 \section{The ATLAS Experiment}
 \label{section:atlas}
-The Atlas Experiment
+
+The ATLAS experiment uses the LHC in combination with the general-purpose ATLAS detector to test a broad range of SM and BSM predictions. Together with the CMS experiment, its greatest achievement to date was the detection and discovery of the SM Higgs boson in 2012 \cite{HiggsDiscovery}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/2/ATLASDetector.png}
+    \caption{A cut-out overview of the ATLAS detector and main components.}
+    \label{fig:atlasdec}
+\end{figure}
+
+The ATLAS detector, an overview of which is shown in Figure \ref{fig:atlasdec}, is comprised of several layers, which work in tandem to detect many diverse particles. From inner-most to outer-most the layers are:
+
+\begin{itemize}
+    \item The inner detector, with excellent angular resolution to track charged particles.
+    \item The electromagnetic calorimeters, designed primarily to measure the energy and position of electrons and photons.
+    \item The hadronic calorimeters designed to measure the energy and position of hadrons.
+    \item The muon spectrometer, to track and measure muons.
+\end{itemize}
+
+When combined with the electronics required to read and trigger on measurements, the entire detector weighs over 7000 t and measures 44 m long by 25 m wide and high. Its barreled shape with end caps covers nearly the full solid angle. The following sections will describe the layout and operations of the ATLAS detector in more detail.
+
 \subsection{Inner Tracking Detector}
-The inner tracking detector
+The ATLAS inner detector tracks the direction and momentum of charged particles immediately after leaving the interaction point. A 2 T superconducting solenoid surrounds the inner detector, bending charged particles with the Lorentz force, allowing their momentum to be determined from the curvature of their path. Within the inner detector, there are three separate sub-detectors: the pixel detector, the semiconductor tracker (SCT), and the transition radiation tracker (TRT). A cutout view of the detector is shown in Figure \ref{fig:atlasinner}.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/2/InnerDetector.png}
+    \caption{A cut-out view of the ATLAS inner detector.}
+    \label{fig:atlasinner}
+\end{figure}
+
+The pixel detector consists of an array of 1744 pixel sensors, each containing 47232 silicon pixels, mostly measuring 50x400 $\mu m^2$. They are arranged into three cyclindrical layers and three disk-shaped layers on each end. The high granularity of these detectors ensures strong angular resolution, providing prescise measurements of vertex location and track momentum. Notably, this detector must be very radiation-hard in order to maintain performace over the detector lifespan in an area that recieves an immense radiation dose from the high particle flux.
+
+Though it would be desireable, it would not be feasible to extend the high-resolution pixel detector because of the high cost and signal readout volume. As a result, in the SCT the point-like pixels are extended into silicon strip detectors, which are laid in pairs at an angle of 40 mrad to each other to allow measurements in two dimensions. The SCT is made up of four concentric cylindrical layers in the barrel and two disk-shaped layers on each end-cap.
+
+The TRT is the final component of the component of the inner detector.  It consists of approximately 300000 drift tubes filled with majority Xenon gas, with the walls kept at -1.5 kV and a central wire at ground. When particles pass through the tubes, the gas is ionized and the resulting electrons drift to the centre where the signal is amplified. Additionally, the gaps between TRT straws are filled with polymer fibres (in the barrel) or foils (in the end caps). As a result, highly relativistic particles create transition radiation at the material interfaces, which aids with electron identification.
+
+
 \subsection{Calorimeters}
 The calorimeters
 \subsection{Muon Spectrometers}
 The muon detectors
 \subsection{Trigger and Data Acquisition}
 The trigger and DAQ
-
-% \input chapters/3/sec_latexhelp
