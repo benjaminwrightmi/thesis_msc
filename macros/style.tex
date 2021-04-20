@@ -35,3 +35,152 @@
 \renewcommand\cftfigpresnum{Figure\ }
 \renewcommand\cftfignumwidth{0.80in}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+
+% Ben's commands
+% Analysis release - needs to be updated when the analysis code is updated
+%-------------------------------------------------------------------------------
+\newcommand*{\AthAnalysisRelease}{\ensuremath{21.2.159}\xspace}
+%-------------------------------------------------------------------------------
+
+% XAMPPmonoS tag - needs to be updated when the analysis code is updated
+%-------------------------------------------------------------------------------
+\newcommand*{\XAMPPtag}{\texttt{XAMPPmonoSnom007}\xspace}
+%-------------------------------------------------------------------------------
+
+% Luminosity - needs to be updated when the GRLs are updated
+%-------------------------------------------------------------------------------
+\newcommand*{\Lumi}{138.5}
+\newcommand*{\Lumia}{3.2}
+\newcommand*{\Lumib}{33.0}
+\newcommand*{\Lumic}{43.8}
+\newcommand*{\Lumid}{58.5}
+
+% GRLs - needs to be updated when the GRLs are updated
+%-------------------------------------------------------------------------------
+\newcommand*{\GRLa}{\texttt{data15\_13TeV.periodAllYear\_DetStatus-v89-pro21-02\_Unknown\_PHYS\_StandardGRL\_All\_Good\_25ns.xml}\xspace}
+\newcommand*{\GRLb}{\texttt{data16\_13TeV.periodAllYear\_DetStatus-v89-pro21-01\_DQDefects-00-02-04\_PHYS\_StandardGRL\_All\_Good\_25ns.xml}\xspace}
+\newcommand*{\GRLc}{\texttt{data17\_13TeV.periodAllYear\_DetStatus-v99-pro22-01\_Unknown\_PHYS\_StandardGRL\_All\_Good\_25ns\_Triggerno17e33prim.xml}\xspace}
+\newcommand*{\GRLd}{\texttt{data18\_13TeV.periodAllYear\_DetStatus-v102-pro22-04\_Unknown\_PHYS\_StandardGRL\_All\_Good\_25ns\_Triggerno17e33prim.xml}\xspace}
+
+%-------------------------------------------------------------------------------
+% Shortcuts for commonly used signs
+\newcommand*{\ms}{\ensuremath{m_s}\xspace}
+\newcommand*{\merged}{``merged''\xspace}
+\newcommand*{\resolved}{``resolved'\xspace'}
+\newcommand{\wjets}{\ensuremath{W\!+\!{\mathrm{jets}}}\xspace}
+\newcommand{\zjets}{\ensuremath{Z\!+\!{\mathrm{jets}}}\xspace}
+\newcommand{\vjets}{\ensuremath{V\!+\!{\mathrm{jets}}}\xspace}
+\newcommand*{\mt}{\ensuremath{m_{\text{T}}}\xspace}
+\newcommand*{\mtlepmet}{\ensuremath{m_{\text{T}}(\ell, \met)}\xspace}
+\newcommand*{\metsig}{\ensuremath{\mathcal{S}}\xspace}
+\newcommand*{\Wcand}{\ensuremath{W_\text{Cand}}\xspace}
+\newcommand*{\smallR}{\ensuremath{\text{small-}R}\xspace}
+\newcommand*{\SmallR}{\ensuremath{\text{Small-}R}\xspace}
+\newcommand*{\Wcandpt}{\ensuremath{\pt(\Wcand)}\xspace}
+\newcommand*{\Wcandm}{\ensuremath{m(\Wcand)}\xspace}
+\newcommand*{\drWl}{\ensuremath{\DeltaR (\Wcand, \ell)}\xspace}
+\newcommand*{\dRWl}{\ensuremath{\DeltaR (\Wcand, \ell)}\xspace}
+\newcommand*{\drTARl}{\ensuremath{\DeltaR (\text{TAR Jet}, \ell)}\xspace}
+\newcommand*{\dRTARl}{\ensuremath{\DeltaR (\text{TAR Jet}, \ell)}\xspace}
+\newcommand*{\DtwoTAR}{\ensuremath{D_2^{\beta=1} (\text{TAR Jet})}\xspace}
+\newcommand*{\NTAR}{\ensuremath{N (\text{TAR Jets})}\xspace}
+\newcommand*{\Njets}{\ensuremath{N (\text{Jets})}\xspace}
+\newcommand*{\ttbar}{\ensuremath{t \bar{t}}\xspace}
+
+
+\RequirePackage{heppennames}
+\RequirePackage{hepnicenames}
+
+\newcommand*{\Zprime}{\ensuremath{Z'}\xspace}
+\newcommand*{\pTTAR}{\ensuremath{p_{\text{T}}^{\text{TAR Jet}}}\xspace}
+\newcommand*{\ptTAR}{\ensuremath{p_{\text{T}}^{\text{TAR Jet}}}\xspace}
+\newcommand*{\mtar}{\ensuremath{m^\text{TAR Jet}}\xspace}
+\newcommand*{\mTAR}{\ensuremath{m^\text{TAR Jet}}\xspace}
+
+\newcommand*{\mchi}{\ensuremath{m_{\chi}}\xspace}
+\newcommand*{\mZp}{\ensuremath{m_{\Zprime}}\xspace}
+
+\newcommand*{\gq}{\ensuremath{g_{\Pq}}\xspace}
+\newcommand*{\gchi}{\ensuremath{g_{\chi}}\xspace}
+
+\newcommand*{\truthmerged}{``truth merged''\xspace}
+\newcommand*{\truthintermediate}{``truth intermediate''\xspace}
+\newcommand*{\truthinter}{``truth intermediate''\xspace}
+\newcommand*{\truthresolved}{``truth resolved''\xspace}
+
+\newcommand*{\sWW}{\ensuremath{s\rightarrow W^{+}W^{-}}\xspace}
+\newcommand*{\sZZ}{\ensuremath{s\rightarrow ZZ}\xspace}
+\newcommand*{\sVV}{\ensuremath{s\rightarrow VV}\xspace}
+
+
+% generators
+%-------------------------------------------------------------------------------
+\def\pythia{\textsc{Pythia8}\xspace}
+\def\pythiasix{\textsc{Pythia6}\xspace}
+\def\sherpa{\textsc{Sherpa}\xspace}
+\def\alpgen{\textsc{Alpgen}\xspace}
+\def\herwig{\textsc{Herwig}\xspace}
+\def\herwigseven{\textsc{Herwig7}\xspace}
+\def\jimmy{\textsc{JIMMY}\xspace}
+\def\menlops{\textsc{MENLOPS}\xspace}
+\def\mepsatnlo{\textsc{MEPS@NLO}\xspace}
+\def\mepsatlo{\textsc{MEPS@LO}\xspace}
+\def\nloewvirt{NLO~\ensuremath{\text{EW}_\text{virt}}\xspace}
+\def\mcatnlo{\textsc{MC@NLO}\xspace}
+\def\mcfm{\textsc{MCFM}\xspace}
+\def\mgamc{\textsc{MadGraph5}\_a\textsc{MC@NLO}\xspace}
+\def\mg{\textsc{MadGraph}\xspace}
+\def\mgpythia{\textsc{MadGraph5}\_a\textsc{MC@NLO}\ensuremath{+}\pythia}
+\def\ggtwovv{\textsc{gg2VV}\xspace}
+\def\vbfnlo{\textsc{VBFNLO}\xspace}
+\def\openloops{\textsc{OpenLoops}\,1\xspace}
+\def\openloopstwo{\textsc{OpenLoops}\,2\xspace}
+\def\sherpaopenloops{\textsc{Sherpa+OpenLoops}\xspace}
+\def\collier{\textsc{Collier}\xspace}
+\def\minlo{\textsc{Powheg} MiNLO\xspace}
+\def\powhegpythia{\textsc{Powheg}\ensuremath{+}\pythia}
+\def\photospp{\textsc{Photos++}\xspace}
+\def\minntchannels{\texttt{Min\_N\_TChannels}\xspace}
+\def\fxfx{\textsc{FxFx}\xspace}
+\def\gosam{\textsc{GoSam}\xspace}
+
+
+% tunes and PDF sets
+%-------------------------------------------------------------------------------
+\def\cteq{\texttt{CTEQ6L1}\xspace}
+\def\ctten{\texttt{CT10}\xspace}
+\def\cttennlo{\texttt{CT10nlo}\xspace}
+\def\ctfourteennlo{\texttt{CT14nnlo}\xspace}
+\def\ctfourteennnlo{\texttt{CT14nnlo}\xspace}
+\def\nnpdfonenlo{\texttt{NNPDF3.1nlo}\xspace}
+\def\nnpdfnnlo{\texttt{NNPDF3.0nnlo}\xspace}
+\def\nnpdfnlo{\texttt{NNPDF3.0nlo}\xspace}
+\def\nnpdflo{\texttt{NNPDF3.0lo}\xspace}
+\def\nnpdftwo{\texttt{NNPDF2.3lo}\xspace}
+\def\nnpdftwonlo{\texttt{NNPDF2.3nlo}\xspace}
+\def\mstw{\texttt{MSTW2008nlo}\xspace}
+\def\mstwnnlo{\texttt{MSTW2008nnlo}\xspace}
+\def\powheg{\textsc{Powheg}\xspace}
+\def\powhegbox{\textsc{PowhegBox}\xspace}
+\def\powhegboxRes{\textsc{PowhegBoxRes}\xspace}
+\def\powhegboxpythia{\textsc{PowhegBox}\ensuremath{+}\pythia}
+\def\powhegboxRespythia{\textsc{PowhegBoxRes}\ensuremath{+}\pythia}
+\def\vbfnlopythia{\textsc{VBFNLO}\ensuremath{+}\pythia}
+\def\powhegboxherwig{\textsc{PowhegBox}\ensuremath{+}\herwig}
+\def\powhegboxherwigseven{\textsc{PowhegBox}\ensuremath{+}\herwigseven}
+\def\amcpeight{\mgamc+\pythia}
+\def\mcatnloherwig{\textsc{MC@NLO}\ensuremath{+}\herwig}
+\def\madspin{\textsc{MadSpin}\xspace}
+\def\photos{\textsc{Photos}\xspace}
+\def\photospp{\textsc{Photos++}\xspace}
+\def\evtgen{\textsc{EvtGen}\xspace}
+\def\hathor{\textsc{Hathor}\xspace}
+\def\aFourTeen{\texttt{A14}\xspace}
+\def\auet{\texttt{AUET2}\xspace}
+\def\aznlo{\texttt{AZNLO}\xspace}
+\def\mmhtnnlo{\texttt{MMHT2014nnlo}\xspace}
+\def\mmhtnlo{\texttt{MMHT2014nlo}\xspace}
+\def\mmhtlo{\texttt{MMHT2014lo}\xspace}
+\def\ueee{\texttt{UE-EE-5}\xspace}
+\def\Gmu{\ensuremath{G_{\mu}}\xspace}
+\def\hdamp{\ensuremath{h_{\mathrm{damp}}}\xspace}

@@ -1,30 +1,60 @@
-\startchapter{Experiments}
-\label{chapter:Exp}
+\startchapter{Analysis Preparation}
+\label{chapter:ana_prep}
 
-Assuming you have some experimental results to support your claims this is where all the data is reported. There are a few issues you should consider before dumping a lot of stuff here, or it will lose its effectiveness.
+\section{Signal Model}
+This work concerns a search for dark matter produced in association with a dark Higgs boson as described in Section \ref{subsection:dh_model}.  The dark Higgs boson then decays to standard model particles with the same branching ratios as a standard model Higgs boson of variable mass, shown in Figure ~. At low $s$ mass this is dominated by a decay to a pair of $b$ quarks, which has been explored by reinterpreting the ATLAS search for dark matter produced in association with a standard model Higgs boson decaying to $b\bar{b}$. [cite,cite] At $s$ masses above 160 $GeV$, however, the decay to a pair of W bosons, shown in Figure ~ becomes kinematically available on-shell. Even slightly below this threshold, $s$ decays to $WW$ are the dominant process. The pair of W bosons decay rapidly, and are not detected as final state particles by the ATLAS detector. Instead, they each decay either to hadronic ($q\bar{q}$) or leptonic ($l\nu$) final states. A search in the fully hadronic channel, with both $W$ decaying to $q\bar{q}$ is complete, and this work focuses on the semileptonic decay channel with one $ W \rightarrow q\bar{q} $ and one $ W \rightarrow l\nu $. When both analyses are complete, the results will be statistically combined.
 
-First of all you must describe precisely the experimental setup and the benchmarks you used. In any scientific discipline an experimental result is only good if it is reproducible. To be reproducible then somebody else must have sufficient details of the setup to be able to obtain the same data. Thus the first section in this chapter is a super precise history of the decisions made towards experimentation, including mentions of the paths which became infeasible. The setup must be valid and thus your description of it must prove that it is indeed sound. At times, terrifying times, when writing this section, both supervisor and student realize belatedly that something is missing and more work needs to be done!
+\begin{figure}[H]
+    \centering
+    \feynmandiagram [horizontal=a to b] {
+    i1[particle=\(q\)] -- [fermion] a -- [fermion] i2[particle=\(q\)],
+    a -- [boson, edge label=\(Z'\)] b,
+    b -- [boson, edge label=\(Z'\)] c,
+    b -- [scalar, edge label=\(s\)] d,
+    f1[particle=\(\chi\)] -- [fermion] c -- [fermion] f2[particle=\(\chi\)],
+    f3[particle=\(W\)] -- [boson] d -- [boson] f4[particle=\(W\)],
+    f2 -- [opacity=0.0] f3
+    };
+    \caption{DH Decay}
+    \label{fig:dh_feynman}
+\end{figure}
 
-The second portion of this chapter is dedicated the the actual results. At least two issues arise here:
-\begin{enumerate}
-\item {Should all the data be reported here or should some be placed in the Appendix?}
-\item {Should this be an exposition of the raw facts and data or should it include its analysis and evaluation?}
-\end{enumerate}
+In the ATLAS detector this signal signature will be characterized by a single lepton in the final state from the $ W \rightarrow l\nu $ decay, along with a pair of jets from the $ W \rightarrow q\bar{q} $ decay and a strong missing transverse energy signature from the dark matter particles and neutrino.
 
-There are no definite answers here, but I follow a few rules.
+\section{Monte Carlo Production}
+\label{section:mc_prod}
+Monte Carlo (MC) simulated samples of both BSM (signal) and SM (background) events were used in this analysis. In this way, potentially signal-rich regions can be prepared and studied separately from real data and then later compared to see whether simulated data and true data agree. The following section will detail the signal and background MC samples used.
 
-\textit{Should all the data be reported here or should some be placed in the Appendix?}
-    \begin{itemize}
-    \item{If there is a large number of tables of data, it might be better to present here only a handful of the most significant ("best") results, leaving all the rest of the data in the Appendix with proper linkages, as it would make the chapter so much more easily readable (not to mention limiting the struggle with a word processor for the proper placement of tables and text).}
-    \item{Use an example throughout, call it a "case study" to make it sound better, so that all the data and results are somehow linked in their logic, and even better if this is one of the examples you used in Chapter 2 to describe the original problem.}
-    \item{Highlight in some manner the important new data, for example the column of your execution speed where all the numbers are much smaller. Make the results highly easy to read!}
-    \item{It is normally expected that data should be presented only in one form and not duplicated, that is, you are not supposed to include both a table of raw numbers and also its graphical representation from some wonderful Excel wizard. I tend to disagree. I would not wish to see every results repeated in this manner, but some crucial ones need to be seen in different manners, even with the same information content, in order to show their impact. One good trick is to place the more boring tables in the Appendix and use wonderful graphs in this chapter.}
-    \item{This is the one chapter where I would splurge and use colour printing where necessary, as it makes an \textit{enourmous} difference.}
-    \end{itemize}
+\subsection{Signal}
+\label{subsection:mc_signal}
+Signal samples are produced using the model and parameter choices outlined in Section \ref{subsection:dh_model}. They were produced by calculating the hard process cross-section at leading order (LO) using \mgamc 2.7.2 interfaced with \pythia 8.230 for parton shower modelling. The CKKW-L https://arxiv.org/pdf/1109.4829.pdf procedure with a matching scale of $min(m_s, 40~GeV)$ was used to prevent overlap between the cross-section matrix element and parton shower. Two separate signal grids were produce, with the second covering an expanded parameter space. In the first, \mgamc was used with the NNPDF23 LO PDF set with $\alpha_s = 0.13$, while in the second \mgamc was both used with the NNPDF23 LO PDF set with $\alpha_s = 0.13$ and LO QED. The signals studied span a parameter space in \ms and \mZp with samples produced at the mass points shown in Figure ~. After production, it was found that the second set of samples did not use the ATLAS recommended PDF Set, which is in fact NNPDF23 NLO PDF set with $\alpha_s = 0.118$. When used, the weights of events in these samples are therefore scaled to match the cross-sections of the recommended PDF set.
 
-\textit{Should this be an exposition of the raw facts and data or should it include its analysis and evaluation?}
-     \begin{itemize}
-    \item{Is the evaluation of the data really obvious? For example you have 10 tables to show that your chemical process is faster in development and gives purer material - you may simply need to highlight one column in each table and state the obvious.}
-    \item{Most results are not that obvious even if they appear so. Moreover this is where you are comparing your \textit{new} results to data from other people. I usually describe other people's work at this point and make comparisons. That is why I prefer to talk about the analysis and evaluation of the results in a separate chapter.}
-    \item{There is absolutely no clear structure here which is best.}
-    \end{itemize}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/3/SignalGrid.png}
+    \caption{Signal point locations in \ms vs. \mZp parameter space.}
+    \label{fig:signal_grid}
+\end{figure}
+
+\subsection{Background}
+\label{subsection:mc_bkg}
+The dominant SM backgrounds for this analysis are:
+\begin{itemize}
+    \item \wjets events a single W boson and 1 or more jets,
+    \item \ttbar events with a top and anti-top pair,
+    \item and \textit{Diboson} events with a pair of vector bosons
+\end{itemize}
+Additionally, \zjets and single-top quark (stop) events make non-negligible background contributions. All background contributions are estimated using MC simulated data, and the \wjets and \ttbar backgrounds are further constrained using data-driven control regions.
+
+\subsubsection{\vjets and diboson}
+Like signal, two distinct sets of \wjets and \zjets (\vjets) background samples were used. The samples are similar in that \wjets and \zjets (\vjets) are simulated with the \sherpa v2.2 MC generator with up to two additional parton emissions at NLO or four additional parton emissions at LO accuracy. Merging of parton showers with matrix elements is acheived using CKKW matching with the MEPS@NLO prescription extending this to NLO. *https://cds.cern.ch/record/2261937/files/ATL-PHYS-PUB-2017-006.pdf* Sect 2.1. The NNPDF30 NNLO https://arxiv.org/pdf/1410.8849.pdf set is used.
+The difference is that first samples were produced using \sherpa v2.2.1, and the second with \sherpa v2.2.10. As well, additional \wjets samples are added to the second set with $m_W > 120 GeV$. This greatly enhances the statistics in this small section of phase space that is important to this analysis. Overlap removal in $m_W$ is performed between these mass-enhanced samples and the other \wjets samples. https://cds.cern.ch/record/2753199/files/ATL-COM-PHYS-2021-063.pdf?
+Diboson samples are similarly generated with only a single set using either \sherpa v2.2.1 or 2.2.2 depending on the process, and CKKW matching again used to merge parton shower and matrix element simulation.
+
+\subsubsection{\ttbar and single-top}
+MC samples for the \ttbar and single-top standard model background process were modelled using the \powhegbox v2 generator, which gives martix elements at NLO in the strong coupling constant $\alpha_s$. This uses the NNPDF3.0NO PDF set. Like for signal samples, events were interfaced with \pythia 8.230 for parton shower modelling using the NNPDF23LO PDF set.
+
+\section{Object Definition}
+Once events have been simulated or produced in the ATLAS detector, the information contained in them must be reconstructed into objects which can be analyzed. These objects represent particles or groups of particles and are used to fully or partially reconstruct events and search for signal signatures. The following section will detail the definition of objects used in this analysis.
+
+\subsecton{Muons}
