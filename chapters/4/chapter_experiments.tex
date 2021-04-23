@@ -60,7 +60,7 @@ Once events have been simulated or produced in the ATLAS detector, the informati
 \subsection{Muons}
 From the ATLAS detector, muons are reconstructed from measurements in the Inner Detector and the Muon Spectrometer. For this analysis, two different definitions of muons are used. ``\textit{Baseline}" muons use a slighlty less selective reconstruction than ``\textit{signal}" muons, which are designed for high purity. \textit{Baseline} muons are selected using the \textit{Loose} identification criteria as defined in https://arxiv.org/pdf/1603.05598.pdf, which is designed to maximize efficiency. \textit{Signal} muons, meanwhile, use the \textit{Medium} identification criteria, and must also be isolated according to the \textit{Tight} track-based working point with variable radius dependent on \pT. Additionally, all muons are rejected if they are considered ``badly reconstructed" or ``cosmic", and recommended track-to-vertex association cuts are applied. Table \ref{tab:muon_criteria} summarizes the muon selection criteria.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Muon object definition criteria}
 \label{tab:muon_criteria}
@@ -85,7 +85,7 @@ Veto & Cosmic or Bad & Cosmic or Bad \\
 \subsection{Electrons}
 Electrons are reconstructed by associating energy deposits in the EM calorimeter with tracks in the inner detector. Like for muons, two different definitions are used, with ``\textit{baseline}" electrons requiring slighlty less selective criteria than ``\textit{signal}" electrons. \textit{Baseline} and \textit{signal} electrons are selecteded using a likelihood-based identification described in https://arxiv.org/pdf/1902.04655.pdf. \textit{Signal} electrons require the medium identification criteria, while \textit{baseline} electrons requre the loose criteria as well as a hit in the innermost layer of the pixel detector. Additionally, \textit{baseline} and \textit{signal} electrons must both satisfy the fixed-cut \textit{Loose} isolation requirement. Like for muons, ATLAS recommended track-to-vertex association cuts are applied. Table \ref{tab:electron_criteria} summarizes the electron selection criteria.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{Electron object definition criteria}
 \label{tab:electron_criteria}
@@ -106,12 +106,12 @@ Pseudorapidity & \(\abs{\eta} < 2.47\) & \(\abs{\eta} < 2.47\) \\
 \end{table}
 
 \subsection{Small-radius ($R=0.4$) Jets}
-In this analysis, small-R jets are used to reconstruct the hadonically decaying W-boson in some analysis regions. Small-R jets are built using particle-flow objects [https://arxiv.org/pdf/1703.10485.pdf] clustered with the \akt algorithm [https://arxiv.org/pdf/0802.1189.pdf] with radius $R=0.4$. Following reconstruction, only jets with $pT > 20$ \GeV and $|\eta < 2.5|$ \GeV are used for analysis. As well, in order to suppress noise from pileup, the jet vertex tagger [https://cds.cern.ch/record/1700870/files/ATLAS-CONF-2014-018.pdf] is applied with the \verb|Tight| working point.
+In this analysis, small-R jets are used to reconstruct the hadonically decaying W boson in some analysis regions. Small-R jets are built using particle-flow objects [https://arxiv.org/pdf/1703.10485.pdf] clustered with the \akt algorithm [https://arxiv.org/pdf/0802.1189.pdf] with radius $R=0.4$. Following reconstruction, only jets with $pT > 20$ \GeV and $|\eta < 2.5|$ \GeV are used for analysis. As well, in order to suppress noise from pileup, the jet vertex tagger [https://cds.cern.ch/record/1700870/files/ATLAS-CONF-2014-018.pdf] is applied with the \verb|Tight| working point.
 
 \subsubsection{$b$-jets}
 For this analysis, it is also beneficial to identify jets originating from bottob ($b$) quarks. In signal regions these jets are vetoed to reduce background. This is performed using the \verb|DL1r| [https://cds.cern.ch/record/2255226/files/ATL-PHYS-PUB-2017-003.pdf] b-tagging algorithm, which employs a deep-learning neural network. A 77\% efficient tagger working point is used. Table \ref{tab:r04_criteria} summarizes $R=0.4$ jet criteria and tagging.
 
-\begin{table}[htbp]
+\begin{table}[H]
 \centering
 \caption{$R=0.4$ jets object definition criteria}
 \label{tab:r04_criteria}
@@ -132,3 +132,44 @@ $b$-tagger & \verb|DL1r| \\
 \end{table}
 
 \subsection{Track-Assisted-Reclustered Jets}
+\label{ap:TARjet_object_defs}
+Track-Assisted-Reclustered (TAR) jets are used in this analysis to reconstruct hadronically decaying W boson candidates in some regions. $R=0.2$ jets, constructed with the \akt algorithm from locally calibrated topological clusters are used as input to the TAR algorithm. As well, the TAR algorithm uses tracks fulfilling quality criteria (see Table \ref{tab:TARparameters}). The TAR involves building large-R jets from the constituent small-R jets. Tracks are then matched with the input jets and rescaled using the $p_T$ of the matched jets. The kinematic properties of the TAR jets are then calculated from the constituent $R=0.2$ jets, while the jet substructure variables are calculated from the constituent tracks. Figure ~ shows a visual summary of the base TAR algorithm.
+The following steps outline the algorithm in more detail:
+\begin{itemize}
+  \item Tracks and calibrated \akt $R=0.2$ jets are chosen as input to the algorithm.
+  \item The \akt $R=0.2$ jets are reclustered using the \akt algorithm into $R=1.0$ jets and trimmed using the $p_T$ fraction \(f_{cut}=0.05\).
+  \item Input tracks are matched to $R=0.2$ jets if possible using ghost association.
+  \item Tracks which remain unassociated are matched to the nearest \akt $R=0.2$ jet within $\Delta R<0.3$
+  \item The \pT of each track is rescaled using the \pT of the jet to which it is matched using the equation:
+  \begin{equation}
+  \pT^{\text{track, new}} = \pT^{\text{track, old}}\times \frac{\pT^{\text{subjet $j$}}}{\sum_{i \in j} \pT^{\text{track $i$}}} ,
+  \label{eq:TAR_rescale}
+  \end{equation}  where $j$ is the $R=0.2$ subjet that the track being rescaled is matched with, and the index $i$ runs over all tracks matched to that subjet. This rescaling accounts for the missing neutral momentum, which is measured at calorimeter level but is not present at tracker level.
+  \item Finally, jet substructure variables and $m^\text{TAR}$ are calculated using the rescaled matched tracks.
+\end{itemize}
+The parameters of the TAR algorithm used are summarized in Table \ref{tab:TARparameters}. \\
+
+\begin{table}[H]
+\centering
+\caption{TAR jet reconstruction parameters}
+\label{tab:TARparameters}
+\begin{tabular}{l l }
+\toprule
+\multirow{3}{*}{Input track selection} & \verb|Loose| quality\\
+	& \(\pT > 0.5~\GeV\) \\
+	& \(\abs{\eta} < 2.5\)  \\
+  \multirow{2}{*}{Track-to-vertex association} & \(\abs{d_0}  < \unit[2]{mm} \) \\
+  	& \( \abs{\Delta z_0^\textrm{BL} \sin \theta} < \unit[3.0]{mm} \) \\
+\midrule
+\multirow{3}{*}{Input jet selection} & $R=0.2$ topo jets \\
+	& \(\pT > 20~\GeV\) \\
+	&  \(\abs{\eta} < 2.5\)  \\
+\midrule
+Reclustering radius & \(R=1.0\) \\
+TAR jet \pT & \(\pT^\text{TAR} > 100~\GeV\) \\
+Trimming radius & \(R=0.2\) \\
+Trimming \pT fraction & \(f_\text{cut}=0.05\) \\
+Track-to-jet association & \(\Delta R(\text{jet, track}) < 0.3\) \\
+\bottomrule
+\end{tabular}
+\end{table}
