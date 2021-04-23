@@ -9,6 +9,15 @@
 % the distance from the bottom of the header to the
 % first line of text.
 \usepackage[top=1.3in,left=1.5in,bottom=1in,right=1in,headsep=0.5in]{geometry}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage{verbatim}
+\usepackage{comment}
+\usepackage{physics}
+\usepackage{units}
+\usepackage{float}
+\usepackage{booktabs}
+
 
 \usepackage{setspace}
 \onehalfspacing
@@ -64,7 +73,13 @@
 
 %-------------------------------------------------------------------------------
 % Shortcuts for commonly used signs
+\newcommand*{\kt}{\ensuremath{k_{t}}\xspace}
+\newcommand*{\antikt}{anti-\kt}
+\newcommand*{\akt}{\antikt}
+
 \newcommand*{\ms}{\ensuremath{m_s}\xspace}
+\newcommand*{\pT}{\ensuremath{p_T}\xspace}
+\newcommand*{\GeV}{\ensuremath{GeV}\xspace}
 \newcommand*{\merged}{``merged''\xspace}
 \newcommand*{\resolved}{``resolved'\xspace'}
 \newcommand{\wjets}{\ensuremath{W\!+\!{\mathrm{jets}}}\xspace}

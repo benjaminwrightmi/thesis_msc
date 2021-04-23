@@ -57,4 +57,78 @@ MC samples for the \ttbar and single-top standard model background process were 
 \section{Object Definition}
 Once events have been simulated or produced in the ATLAS detector, the information contained in them must be reconstructed into objects which can be analyzed. These objects represent particles or groups of particles and are used to fully or partially reconstruct events and search for signal signatures. The following section will detail the definition of objects used in this analysis.
 
-\subsecton{Muons}
+\subsection{Muons}
+From the ATLAS detector, muons are reconstructed from measurements in the Inner Detector and the Muon Spectrometer. For this analysis, two different definitions of muons are used. ``\textit{Baseline}" muons use a slighlty less selective reconstruction than ``\textit{signal}" muons, which are designed for high purity. \textit{Baseline} muons are selected using the \textit{Loose} identification criteria as defined in https://arxiv.org/pdf/1603.05598.pdf, which is designed to maximize efficiency. \textit{Signal} muons, meanwhile, use the \textit{Medium} identification criteria, and must also be isolated according to the \textit{Tight} track-based working point with variable radius dependent on \pT. Additionally, all muons are rejected if they are considered ``badly reconstructed" or ``cosmic", and recommended track-to-vertex association cuts are applied. Table \ref{tab:muon_criteria} summarizes the muon selection criteria.
+
+\begin{table}[htbp]
+\centering
+\caption{Muon object definition criteria}
+\label{tab:muon_criteria}
+\begin{tabular}{l l l}
+\toprule
+\textbf{Criterion} & \textbf{Baseline Muon} & \textbf{Signal Muon} \\
+\midrule
+Identification & \verb|Loose| & \verb|Medium| \\
+Isolation & - & \verb|TightTrackOnly_VarRad| \\
+\midrule
+Pseudorapidity & \(\abs{\eta} < 2.7\) & \(\abs{\eta} < 2.5\) \\
+\pT & \(\pT > \unit[7]{\GeV} \) & \(\pT> \unit[7]{\GeV} \) \\
+\midrule
+Veto & Cosmic or Bad & Cosmic or Bad \\
+\midrule
+\multirow{2}{*}{Track-to-vertex association} & \(\abs{d_0 / \sigma_{d_0}}  < 3 \) & \( \abs{d_0 / \sigma_{d_0}}  < 3 \) \\
+	& \( \abs{\Delta z_0^\textrm{BL} \sin \theta} < \unit[0.5]{mm} \) & \( \abs{\Delta z_0^\textrm{BL} \sin \theta} < \unit[0.5]{mm} \) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Electrons}
+Electrons are reconstructed by associating energy deposits in the EM calorimeter with tracks in the inner detector. Like for muons, two different definitions are used, with ``\textit{baseline}" electrons requiring slighlty less selective criteria than ``\textit{signal}" electrons. \textit{Baseline} and \textit{signal} electrons are selecteded using a likelihood-based identification described in https://arxiv.org/pdf/1902.04655.pdf. \textit{Signal} electrons require the medium identification criteria, while \textit{baseline} electrons requre the loose criteria as well as a hit in the innermost layer of the pixel detector. Additionally, \textit{baseline} and \textit{signal} electrons must both satisfy the fixed-cut \textit{Loose} isolation requirement. Like for muons, ATLAS recommended track-to-vertex association cuts are applied. Table \ref{tab:electron_criteria} summarizes the electron selection criteria.
+
+\begin{table}[htbp]
+\centering
+\caption{Electron object definition criteria}
+\label{tab:electron_criteria}
+\begin{tabular}{l l l}
+\toprule
+\textbf{Criterion} & \textbf{Baseline Electron} & \textbf{Signal Electron} \\
+\midrule
+Identification & \verb|LooseAndBLayerLLH| & \verb|MediumLLH| \\
+Isolation & \verb|FCLoose| & \verb|FCLoose| \\
+\midrule
+Pseudorapidity & \(\abs{\eta} < 2.47\) & \(\abs{\eta} < 2.47\) \\
+\pT & \(\pT > \unit[7]{\GeV} \) & \(\pT> \unit[7]{\GeV} \) \\
+\midrule
+\multirow{2}{*}{Track-to-vertex association} & \(\abs{d_0 / \sigma_{d_0}}  < 5 \) & \( \abs{d_0 / \sigma_{d_0}}  < 5 \) \\
+	& \( \abs{\Delta z_0^\textrm{BL} \sin \theta} < \unit[0.5]{mm} \) & \( \abs{\Delta z_0^\textrm{BL} \sin \theta} < \unit[0.5]{mm} \) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Small-radius ($R=0.4$) Jets}
+In this analysis, small-R jets are used to reconstruct the hadonically decaying W-boson in some analysis regions. Small-R jets are built using particle-flow objects [https://arxiv.org/pdf/1703.10485.pdf] clustered with the \akt algorithm [https://arxiv.org/pdf/0802.1189.pdf] with radius $R=0.4$. Following reconstruction, only jets with $pT > 20$ \GeV and $|\eta < 2.5|$ \GeV are used for analysis. As well, in order to suppress noise from pileup, the jet vertex tagger [https://cds.cern.ch/record/1700870/files/ATLAS-CONF-2014-018.pdf] is applied with the \verb|Tight| working point.
+
+\subsubsection{$b$-jets}
+For this analysis, it is also beneficial to identify jets originating from bottob ($b$) quarks. In signal regions these jets are vetoed to reduce background. This is performed using the \verb|DL1r| [https://cds.cern.ch/record/2255226/files/ATL-PHYS-PUB-2017-003.pdf] b-tagging algorithm, which employs a deep-learning neural network. A 77\% efficient tagger working point is used. Table \ref{tab:r04_criteria} summarizes $R=0.4$ jet criteria and tagging.
+
+\begin{table}[htbp]
+\centering
+\caption{$R=0.4$ jets object definition criteria}
+\label{tab:r04_criteria}
+\begin{tabular}{l l}
+\toprule
+\textbf{Criterion} & \textbf{Requirement} \\
+\midrule
+Reconstruction & Particle Flow \\
+\midrule
+Pseudorapidity & \(\abs{\eta} < 2.5\) \\
+\pT & \(\pT > \unit[20]{\GeV} \) \\
+\midrule
+Jet-Vertex-Tagger WP & \verb|Tight| \\
+\midrule
+$b$-tagger & \verb|DL1r| \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Track-Assisted-Reclustered Jets}
