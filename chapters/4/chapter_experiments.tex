@@ -58,6 +58,7 @@ MC samples for the \ttbar and single-top standard model background process were 
 Once events have been simulated or produced in the ATLAS detector, the information contained in them must be reconstructed into objects which can be analyzed. These objects represent particles or groups of particles and are used to fully or partially reconstruct events and search for signal signatures. The following section will detail the definition of objects used in this analysis.
 
 \subsection{Muons}
+\label{subsection:muons}
 From the ATLAS detector, muons are reconstructed from measurements in the Inner Detector and the Muon Spectrometer. For this analysis, two different definitions of muons are used. ``\textit{Baseline}" muons use a slighlty less selective reconstruction than ``\textit{signal}" muons, which are designed for high purity. \textit{Baseline} muons are selected using the \textit{Loose} identification criteria as defined in https://arxiv.org/pdf/1603.05598.pdf, which is designed to maximize efficiency. \textit{Signal} muons, meanwhile, use the \textit{Medium} identification criteria, and must also be isolated according to the \textit{Tight} track-based working point with variable radius dependent on \pT. Additionally, all muons are rejected if they are considered ``badly reconstructed" or ``cosmic", and recommended track-to-vertex association cuts are applied. Table \ref{tab:muon_criteria} summarizes the muon selection criteria.
 
 \begin{table}[H]
@@ -83,6 +84,7 @@ Veto & Cosmic or Bad & Cosmic or Bad \\
 \end{table}
 
 \subsection{Electrons}
+\label{subsection:electrons}
 Electrons are reconstructed by associating energy deposits in the EM calorimeter with tracks in the inner detector. Like for muons, two different definitions are used, with ``\textit{baseline}" electrons requiring slighlty less selective criteria than ``\textit{signal}" electrons. \textit{Baseline} and \textit{signal} electrons are selecteded using a likelihood-based identification described in https://arxiv.org/pdf/1902.04655.pdf. \textit{Signal} electrons require the medium identification criteria, while \textit{baseline} electrons requre the loose criteria as well as a hit in the innermost layer of the pixel detector. Additionally, \textit{baseline} and \textit{signal} electrons must both satisfy the fixed-cut \textit{Loose} isolation requirement. Like for muons, ATLAS recommended track-to-vertex association cuts are applied. Table \ref{tab:electron_criteria} summarizes the electron selection criteria.
 
 \begin{table}[H]
@@ -119,7 +121,7 @@ For this analysis, it is also beneficial to identify jets originating from botto
 \toprule
 \textbf{Criterion} & \textbf{Requirement} \\
 \midrule
-Reconstruction & Particle Flow \\
+Collection & \verb|AntiKt4EMPFlowJets| \\
 \midrule
 Pseudorapidity & \(\abs{\eta} < 2.5\) \\
 \pT & \(\pT > \unit[20]{\GeV} \) \\
@@ -133,7 +135,7 @@ $b$-tagger & \verb|DL1r| \\
 
 \subsection{Track-Assisted-Reclustered Jets}
 \label{ap:TARjet_object_defs}
-Track-Assisted-Reclustered (TAR) jets are used in this analysis to reconstruct hadronically decaying W boson candidates in some regions. $R=0.2$ jets, constructed with the \akt algorithm from locally calibrated topological clusters are used as input to the TAR algorithm. As well, the TAR algorithm uses tracks fulfilling quality criteria (see Table \ref{tab:TARparameters}). The TAR involves building large-R jets from the constituent small-R jets. Tracks are then matched with the input jets and rescaled using the $p_T$ of the matched jets. The kinematic properties of the TAR jets are then calculated from the constituent $R=0.2$ jets, while the jet substructure variables are calculated from the constituent tracks. Figure ~ shows a visual summary of the base TAR algorithm.
+Track-Assisted-Reclustered (TAR) jets [https://cds.cern.ch/record/2630864] are used in this analysis to reconstruct hadronically decaying W boson candidates in some regions. $R=0.2$ jets, constructed with the \akt algorithm from locally calibrated topological clusters [https://arxiv.org/abs/1603.02934] are used as input to the TAR algorithm. As well, the TAR algorithm uses tracks fulfilling quality criteria (see Table \ref{tab:TARparameters}). The TAR involves building large-R jets from the constituent small-R jets. Tracks are then matched with the input jets and rescaled using the $p_T$ of the matched jets. The kinematic properties of the TAR jets are then calculated from the constituent $R=0.2$ jets, while the jet substructure variables are calculated from the constituent tracks. Figure \ref{fig:TAR_alg} shows a visual summary of the base TAR algorithm.
 The following steps outline the algorithm in more detail:
 \begin{itemize}
   \item Tracks and calibrated \akt $R=0.2$ jets are chosen as input to the algorithm.
@@ -173,3 +175,16 @@ Track-to-jet association & \(\Delta R(\text{jet, track}) < 0.3\) \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/3/TAR_alg.png}
+    \caption{A visual summary of the TAR Jet algorithm.}
+    \label{fig:TAR_alg}
+\end{figure}
+
+\subsection{Missing Transverse Momentum (\met)}
+In the ATLAS detector, the beams collide directly along the longitudinal axis. As a result of the conservation of momentum, all decay products from the collision should have a total transverse momentum of 0. As a result, missing transverse momentum (\met) is used to represent undetected objects. In the signal model described in Section \ref{subsection:dh_model} both the neutrino from the leptonically decaying $W$-boson and the dark matter would not be directly detected in ATLAS. It is impossible to disentangle these objects, and they are reconstructed together using \met. \met is calculated for this analysis using baseline electrons and muons as described in Sections \ref{subsection:electrons} and \ref{subsection:muons} as well as $R=0.4$ jets with the \verb|Tight| working point applied. No photons or \tau-leptons are included in the calculation. An additional soft term, which is calculated from tracks not associated with the reconstructed objects, is also added.
+
+\subsubsection{\met Significance}
+The significance of the \met measurement is also assessed using the object-based \met significance \metsig. It is calculated as described in https://cds.cern.ch/record/2630948 from a combination of the uncertainties on the reconstructed objects and soft term used to calculate \met, as well as a pileup correction. A high \metsig indicates a higher degree of confidence that the \met measurement of an event comes from an unseen object rather than from particel mismeasurement.
