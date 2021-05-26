@@ -1,2 +1,46 @@
 \startchapter{Analysis}
 \label{chapter:analysis}
+After data and simulated data samples are produced and physics objects are defined and reconstructed within them, the resulting information can be analyzed to search for evidence of the existence of new physics. At its core, this entails designing a set of selection criteria that can be use to filter data on an event-by-event basis into one or more ``signal regions" that are expected to be rich in signal events. Within these signal regions the number of expected background events given by simulated samples can be compared with ATLAS data, and a statistical conclusion can be reached about the existence of signal events. In reality, layers of complexity are added to this in the form of ``control regions" to provide a data-driven constraint on simulated background events, fitting strategies, and the estimation of systematic uncertainties.
+
+As a result of this complexity, completing an analysis is a group effort. In this chapter, I will focus on my primary contributions to the analysis covered by this work: the disentanglement of leptons from TAR jets, the design and optimization of a signal region, and the design of a control region to constrain the \ttbar background. In order to form a complete picture of the search and give context to my work, I will also briefly discuss the other key components of the analysis. Appendix ~ provides a more detailed description of the division of studies contributing to the analysis.
+
+\section{Analysis Strategy}
+\label{section:ana_strat}
+In this analysis there are two analysis channels which are combined statistically during fitting. These channels distinguish the reconstruction of the dijet system from the hadronically decaying W boson, and are named the \merged channel and the \resolved channel. In the \merged channel the dijet system is reconstructed by a single $R=1.0$ TAR jet, which generally means it is more boosted. In the less-boosted \resolved channel the dijet system is reconstructed by a pair of $R=0.4$ jets. ``INSERT FIGURE HERE MGD VS RSVD". In each analysis channel there are three analysis regions: the semileptonic signal region, a control region designed to constrain the \ttbar background, and a control region designed to constrain the \wjets background. To ensure \merged and \resolved regions are orthogonal, an event recycling strategy is employed where only events failing the selection for all \merged regions are considered for selection in \resolved regions.
+
+\section{Merged Signal Region}
+Something here??
+\label{section:sr_merged}
+\subsection{Signal and Background Characterization}
+The first step towards defining signal region selection criteria was to characterize the signal and background events while searching for exploitable differences. Event characteristics explored include the relative positions of analysis objects, the transverse momenta of analysis objects, along with various jet substructure variables.
+
+Plots
+
+\subsection{TAR Jet Lepton Disentanglement}
+Reconstructing the hadronically decaying W-boson as accurately as possible is key in this analysis. As a result, it was given special attention, especially in the more sensitive merged channel. In this channel, the W is reconstructed by a single $R=1.0$ TAR jet. Due to the boosted nature of the $s$-decay, however, the leptonically decaying W often lies very near to this jet. As a result the lepton often overlaps the TAR jet, which can lead to difficulty in jet reconstruction.
+
+In order to resolve this difficulty, modifications are made to the TAR jet building process to disentangle overlapping leptons. Input tracks and jets that are considered likely to be attributable to a final state lepton and not the hadronic W decay are removed. First, tracks associated with a baseline electron or muon are removed from the input track collection. Additionally, any \akt $R=0.2$ jet overlapping with a baseline electron (defined here as having $\Delta R(lep,jet) < 0.2$) is removed prior to reclustering into $R=1.0$ jets. $R=0.2$ jets overlapping muons are not removed, as muons do not leave a calorimeter signature and are therefore unlikely to generate a fake jet. This results in the following updated TAR jet building algorithm, where steps with a (*) are added to disentangle leptons:
+
+\begin{itemize}
+  \item Tracks and calibrated \akt $R=0.2$ jets are chosen as input to the algorithm.
+  \item Tracks associated with a baseline muon or electron are removed from the input collection (*).
+  \item \akt $R=0.2$ jets overlapping with a baseline electron ($\DeltaR<0.2$) are removed from the input collection (*).
+  \item The remaining \akt $R=0.2$ jets are reclustered using the \akt algorithm into $R=1.0$ jets and trimmed using the $p_T$ fraction \(\fcut=0.05\).
+  \item Input tracks are matched to $R=0.2$ jets if possible using ghost association.
+  \item Tracks which remain unassociated are matched to the nearest \akt $R=0.2$ jet within $\DeltaR<0.3$
+  \item The \pt of each track is rescaled using the \pt of the jet to which it is matched using the equation:
+  \begin{equation}
+  \pt^{\text{track, new}} = \pt^{\text{track, old}}\times \frac{\pt^{\text{subjet $j$}}}{\sum_{i \in j} \pt^{\text{track $i$}}} ,
+  \label{eq:TAR_rescale}
+  \end{equation}  where $j$ is the $R=0.2$ subjet that the track being rescaled is matched with, and the index $i$ runs over all tracks matched to that subjet. This rescaling accounts for the missing neutral momentum, which is measured at calorimeter level but is not present at tracker level.
+  \item Finally, jet substructure variables and  $m^\text{TAR}$ are calculated using the rescaled matched tracks.
+\end{itemize}
+
+
+
+
+\subsection{Merged Signal Region Optimization}
+
+\section{\ttbar Control Region}
+
+\section{Other Regions}
