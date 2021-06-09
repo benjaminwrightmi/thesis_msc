@@ -5,26 +5,31 @@ After data and simulated data samples are produced and physics objects are defin
 This thesis focuses on the design of the most sensitive ``merged" signal region as well as the addition of a control region to constrain the \ttbar background contribution. Other analysis regions are described in more brief detail in order to provide context to decision-making and a fuller picture of the analysis.
 
 \section{Cut and Count Analysis}
-This analysis uses the ``cut and count" strategy to search for evidence of the signal model. In a cut and count analysis a set of selection criteria are chosen which slice or ``cut" the data according to various event variables, such as the amount of missing transverse momentum. These selection criteria are chosen in order to maximize the expected number of signal events and minimize the expected number of standard model background events entering the region based on the MC simulated data. While designing the selection criteria, real ATLAS data is blinded to avoid biasing the selection. The final area of phase space defined by the selection criteria is known as the ``signal region". At the culmination of the analysis, the real ATLAS data is compated with the simulated MC data, and a statistical conclusion can be reached about the likelihood of the existence of the signal model.
+This analysis uses the ``cut and count" strategy to search for evidence of the signal model. In a cut and count analysis a set of selection criteria are chosen which slice or ``cut" the data according to various event variables, such as the amount of missing transverse momentum. These selection criteria are chosen in order to maximize the expected number of signal events and minimize the expected number of standard model background events entering the region based on the MC simulated data. While designing the selection criteria, real ATLAS data is blinded to avoid biasing the selection. The final area of phase space defined by the selection criteria is known as the ``signal region". At the culmination of an analysis, the real ATLAS data can be compared with the simulated MC data and a statistical conclusion can be reached about the likelihood of the existence of the signal model.
 
-In order to improve the accuracy and uncertainty of the predicted standard model background a ``control region" may also be used. This is a region orthogonal to the signal region which is designed to have similar kinematic properties but be more pure in one or more standard model background and much less rich in expected signal events. In this region the number of MC simulated background events and ATLAS data events are compared. Their ratio can then provide additional information to correct and constrain the expected number of background events in the signal region.
+In order to improve the accuracy and uncertainty of the predicted standard model background a ``control region" may also be used. This is a region orthogonal to the signal region which is designed to have similar kinematic properties but be more pure in one or more standard model backgrounds and much less rich in expected signal events. In this region the number of MC simulated background events and ATLAS data events are compared. Their ratio can therefore provide additional information to correct and constrain the expected number of background events in the signal region.
 
 \section{Analysis Strategy}
 \label{section:ana_strat}
-In this analysis there are two analysis channels which are combined statistically during fitting. These channels are distinguished by the reconstruction of the dijet system from the hadronically decaying W boson, and are named the \merged channel and the \resolved channel. In the \merged channel the dijet system is reconstructed by a single $R=1.0$ TAR jet, which generally means it is more boosted. In the less-boosted \resolved channel the dijet system is reconstructed by a pair of $R=0.4$ jets. ``INSERT FIGURE HERE MGD VS RSVD". In each analysis channel there are three analysis regions: the semileptonic signal region, a control region designed to constrain the \ttbar background, and a control region designed to constrain the \wjets background. To ensure \merged and \resolved regions are orthogonal, an event recycling strategy is employed where only events failing the selection for all \merged regions are considered for selection in \resolved regions.
+In this analysis there are two analysis channels which are combined statistically during fitting. These channels are distinguished by the reconstruction of the dijet system from the hadronically decaying W boson, and are named the \merged channel and the \resolved channel. In the \merged channel the dijet system is reconstructed by a single $R=1.0$ TAR jet, which generally means it is more boosted with the $s$ decay products closer together. In the less-boosted \resolved channel the dijet system is reconstructed by a pair of $R=0.4$ jets. Figure \ref{fig:mgd_res} provides a visual demonstration of this difference. In each analysis channel there are three analysis regions: the semileptonic signal region, a control region designed to constrain the \ttbar background, and a control region designed to constrain the \wjets background. To ensure \merged and \resolved regions are orthogonal, an event recycling strategy is employed where only events failing the selection for all \merged regions are considered for selection in \resolved regions.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/4/mgd_res.png}
+    \caption{Schematic representation of the differing reconstruction technique between merged and resolved regions.}
+    \label{fig:mgd_res}
+\end{figure}
 
 \section{Merged Signal Region}
 Something here??
 \label{section:sr_merged}
 \subsection{Signal and Background Characterization}
-The first step towards defining signal region selection criteria was to characterize the signal and background events while searching for exploitable differences. Event characteristics explored include the relative positions of analysis objects, the transverse momenta of analysis objects, along with various jet substructure variables.
-
-Plots
+The first step towards defining signal region selection criteria was to characterize the signal and background events while searching for exploitable differences. Event characteristics explored include the relative positions of analysis objects, the transverse momenta and masses of analysis objects, along with various jet substructure variables. Figure ~ in \ref{chapter:appendix}
 
 \subsection{TAR Jet Lepton Disentanglement}
 Reconstructing the hadronically decaying W-boson as accurately as possible is key in this analysis. As a result, it was given special attention, especially in the more sensitive merged channel. In this channel, the W is reconstructed by a single $R=1.0$ TAR jet. Due to the boosted nature of the $s$-decay, however, the leptonically decaying W often lies very near to this jet. As a result the lepton often overlaps the TAR jet, which can lead to difficulty in jet reconstruction.
 
-In order to resolve this difficulty, modifications are made to the TAR jet building process to disentangle overlapping leptons. Input tracks and jets that are considered likely to be attributable to a final state lepton and not the hadronic W decay are removed. First, tracks associated with a baseline electron or muon are removed from the input track collection. Additionally, any \akt $R=0.2$ jet overlapping with a baseline electron (defined here as having $\Delta R(lep,jet) < 0.2$) is removed prior to reclustering into $R=1.0$ jets. $R=0.2$ jets overlapping muons are not removed, as muons do not leave a calorimeter signature and are therefore unlikely to generate a fake jet. This results in the following updated TAR jet building algorithm, where steps with a (*) are added to disentangle leptons:
+In order to resolve this difficulty, modifications are made to the TAR jet building process to disentangle overlapping leptons. Input tracks and jets that are considered likely to be attributable to a final state lepton and not the hadronic W decay are removed. First, tracks associated with a baseline electron or muon are removed from the input track collection. Additionally, any \akt $R=0.2$ jet overlapping with a baseline electron (defined here as having $\Delta R(lep,jet) < 0.2$) is removed prior to reclustering into $R=1.0$ jets. $R=0.2$ jets overlapping muons are not removed, as muons do not leave a calorimeter signature and are therefore unlikely to fake hadronic activity. This results in the following updated TAR jet building algorithm, where steps with a (*) are added to disentangle leptons:
 
 \begin{itemize}
   \item Tracks and calibrated \akt $R=0.2$ jets are chosen as input to the algorithm.
@@ -43,15 +48,15 @@ In order to resolve this difficulty, modifications are made to the TAR jet build
 
 In order to study the potential benefit of lepton-disentanglement, near-identical ntuples of signal MC samples were produced with one implementing disentanglement and the other not.
 The mass of the reconstructed jets in the two samples were then compared in a region where an electron overlaps the $R=1.0$ TAR Jet $(\Delta R(e, $R=1.0$ TAR) < 1)$, to determine how well the $W$ boson mass is reconstructed in this case.
-Figure \ref{fig:TARdisentaglementplots} demonstrates the improvement in mass resolution achieved by disentangling leptons from TAR jets. A clearly improved resolution in the TAR jet mass peak around the $W$ mass is visible for the disentangled jets. This significantly improves sensitivity in the merged electron signal region.
+Figure \ref{fig:TARdisentaglementplots} demonstrates the improvement in mass resolution achieved by disentangling leptons from TAR jets. A clearly enhanced resolution in the TAR jet mass peak around the $W$ mass is visible for the disentangled jets. This significantly improves sensitivity in the merged electron signal region.
 
 \begin{figure}[!h]
 \centering
-   \includegraphics[width = 0.49\textwidth]{figures/4/TAR/monoSww_semilep_zp500_dm200_dh310.png}
-   \includegraphics[width = 0.49\textwidth]{figures/4/TAR/monoSww_semilep_zp1000_dm200_dh310.png}
+   \includegraphics[width = 0.49\textwidth]{Figures/4/TAR/monoSww_semilep_zp500_dm200_dh310.png}
+   \includegraphics[width = 0.49\textwidth]{Figures/4/TAR/monoSww_semilep_zp1000_dm200_dh310.png}
 
-   \includegraphics[width = 0.49\textwidth]{figures/4/TAR/monoSww_semilep_zp1700_dm200_dh260.png}
-   \includegraphics[width = 0.49\textwidth]{figures/4/TAR/monoSww_semilep_zp2100_dm200_dh210.png}
+   \includegraphics[width = 0.49\textwidth]{Figures/4/TAR/monoSww_semilep_zp1700_dm200_dh260.png}
+   \includegraphics[width = 0.49\textwidth]{Figures/4/TAR/monoSww_semilep_zp2100_dm200_dh210.png}
 
    \caption{Normalized $R=1.0$ TAR jet mass distributions with and without lepton disentanglement applied for several representative signal points}
    \label{fig:TARdisentaglementplots}
@@ -65,8 +70,8 @@ Figure \ref{fig:R04_TAR_plots} shows a comparison of the TAR jet mass distributi
 
 \begin{figure}[htpb]
   \centering
-     \includegraphics[width = 0.49\textwidth]{figures/4/TAR/04_monoSww_semilep_zp500_dm200_dh310.png}
-     \includegraphics[width = 0.49\textwidth]{figures/4/TAR/04_monoSww_semilep_zp1700_dm200_dh160.png}
+     \includegraphics[width = 0.49\textwidth]{Figures/4/TAR/04_monoSww_semilep_zp500_dm200_dh310.png}
+     \includegraphics[width = 0.49\textwidth]{Figures/4/TAR/04_monoSww_semilep_zp1700_dm200_dh160.png}
 
      \caption{TAR jet mass distributions for two representative signal points compared with constituent \akt $R=0.4$ vs. \akt $R=0.2$ jets. Left: sample signal point at $(\ms, m_{Z^\prime})=(310, 500)~\GeV$. Right: sample signal point at $(\ms, m_{Z^\prime})=(160, 1700)~\GeV$}
      \label{fig:R04_TAR_plots}
@@ -144,11 +149,43 @@ The maximum mean expected significance across the four selected signal points wa
   \label{tab:mergedselection_reopt}
 \end{table}
 
-In order to validate the choice of selection criteria ``N-1" plots were produced which show the distribution of a variable with all but the cut on that variable applied. The expected asimov significance of placing a cut at each bin edge is then also calculated. These plots were produced using the W+Jets and Z+Jets samples produced in Sherpa 2.2.10 and are shown in Figure. They therefore demonstrates whether cuts are still placed at optimal or near-optimal locations using the final samples.
+In order to validate the choice of selection criteria ``N-1" plots were produced which show the distribution of a variable with all but the cut on that variable applied. The expected asimov significance of placing a cut at each bin edge is then also calculated. These plots were produced using the W+Jets and Z+Jets samples produced in Sherpa 2.2.10 and are shown in Figure ~. They therefore demonstrates whether cuts are still placed at optimal or near-optimal locations using the final samples.
 
 The plots validate the choice of cut placements, which are still at or near maximal significance.
 
-\section{Other Regions}
+\begin{figure}[htbp]
+  \centering
+
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/N1m/mT_lep_met.pdf}
+     \caption{\mtlepmet}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/N1m/MetTST_Significance.pdf}
+     \caption{\metsig}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/N1m/dR_lep_TARJets10.pdf}
+     \caption{\drTARl}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/N1m/TARJets10_TAR_D20.pdf}
+     \caption{\DtwoTAR}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/N1m/TARJets10_mTAR0.pdf}
+     \caption{\mTAR}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/N1m/TARJets10_mTAR02.pdf}
+     \caption{\mTAR}
+     \end{subfigure}
+
+     \caption{N-1 plots in the \merged signal region.}
+     \label{fig:SRN1}
+  \end{figure}
+
+\section{Resolved Signal Region}
 Due to the highly boosted nature of most signal events, the hadronic W-decay products are most often able to be resconstructed as a TAR jet. As a result, the \resolved signal region is considerably less sensitive than the \merged signal region, but does provide an important enhancement especially at low $s$ mass where the least boost is experienced. The \resolved signal region selection criteria are listed in Table ~.
 
 \section{\ttbar Control Regions}
@@ -160,12 +197,142 @@ To ameliorate this, the b-jet requirement was further pushed to 2 or more b-jets
 
 \begin{figure}[htbp]
     \centering
-       \includegraphics[width = 0.80\textwidth]{figures/4/ttbarCR/ttbar_metsig_placement.png}
+       \includegraphics[width = 0.80\textwidth]{Figures/4/ttbarCR/ttbar_metsig_placement.png}
        \caption{\ttbar yield in the \merged \ttbar control region for various \met significance cut placements}
        \label{fig:ttbar_metsig_placement}
 \end{figure}
 
 Table ~ summarizes the differences in selection criteria between the \merged and \resolved signal and \ttbar control regions.
 
+Figures ~ and ~ show comparisons of the distributions of MC and ATLAS data in the \ttbar control regions. These demonstrate a slight over-prediction of yield from MC in the \merged region, which will be used to constrain the \ttbar background in the signal region. The difference between data and MC distributions does not show a strong correlation with any of the analysis variables.
+
+\begin{figure}[htbp]
+  \centering
+
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_ttbar/mT_lep_met.pdf}
+     \caption{\mtlepmet}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_ttbar/TARJets10_mTAR0.pdf}
+     \caption{\mTAR}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_ttbar/MetTST_Significance.pdf}
+     \caption{\metsig}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_ttbar/dR_lep_TARJets10.pdf}
+     \caption{\drTARl}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_ttbar/TARJets10_TAR_D20.pdf}
+     \caption{\DtwoTAR}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_ttbar/MetTST_met.pdf}
+     \caption{\met}
+     \end{subfigure}
+
+     \caption{Data-MC Comparisons in the \merged \ttbar control region}
+     \label{fig:Data_MC_CRbV_merged}
+  \end{figure}
+
+\begin{figure}[htbp]
+  \centering
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_ttbar/mT_lep_met.pdf}
+     \caption{\mtlepmet}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_ttbar/WCand_m.pdf}
+     \caption{\Wcandm}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_ttbar/MetTST_Significance.pdf}
+     \caption{\metsig}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_ttbar/dRWl.pdf}
+     \caption{\drWl}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_ttbar/WCand_pt.pdf}
+     \caption{\Wcandpt}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_ttbar/MetTST_met.pdf}
+     \caption{\met}
+     \end{subfigure}
+
+\caption{Data-MC Comparisons in the \resolved \ttbar control region}
+\label{fig:Data_MC_CRbV_resolved}
+\end{figure}
+
+
 \section{\wjets Control Region}
 An additional pair of control regions are defined in order to constrain the dominant \wjets background in the signa regions. These regions are defined by reversing the \drTARl and \drWl cuts in the \merged and \resolved signal regions. This reverses the position of the neutrino and charged lepton in the $W$ decay without substantially altering the remaining kinematics of the event that allow the hadronic activity to fake a second $W$. In the \merged \wjets control region the \metsig cut is reduced to \metsig > 12 in order to improve statistical power.
+
+Table ~ summarizes the differences in selection criteria between the \merged and \resolved signal and \wjets control regions.
+
+\begin{figure}[htbp]
+  \centering
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_WJets/mT_lep_met.pdf}
+    \caption{\mtlepmet}
+     \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_WJets/TARJets10_mTAR0.pdf}
+     \caption{\mTAR}
+     \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_WJets/MetTST_Significance.pdf}
+     \caption{\metsig}
+     \end{subfigure}
+    \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_WJets/dR_lep_TARJets10.pdf}
+     \caption{\drTARl}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_WJets/TARJets10_TAR_D20.pdf}
+     \caption{\DtwoTAR}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Merged_WJets/MetTST_met.pdf}
+     \caption{\met}
+     \end{subfigure}
+
+     \caption{Data-MC comparisons in the \merged \wjets control region}
+     \label{fig:Data_MC_CRdR_merged}
+  \end{figure}
+
+\begin{figure}[htbp]
+  \centering
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_WJets/mT_lep_met.pdf}
+     \caption{\mtlepmet}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_WJets/WCand_m.pdf}
+     \caption{\Wcandm}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_WJets/MetTST_Significance.pdf}
+     \caption{\metsig}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_WJets/dRWl.pdf}
+     \caption{\drWl}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_WJets/WCand_pt.pdf}
+     \caption{\Wcandpt}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/4/datamc/CR1L_Resolved_WJets/MetTST_met.pdf}
+     \caption{\met}
+     \end{subfigure}
+
+     \caption{Data-MC comparisons in the \resolved \wjets control region}
+     \label{fig:Data_MC_CRdR_resolved}
+  \end{figure}
