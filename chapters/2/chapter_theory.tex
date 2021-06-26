@@ -38,7 +38,7 @@ The elementary particles of the Standard Model are shown in Figure \ref{fig:stan
 \end{figure}
 
 \subsection{Weak Interactions}
-The weak force \cite{pdg_rev,glashow,goldstone_weinberg_salam,weinberg}, in contrast to the electromagnetic force, is mediated by the exchange of massive vector bosons $W^+$, $W^-$, and $Z$. Owing to the charge of the W bosons, and the fact in contrast to the electromagnetic force neutral fermions also interact via the weak force, there are many more possible fundamental interactions. Figure \ref{fig:EWVertices} shows the vertices corresponding three such interactions: fermions interacting with the $Z$ boson in a similar vertex to that of Figure \ref{fig:QEDvertex} shown in (a), a charged lepton and neutrino interacting with a $W$ boson shown in (b), and a quark-antiquark pair interacting with a $W$ boson shown in (c).
+The weak force \cite{pdg_rev,glashow,goldstone_weinberg_salam,weinberg}, in contrast to the electromagnetic force, is mediated by the exchange of massive vector bosons $W^+$, $W^-$, and $Z$. Owing to the charge of the $W$ bosons, and to the weak interactions of the neutral fermions in addition to those of charged fermions, there are many more possible fundamental interactions. Figure \ref{fig:EWVertices} shows the vertices corresponding to three such interactions: (a) fermions interacting with the $Z$ boson via a similar vertex to that of Figure \ref{fig:QEDvertex}, (b) a charged lepton and neutrino interacting with a $W$ boson, and (c) a quark-antiquark pair interacting with a $W$ boson.
 
 \begin{figure}[h!]
     \begin{subfigure}{.5\textwidth}
@@ -47,7 +47,7 @@ The weak force \cite{pdg_rev,glashow,goldstone_weinberg_salam,weinberg}, in cont
         a[particle=\(Z\)] -- [photon] b,
         f1[particle=\(\bar{f}\)] -- [fermion] b -- [fermion] f2[particle=\(f\)],
         };
-        \caption{Z interaction.}
+        \caption{$Z$ interaction.}
         \label{fig:EWvertexa}
     \end{subfigure}
     \begin{subfigure}{.5\textwidth}
@@ -56,7 +56,7 @@ The weak force \cite{pdg_rev,glashow,goldstone_weinberg_salam,weinberg}, in cont
         a[particle=\(W^{\pm}\)] -- [photon] b,
         f1[particle=\(\nu\)] -- [fermion] b -- [fermion] f2[particle=\(l\)],
         };
-        \caption{W interaction with leptons.}
+        \caption{$W$ interaction with leptons.}
         \label{fig:EWVertexb}
     \end{subfigure}
     \newline
@@ -67,7 +67,7 @@ The weak force \cite{pdg_rev,glashow,goldstone_weinberg_salam,weinberg}, in cont
         a[particle=\(W^{\pm}\)] -- [photon] b,
         f1[particle=\(\bar{q}\)] -- [fermion] b -- [fermion] f2[particle=\(q\)],
         };
-        \caption{W interaction with quarks.}
+        \caption{$W$ interaction with quarks.}
         \label{fig:EWVertexc}
     \end{subfigure}
     \caption{Some fundamental weak interaction vertices.}
@@ -77,7 +77,7 @@ The weak force \cite{pdg_rev,glashow,goldstone_weinberg_salam,weinberg}, in cont
 At high energy scales, the aforementioned electromagnetic force and the weak force unify to become the electroweak interaction. Glashow, Salam, and Weinberg's Electroweak theory unites the two forces into a single $U(1) \otimes SU(2)$ gauge theory.
 
 \subsection{Quantum Chromodynamics (QCD)}
-\textit{Quantum Chromodynamics} (QCD) \cite{pdg_rev,black_book} is the theory describing the strong interaction between gluons and quarks. It is again a gauge theory, this time with the SU(3) symmetry group. There are three colour charges associated with this group, which are carried by both quarks and gluons. Each of the 8 gluons carries a unique colour charge and anti colour charge pair, while quarks carry a single colour charge. Because they carry colour charge, gluons are able to both interact with quarks and self-interact. This gives rise to several possible interaction vertices in the theory, some of which are shown in Figure \ref{fig:QCDVertices}.
+\textit{Quantum Chromodynamics} (QCD) \cite{pdg_rev,black_book} is the theory describing the strong interaction between gluons and quarks. It is again a gauge theory, this time with the SU(3) symmetry group. There are three colour charges associated with this group, each one of which can be carried by both quarks and gluons. Each of the 8 gluons carries a unique colour charge and anti colour charge pair, while quarks carry a single colour charge. Because they carry colour charge, gluons are able to both interact with quarks and self-interact. This gives rise to several possible interaction vertices in the theory, some of which are shown in Figure \ref{fig:QCDVertices}.
 
 \begin{figure}[H]
     \begin{subfigure}{.5\textwidth}
@@ -103,47 +103,43 @@ At high energy scales, the aforementioned electromagnetic force and the weak for
 \end{figure}
 
 \subsection{The Higgs Boson}
-Electroweak theory alone does not contain a mechanism to provide particles with mass. This contrasts with the observed reality that all fermions as well as $W$ and $Z$ bosons are in fact massive. If the lagrangian of these theories were to contain mass terms, they would lose their gauge invariance and the standard model would not be renormalizable. Instead, these particles acquire their mass through the \textit{Higgs Mechanism} \cite{Englert, Higgs1, Higgs2}.
+Electroweak theory alone does not contain a mechanism to provide particles with mass. This contrasts with the observed reality that all fermions as well as $W$ and $Z$ bosons are in fact massive. If the Lagrangian of these theories were to contain mass terms, the theories would lose their gauge invariance and the SM would not be renormalizable. Instead, these particles acquire their mass through the \textit{Higgs Mechanism} \cite{Englert, Higgs1, Higgs2}.
 
-THIS PLOT BELOW IS FOR THE U(1) HIGGS - SIMPLIFICATION
-
-A new Higgs Field $\Phi$ is introduced, with a Lagrangian which can be written as:
+A new Higgs field $\Phi$ is introduced, with a Lagrangian which can be written as:
 \begin{equation}
 \mathcal{L}_{Higgs} = (D_{\mu}\Phi)^{\dagger}D^{\mu}\Phi + V(\Phi)
 \end{equation}
-Where $D_{\mu}$ is the gauge covariant derivative of the electroweak theory. In order for the Lagrangian to remain gauge invariant the Higgs potential $V(\Phi)$ must take the form:
-
+where $D_{\mu}$ is the gauge covariant derivative of the electroweak theory. In order for the Lagrangian to remain gauge invariant, the Higgs potential $V(\Phi)$ must take the form:
 \begin{equation}
     V(\Phi) = {\mu}^2{\Phi} + {\lambda}{\Phi}^4
 \end{equation}
-
-where $\lambda$ and $\Phi$ are free parameters. $\lambda$ is forced to be greater than 0 by requiring that the potential have a stable minimum. This leads the potential to have two different possible shapes, shown in Figure \ref{fig:higgspot}, given the sign of $\mu^2$:
+where $\lambda$ and $\Phi$ are free parameters. The value of the parameter $\lambda$ is forced to be greater than 0 by requiring that the potential have a stable minimum. This leads the potential to have two different possible shapes, shown in Figure \ref{fig:higgspot}, given the sign of $\mu^2$:
 
 \begin{enumerate}
     \item ${\mu^2 > 0}$: The trivial case of a parabolic potential with a minimum at $\Phi = 0$ arises.
-    \item ${\mu^2 > 0}$: A potential with a minimum at:
+    \item ${\mu^2 > 0}$: A potential with minima at:
     \begin{equation}
      |\Phi| = v = \sqrt{\frac{\mu^2}{\lambda}}
     \end{equation}
-     arises, where $v$ is known as the vacuum expectation value. This minimum is occupied by infinitely degenerate states. This is the case that gives rise to the Higgs mechanism.
+     arises, where $v$ is known as the vacuum expectation value. The minima are is occupied by infinitely degenerate states. This is the case that gives rise to the Higgs mechanism.
 \end{enumerate}
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=0.8\textwidth]{Figures/1/HiggsPotential.png}
-    \caption{Shapes of the Higgs Potential for different cases of $\mu^2$.}
+    \caption{Shapes of the Higgs potential for different cases of $\mu^2$.}
     \label{fig:higgspot}
 \end{figure}
 
-In the second case, the ground states occupying the minimum are not equivalent under gauge transformation, which breaks the Electroweak gauge symmetry. The masses of particles are then determined by the strength of their coupling to the Higgs field.
+In the second case, the ground states occupying the minimum are not equivalent under gauge transformation, which breaks the electroweak gauge symmetry. The masses of particles are then determined by the strength of their coupling to the Higgs field.
 
 \section{Beyond the Standard Model}
-The Standard Model as described above has proven extremely robust through precise experimental testing. There are, however, many remaining questions in physics that cannot be answered within its confines. Some of those not further explored in this thesis include: whether or not there is a quantum theory of gravity that can tie it to the SM, the exact value of the neutrino masses and whether they are Majorana particles (their own antiparticles), and what the cause is of the matter-antimatter asymmetry in the universe. The fact that these questions are unanswered in the standard model tells us we must search deeper, and test beyond its limits.
+The Standard Model as described above has proven extremely robust through precise experimental testing. There are, however, many remaining questions in physics that cannot be answered within its confines. Some of those not further explored in this thesis include: whether or not there is a quantum theory of gravity that can tie it to the SM, the exact value of the neutrino masses and whether they are Majorana particles (their own antiparticles), and what the cause is of the matter-antimatter asymmetry in the universe. The fact that these questions are unanswered in the standard model tells us we must search deeper, and test beyond its present limits.
 
 \subsection{Dark Matter}
 Another currently open question is the nature of dark matter. Astrophysical observations including the dynamics of galaxy clusters \cite{Zwicky} and rotational curves of galaxies \cite{Rubin} are not explained under Einstein's theory of gravitation by visible matter alone. Several theories have arisen over time to explain this discrepancy, including that Einstein's theory is not correct at galactic scales, or that these galaxies contain ordinary matter that is somehow unobservable to us.
 
-Most evidence, however, points to the existence of a new type of matter that interacts gravitationally but not electromagnetically with ordinary matter. Perhaps the most clear evidence for this theory comes from observations of the bullet cluster \cite{Clowe}, a pair of colliding clusters of galaxies. In such a scenario, with some normal matter and some dark matter in each cluster, the matter would collide and interact, slowing it down, while the dark matter would pass through largely undisturbed. In the case of the bullet cluster, this separation is observed when comparing the distribution of mass in the galaxies measured by gravitational lensing and the distribution of normal matter in the form of galaxy plasma, measured as emitted x-ray radiation. Figure \ref{fig:bullet} shows the observed separation, with gravitational density in blue and x-ray density in pink.
+Most evidence, however, points to the existence of a new type of matter that interacts gravitationally but not electromagnetically with ordinary matter. Perhaps the most clear evidence for this theory comes from observations of the bullet cluster \cite{Clowe}, a pair of colliding clusters of galaxies. In such a scenario, with some normal matter and some dark matter in each cluster, the matter would collide and interact, slowing it down, while the dark matter would pass through largely undisturbed. In the case of the bullet cluster, this separation is observed when comparing the distribution of mass in the galaxies measured by gravitational lensing and the distribution of normal matter in the form of galaxy plasma, measured as emitted x-ray radiation. Figure \ref{fig:bullet} shows the observed separation, with gravitational density in blue and x-ray density shown in pink.
 
 \begin{figure}[H]
     \centering
@@ -154,35 +150,30 @@ Most evidence, however, points to the existence of a new type of matter that int
 
 \subsection{Dark Higgs Boson Model}
 \label{subsection:dh_model}
-This work involves a search for dark matter produced in association with a new hypothetical scalar ``dark Higgs" boson $s$\footnote{In this work, $s$ will refer  to the dark Higgs boson and not the strange quark, unless otherwise spefcified} \cite{Hunting}. In this model the dark matter particle $\chi$ is a majorana fermion, who's mass is generated by a Higgs mechanism in the dark sector. This also generates the new $s$ particle. If the mass of $s$ is less than that of $\chi$ then the relic density is set by the process $\chi\chi \rightarrow ss$, followed by the decay of $s$ to standard model partices. The addition of a further paricle, such as a massive $Z'$ boson allows this model to be probed at a collider.
+This work involves a search for dark matter produced in association with a new hypothetical scalar ``dark Higgs" boson $s$ \cite{Hunting}.\footnote{In this work, $s$ will refer  to the dark Higgs boson and not the strange quark, unless otherwise spefcified.} In this model the dark matter particle $\chi$ is a majorana fermion, with mass generated by a Higgs mechanism in the dark sector. This hypothesized dark sector Higgs mechanism also generates the new $s$ particle. If the mass of $s$ is less than that of $\chi$, then the relic density is set by the rate of the process $\chi\chi \rightarrow ss$, followed by the decay of $s$ to standard model partices. The addition of a further particle, such as a massive $Z'$ boson, allows this model to be probed at a collider.
 
 The model proposes that the dark matter particle $\chi$ obtains its mass from the vacuum expectation value (vev) $w$ of a new Higgs field $S$. A new $U(1)'$ gauge group is proposed, under which $S$ carries a charge $q_s$. As a result, the vev $w$ of $S$ breaks the gauge symmetry, and through this mechanism the mass of the corresponding $Z'$ boson is generated. Additionally, the dark matter particle $\chi$ couples to the $Z'$ boson, allowing all particles in the new dark sector to interact. This gives rise to the renormalizable interaction Lagrangian, which can be written in terms of four independent parameters $m_{\chi}$, $m_{Z'}$, $m_{s}$, and $g_{\chi}$:
-
 \begin{equation}
-\mathcal{L}_{\chi} = -\frac{1}{2}g_{\chi}Z'^{\mu}\bar{\chi}\gamma^5\gamma_{\mu}\chi - g_{\chi}\frac{m_{\chi}}{m_{Z'}}s\bar{\chi}\chi + 2g_{\chi}Z'^{\mu}Z'_{\mu}(g_{\chi}s^2 + m_{Z'}s)
+\mathcal{L}_{\chi} = -\frac{1}{2}g_{\chi}Z'^{\mu}\bar{\chi}\gamma^5\gamma_{\mu}\chi - g_{\chi}\frac{m_{\chi}}{m_{Z'}}s\bar{\chi}\chi + 2g_{\chi}Z'^{\mu}Z'_{\mu}(g_{\chi}s^2 + m_{Z'}s),
 \end{equation}
-
-where $m_{\chi}$ is the mass of the dark matter particles, $m_{Z'}$ is the mass of the $Z'$ boson, $m_{s}$ is the mass of the dark higgs, and $g_{\chi}$ is the dark matter coupling constant.
-
+where $m_{\chi}$ is the mass of the dark matter particle, $m_{Z'}$ is the mass of the $Z'$ boson, $m_{s}$ is the mass of the dark higgs, and $g_{\chi}$ is the dark matter coupling constant.
 Additionally, the coupling of the $Z'$ boson to standard model quarks is described by the Lagrangian:
-
 \begin{equation}
-\mathcal{L} = -g_qZ'^{\mu}\bar{q}\gamma_{\mu}q
+\mathcal{L} = -g_qZ'^{\mu}\bar{q}\gamma_{\mu}q,
 \end{equation}
-
 where $g_q$ is the coupling constant between $Z'$ and quarks.
 
-A final free parameter $\theta$ is the non-zero mixing angle between the SM Higgs boson and the dark Higgs boson. The dark Higgs obtains its couplings to standard model particles through this mixing, and therefore shares the same standard model decay branching fractions as the SM Higgs boson.
+A final free parameter, $\theta$, is the non-zero mixing angle between the SM Higgs boson and the dark Higgs boson. The dark Higgs obtains its couplings to standard model particles through this mixing, and therefore shares the same standard model decay branching fractions as the SM Higgs boson.
 
 For the analysis described in this work the free parameters are set as:
 
 \begin{itemize}
-    \item $g_{\chi} = 1$
-    \item $m_{\chi} = 200 GeV$
-    \item $m_{Z'}$ allowed to vary
-    \item $m_s$ allowed to vary
-    \item $g_q = 0.25$
-    \item $\theta = 0.01$
+    \item $g_{\chi} = 1$,
+    \item $m_{\chi} = 200$ GeV,
+    \item $m_{Z'}$ is allowed to vary,
+    \item $m_s$ is allowed to vary,
+    \item $g_q = 0.25$, and
+    \item $\theta = 0.01$.
 \end{itemize}
 
-The values of $g_{\chi}$ and $g_{q}$ were chosen to facilitate comparison with other LHC searches with similar models, which traditionally use the values selected. The value of $\theta$ was chosen to match that of \cite{Hunting}. Its precise value is not relevant to this search, but it is sufficiently large that the dark Higgs decays promptly to standard model states and does not create a displaced vertex. The varied values $m_s$ and $m_{Z'}$ form the parameter space covered by this search.
+The values of $g_{\chi}$ and $g_{q}$ were chosen to facilitate comparison with other LHC searches with similar models, which traditionally use the values selected. The value of $\theta$ was chosen to match that of \cite{Hunting}. Its precise value is not relevant to this search, but it is sufficiently large that the dark Higgs decays promptly to standard model states and does not create a displaced vertex. The varied values of $m_s$ and $m_{Z'}$ form the parameter space covered by this search.

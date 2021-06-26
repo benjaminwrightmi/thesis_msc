@@ -3,50 +3,50 @@ In order to provide a more comprehensive prediction of the sensitivity of the an
 
 \section{Statistical Framework}
 \label{section:stats}
-In each signal region we create a histogram of events consisting of several bins in a chosen variable. The expectation value for the number of events in a single bin is:
+In each signal region we create a histogram of events consisting of several bins in a chosen variable $x$. The expectation value for the number of events in a single bin is:
 \begin{equation}
-E[n_i] = \mu s_i(\boldsymbol{\theta}) + b_i(\boldsymbol{\theta})
+E[n_i] = \mu s_i(\boldsymbol{\theta}) + b_i(\boldsymbol{\theta}),
 \end{equation}
-where $\mu$ is the parameter of interest, the signal strength, which is 0 in the background-only case and 1 in the nominal signal model. $\boldsymbol{\theta}$ is the set of nuisance parameters, and $s_i$ and $b_i$ are the expected number of signal and background events in bin $i$:
+where $\mu$ is the parameter of interest, the signal strength, which is 0 in the background-only case and 1 in the nominal signal model. The variable $\boldsymbol{\theta}$ represents the set of nuisance parameters, and $s_i$ and $b_i$ are the expected number of signal and background events in bin $i$:
 \begin{equation}
-s_i = s_{tot} \int_{\text{bin i}} f_s(x;\boldsymbol{\theta}) dx
+\begin{gathered}
+s_i = s_{tot} \int_{\text{bin i}} f_s(x|\boldsymbol{\theta}) dx \\
+b_i = b_{tot} \int_{\text{bin i}} f_b(x|\boldsymbol{\theta}) dx.
+\end{gathered}
 \end{equation}
-\begin{equation}
-b_i = b_{tot} \int_{\text{bin i}} f_b(x;\boldsymbol{\theta}) dx
-\end{equation}
-Here $f_s(x|\boldsymbol{\theta})$ and $f_b(x|\boldsymbol{\theta})$ are the probability density functions of the variable x for signal and background events. $s_{tot}$ and $b_{tot}$ are the total mean number of signal and background events, where $b_{tot}$ is allowed to vary and $s_{tot}$ is fixed to the value predicted by the MC signal model.
+Here $f_s(x|\boldsymbol{\theta})$ and $f_b(x|\boldsymbol{\theta})$ are the probability density functions of the variable $x$ for signal and background events. The variables $s_{tot}$ and $b_{tot}$ are the total mean number of signal and background events, where $b_{tot}$ is allowed to vary and $s_{tot}$ is fixed to the value predicted by the MC signal samples.
 In each control region we build a similar histogram with a single bin with the expected value:
 \begin{equation}
-E[m_i] = b_i(\textbf{\theta})
+E[m_i] = b_i(\boldsymbol{\theta}).
 \end{equation}
 We can then construct a likelihood function from the product of Poisson probabilities for each bin:
 \begin{equation}
-L(\mu,\textbf{\theta}) = C_{sys}(\textbf{\theta}^0,\boldsymbol{\theta})\prod_{j=1}^{N} \frac{E[n_j]}{n_j!}e^{-E[n_j]} \prod_{k=1}^{N} \frac{E[m_k]}{m_k!}e^{-E[n_k]}
+L(\mu,\boldsymbol{\theta}) = C_{sys}(\boldsymbol{\theta}^0,\boldsymbol{\theta})\prod_{j=1}^{N} \frac{E[n_j]}{n_j!}e^{-E[n_j]} \prod_{k=1}^{M} \frac{E[m_k]}{m_k!}e^{-E[m_k]},
 \end{equation}
-where $C_{sys}(\textbf{\theta}^0,\textbf{\theta})$ is a product of probability distributions for the measurements describing each systematic uncertainty. These are taken to be gaussian distributed, giving:
+where $C_{sys}(\boldsymbol{\theta}^0,\boldsymbol{\theta})$ is a product of probability distributions for the measurements describing each systematic uncertainty. These are taken to be gaussian distributed, giving:
 \begin{equation}
-C_{sys}(\textbf{\theta}^0,\textbf{\theta}) = \prod_{\ell\in S} G(\theta^{0}_{m} - \theta_m, \sigma = 1)
+C_{sys}(\boldsymbol{\theta}^0,\boldsymbol{\theta}) = \prod_{m\in S} G(\boldsymbol{\theta}^{0}_{m} - \boldsymbol{\theta}_m, \sigma = 1).
 \end{equation}
-We then test a hypothesized value of the signal strength \mu using the profile log-likelihood ratio as the test statistic:
+We then test a hypothesized value of the signal strength \mu~using the profile log-likelihood ratio as the test statistic:
 \begin{equation}
 \label{eq:prof_likelihood_ratio}
-t_{\mu} = -2\log\Bigg( \frac{L(\mu_\text{sig}, \hat{\hat{\boldsymbol{\theta}}})}{L(\hat{\mu}_\text{sig}, \hat{\boldsymbol{\theta})}} \Bigg)
+t_{\mu} = -2\log\Bigg( \frac{L(\mu_\text{sig}, \hat{\hat{\boldsymbol{\theta}}})}{L(\hat{\mu}_\text{sig}, \hat{\boldsymbol{\theta})}} \Bigg),
 \end{equation}
-where $\hat{\hat{\boldsymbol{\theta}}}$ is the set of nuisance parameters which maximize the likelihood function for the chosen signal strength $\mu_sig$, and $\hat{\boldsymbol{\theta}}$ and $\hat{\mu_{\text{sig}}}$ are the unconditional maximum-likelihood estimators for $L$. From this we compute the p-value corresponding to a given signal strength $\mu_{\text{sig}}$ by integrating the probability distribution of $t_{\mu}$:
+where $\hat{\hat{\boldsymbol{\theta}}}$ is the set of nuisance parameters which maximize the likelihood function for the chosen signal strength $\mu_{\text{sig}}$, and $\hat{\boldsymbol{\theta}}$ and $\hat{\mu}_{\text{sig}}$ are the unconditional maximum-likelihood estimators for $L$. From this we compute the p-value corresponding to a given signal strength $\mu_{\text{sig}}$ by integrating the probability distribution of $t_{\mu}$:
 \begin{equation}
-p_{\mu} = \int_{t_{\mu_\text{obs}}}^\infty f(t_{\mu}|\mu_\text{sig}, \boldsymbol{\theta})dt_{\mu}
+p_{\mu} = \int_{t_{\mu_\text{obs}}}^\infty f(t_{\mu}|\mu_\text{sig}, \boldsymbol{\theta})dt_{\mu}.
 \end{equation}
-This probability distribution can be estimated by generating toy MC experiments, however in the ``asymptotic" regime with sufficiently high (usually at least $\mathcal{O}(5)$ actual expected signal events) statistics this distribution is known to follow a $\chi^2$ distribution according to Wilks theorem \cite{Wilks}.
+This probability distribution can be estimated by generating toy MC experiments, however in the ``asymptotic" regime with sufficiently high statistics (usually at least $\mathcal{O}(5)$ expected signal events) this distribution is known to follow a $\chi^2$ distribution according to Wilks theorem \cite{Wilks}.
 Using this p-value formula we follow the $\text{CL}_\text{s}$ technique to present results \cite{CLs}. We calculate $\text{CL}_\text{s+b}$ as the p-value for the existence of the signal model with some $\mu_{\text{sig}} > 0$ and $1 - \text{CL}_\text{b}$ as the p-value for the background-only case $\mu_{\text{sig}} = 0$:
 \begin{equation}
-\text{CL}_\text{s+b}(\mu_\text{sig}) = \int_{t_{\mu_\text{obs}}}^\infty f(t_{\mu}|\mu_\text{sig}, \boldsymbol{\theta})dt_{\mu}
-\end{equation}
-\begin{equation}
-1 - \text{CL}_\text{b} = \int_{t_{\mu_\text{obs}}}^\infty f(t_{\mu}|0, \boldsymbol{\theta})dt_{\mu}
+\begin{gathered}
+\text{CL}_\text{s+b}(\mu_\text{sig}) = \int_{t_{\mu_\text{obs}}}^\infty f(t_{\mu}|\mu_\text{sig}, \boldsymbol{\theta})dt_{\mu} \\
+1 - \text{CL}_\text{b} = \int_{t_{\mu_\text{obs}}}^\infty f(t_{\mu}|0, \boldsymbol{\theta})dt_{\mu}.
+\end{gathered}
 \end{equation}
 $\text{CL}_\text{s}$ is then given by the ratio of these two quantities:
 \begin{equation}
-\text{CL}_\text{s}(\mu_\text{sig}) = \frac{\text{CL}_\text{s+b}(\mu_\text{sig})}{1 - \text{CL}_\text{b}}
+\text{CL}_\text{s}(\mu_\text{sig}) = \frac{\text{CL}_\text{s+b}(\mu_\text{sig})}{1 - \text{CL}_\text{b}}.
 \end{equation}
 
 To perform an exclusion fit, we evaluate $\text{CL}_\text{s}$ for the nominal signal strength $\mu_{\text{sig}} = 1$, and exclude signal models with $\text{CL}_\text{s}(1) > 0.05$. We perform this statistical anlysis of the finalized analysis regions using the HistFitter software package \cite{HistFitter}.
@@ -59,27 +59,27 @@ To calculate \minms we begin by using the $W$ mass constraint on the charged lep
 	\begin{gathered}
     \label{eqn:Ev}
 		m_W^2 = (p_l + p_{\nu})^2 = 2p_lp_{\nu} = 2E_lE_{\nu}(1 - \cos\ \theta_{l\nu})\\
-		E_{\nu} = \frac{m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}
+		E_{\nu} = \frac{m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}.
 	\end{gathered}
 \end{equation}
-We then rotate the coordinate system to place the neutrino 3-momentum along the z-axis and the hadronic W ($W_H$) 3-momentum in the x-z plane. The neutrino 4-momentum is then:
+We then rotate the coordinate system to place the neutrino 3-momentum along the z-axis and the hadronic $W$ ($W_H$) 3-momentum in the x-z plane. The neutrino 4-momentum is then:
 \begin{equation}
-	p_{\nu} = \frac{m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}(\sin \theta_{l\nu}, \sin \theta_{l\nu}\sin \phi_{\nu}, \cos \theta_{l\nu}, 1)
+	p_{\nu} = \frac{m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}(\sin \theta_{l\nu}, \sin \theta_{l\nu}\sin \phi_{\nu}, \cos \theta_{l\nu}, 1).
 \end{equation}
 We can then write the $s$ mass as:
 \begin{multline}
 \label{eqn:m_s}
 	\begin{gathered}
 		m_s^2 = (p_{W_H} + p_l + p_{\nu})^2\\
-		m_s^2 = (E_{W_H} + E_l + E_{\nu})^2 - (p_{W_{Hx}} + E_{\nu}\sin \theta_{l\nu}\cos \phi_{\nu})^2 - (E_{\nu}\sin \theta_{l\nu}\sin \phi_{\nu})^2 \\- (E_l + p_{W_{Hz}} + E_{\nu}\cos \theta_{l\nu})^2
+		m_s^2 = (E_{W_H} + E_l + E_{\nu})^2 - (p_{W_{Hx}} + E_{\nu}\sin \theta_{l\nu}\cos \phi_{\nu})^2 - (E_{\nu}\sin \theta_{l\nu}\sin \phi_{\nu})^2 \\- (E_l + p_{W_{Hz}} + E_{\nu}\cos \theta_{l\nu})^2.
 	\end{gathered}
 \end{multline}
-It is clear from this equation that $m_s$ is minimized with $\phi_nu = 0$, and substituting this and equation \ref{eqn:Ev} for $E_v$ we are left with an expression for $m_s$ with $\theta_{l\nu}$ as the only remaining unknown variable:
+It is clear from this equation that $m_s$ is minimized with $\phi_{\nu} = 0$, and substituting this and Equation \ref{eqn:Ev} for $E_v$ we are left with an expression for $m_s$ with $\theta_{l\nu}$ as the only remaining unknown variable:
 \begin{multline}
-m_s^2 = \left(E_l + \frac{m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})} + E_{W_H}\right)^2 - \left(|\vec{p_{W_H}}|\sin \theta_{W_l} + \frac{\sqrt{1 - \cos^2 \theta_{l\nu}}m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}\right)^2 \\- \left(E_l + |\vec{p_{W_H}}|cos \theta_{W_l} + \frac{\cos \theta_{l\nu}m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}\right)^2
+m_s^2 = \left(E_l + \frac{m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})} + E_{W_H}\right)^2 - \left(|\vec{p_{W_H}}|\sin \theta_{W_l} + \frac{\sqrt{1 - \cos^2 \theta_{l\nu}}m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}\right)^2 \\- \left(E_l + |\vec{p_{W_H}}|cos \theta_{W_l} + \frac{\cos \theta_{l\nu}m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}\right)^2.
 \end{multline}
-We then vary $\theta_{l\nu}$ on the interval $[0,\pi]$ to minimize $m_s$.
-Figure ~ shows the signal and background distributions of \minms in both signal regions, demonstrating the strong discrimination potential and large variance between signal samples that make it an ideal model fitting variable. During model fitting we place events in 5 equal width bins in the range $125 \leq \ms \geq 375$
+We then vary $\theta_{l\nu}$ on the interval $[0,\pi]$ to search for the minimum $m_s$.
+Figure \ref{fig:ms} shows the signal and background distributions of \minms in both signal regions, demonstrating the strong discrimination potential and large variance between signal samples that make it an ideal model fitting variable. During model fitting we place events in 5 equal width bins in the range $125 \leq \ms \leq 375$
 
 \begin{figure}[htbp]
   \centering
@@ -98,7 +98,7 @@ Figure ~ shows the signal and background distributions of \minms in both signal 
   \end{figure}
 
 \section{Systematic Uncertainties}
-While statistical fluctuations are uncorrelated between measurements and arise from a measurement consisting of a limited number of observations, systematic uncertainties are often correlated across repeated measurements, generally do not scale with the sample size, and may derive from the nature of the experiment or uncertainty in the model used to make conclusions about the data.  For this analysis we further categorize systematic uncertainties into theory uncertainties on the modelling and experimental uncertainties. The evaluation of theory uncertainties on is not within the scope of this thesis, and they are given a flat value of 20\% of the yield on each background category. A short description of the various types of experimental systematic uncertainties considered follows.
+While statistical fluctuations are uncorrelated between measurements and arise from a measurement consisting of a limited number of observations, systematic uncertainties are often correlated across repeated measurements, generally do not scale with the sample size, and may derive from the nature of the experiment or uncertainty in the model used to make conclusions about the data.  For this analysis we further categorize systematic uncertainties into theory uncertainties on the modelling and experimental uncertainties. The evaluation of theory uncertainties on is not within the scope of this thesis, and I assign them a flat value of 20\% of the yield on each background category. A short description of the various types of experimental systematic uncertainties considered follows.
 
 \subsection{$R=0.4$ Jets}
 Uncertainties on $R=0.4$ jets are divided into jet energy scale (JES) and jet energy resolution (JER) uncertainties. These include, but are not limited to, uncertainties on pileup, flavour composition, and punch-through of jets. We evaluate them using tools provided by the ATLAS Jet/\met group.
@@ -113,9 +113,318 @@ For muons and electrons we consider uncertainties on the reconstruction efficien
 We propagate uncertainties on the afformentioned objects into the \met calculation, however we consider separate \met systematics which affect the reconstruction of the \met soft term. We evaluate these using the METSystematicsTool.
 
 \subsection{Luminosity}
-The integrated luminosity measured across the data-taking periods considered is known to a precision of 1.7\%. This is therefore applied as a an overall systematic across the normalization of all MC events.
+The integrated luminosity measured across the run-2 data taking period is known to a precision of 1.7\%. This is therefore applied as an overall systematic across the normalization of all MC events.
 
 \section{Fit Results}
-\subsection{Background only fit}
-I first perform a background-only fit to examine the effects of systematic uncertainties and control region normalization on background yield predictions in the signal regions.
-\subsection{Exclusion contours}
+\subsection{Background Only Fit}
+I first perform a background-only fit to examine the effects of systematic uncertainties and control region normalization on background predictions in the signal regions. The signal regions for this analysis remain blinded; therefore ATLAS data in the signal regions is mimicked by Asimov data with a yield equal to the nearest integer value to the pre-fit total background yield in each bin.
+
+Figures \ref{fig:bkg_only_mgd} and \ref{fig:bkg_only_res} show comparisons of the pre-fit and post-fit yields in each region for the background only fit, while Tables \ref{tab:yields_mgd} and \ref{tab:yields_res} give a more detailed numerical breakdown. In the \merged signal region, the fit increases the expected number of SM events primarily due to an increase in expected \wjets events from the normalization derived in the \merged \wjets control region. In the \resolved signal region, the fit decreases the expected background yield, again primarily due to normalization this time from the \resolved \wjets control region. In both cases the uncertainty on the predicted \wjets yield is reduced. In both the \merged and \resolved categories the \ttbar control regions slightly reduce the predicted \ttbar yield and substantially reduce the uncertainty on those predictions.
+
+Tables \ref{tab:systs_mgd} and \ref{tab:systs_res} summarize the uncertainty on the total yield in each analysis region from statistical and systematic sources. Uncertainties preceded by ``\mu", ``\alpha", and ``\gamma" represent normalization, systematic, and statistical uncertainties respectively. The leading sources of uncertainty in both signal regions are normalization factors and theory uncertainties on the \wjets background, followed by a mix of JER experimental systematics and bin-by-bin statistical uncertainties.
+
+\begin{table}[h]
+\centering
+\small
+%%
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr}
+\toprule
+\textbf{Category}           & SR\_Merged            & CRW\_Merged            & CRTT\_Merged              \\
+\midrule
+%%
+Observed events          & $59$              & $314$              & $68$                    \\
+\midrule
+%%
+Fitted SM events         & $63.36 \pm 11.40$          & $313.99 \pm 17.67$          & $67.99 \pm 8.23$              \\
+\midrule
+%%
+        Fitted Diboson events         & $7.65 \pm 1.77$          & $40.65 \pm 9.11$          & $0.16 \pm 0.04$              \\
+%%
+        Fitted WJets events         & $48.69 \pm 10.73$          & $242.14 \pm 21.10$          & $0.26 \pm 0.16$              \\
+%%
+        Fitted ttbar events         & $3.37 \pm 0.64$          & $12.93 \pm 2.32$          & $61.47 \pm 8.35$              \\
+%%
+        Fitted ZJets events         & $1.16 \pm 0.27$          & $12.06 \pm 3.22$          & $0.00 \pm 0.00$              \\
+%%
+        Fitted stop events         & $1.30 \pm 0.49$          & $3.30 \pm 0.81$          & $6.08 \pm 1.35$              \\
+%%
+ \midrule
+%%
+MC exp. SM events              & $59.91 \pm 13.16$          & $295.80 \pm 58.00$          & $84.89 \pm 16.12$              \\
+\midrule
+%%
+        MC exp. Diboson events         & $7.65 \pm 1.78$          & $40.65 \pm 9.16$          & $0.16 \pm 0.04$              \\
+%%
+        MC exp. WJets events         & $44.31 \pm 12.16$          & $220.38 \pm 53.40$          & $0.24 \pm 0.15$              \\
+%%
+        MC exp. ttbar events         & $4.30 \pm 1.02$          & $16.49 \pm 3.81$          & $78.40 \pm 16.02$              \\
+%%
+        MC exp. ZJets events         & $1.16 \pm 0.27$          & $12.06 \pm 3.24$          & $0.00 \pm 0.00$              \\
+%%
+        MC exp. stop events         & $1.30 \pm 0.49$          & $3.30 \pm 0.82$          & $6.08 \pm 1.36$              \\
+%%     \\
+\bottomrule
+\end{tabular*}
+\caption{Pre and post-fit yields for each background category in the merged signal and control regions for a background-only fit.}
+\label{tab:yields_mgd}
+\end{table}
+
+\begin{table}
+\centering
+\small
+%%
+\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrr}
+\toprule
+\textbf{Category}           & SR\_Resolved            & CRW\_Resolved            & CRTT\_Resolved              \\
+\midrule
+%%
+Observed events          & $1655$              & $1750$              & $499$                    \\
+\midrule
+%%
+Fitted SM events         & $1460.37 \pm 112.58$          & $1749.98 \pm 41.87$          & $498.88 \pm 22.31$              \\
+\midrule
+%%
+        Fitted Diboson events         & $204.53 \pm 42.06$          & $240.35 \pm 49.79$          & $2.88 \pm 0.61$              \\
+%%
+        Fitted WJets events         & $1043.56 \pm 109.95$          & $1309.19 \pm 69.50$          & $3.80_{-3.80}^{+5.62}$              \\
+%%
+        Fitted ttbar events         & $131.89 \pm 10.37$          & $82.38 \pm 6.58$          & $449.84 \pm 24.75$              \\
+%%
+        Fitted ZJets events         & $52.83 \pm 11.17$          & $89.82 \pm 18.33$          & $2.30 \pm 0.47$              \\
+%%
+        Fitted stop events         & $17.92 \pm 4.30$          & $17.50 \pm 3.68$          & $39.99 \pm 8.22$              \\
+%%
+%%
+ \midrule
+%%
+MC exp. SM events              & $1655.04 \pm 299.65$          & $1993.57 \pm 335.94$          & $503.10 \pm 95.22$              \\
+\midrule
+%%
+        MC exp. Diboson events         & $204.52 \pm 42.33$          & $240.35 \pm 50.12$          & $2.88 \pm 0.61$              \\
+%%
+        MC exp. WJets events         & $1237.19 \pm 286.11$          & $1552.13 \pm 325.02$          & $4.50_{-4.50}^{+6.90}$              \\
+%%
+        MC exp. ttbar events         & $132.92 \pm 27.85$          & $83.02 \pm 17.13$          & $453.35 \pm 93.13$              \\
+%%
+        MC exp. ZJets events         & $52.83 \pm 11.24$          & $89.82 \pm 18.45$          & $2.30 \pm 0.48$              \\
+%%
+        MC exp. stop events         & $17.92 \pm 4.33$          & $17.50 \pm 3.71$          & $39.99 \pm 8.27$              \\
+%%
+%%     \\
+\bottomrule
+\end{tabular*}
+\caption{Pre and post-fit yields for each background category in the resolved signal and control regions for a background-only fit.}
+\label{tab:yields_res}
+\end{table}
+
+\begin{figure}[h]
+  \centering
+
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/SR_Merged_mS_bin_beforeFit.pdf}
+     \caption{Merged SR pre-fit}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/SR_Merged_mS_bin_afterFit.pdf}
+     \caption{Merged SR post-fit}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/CRTT_Merged_cuts_beforeFit.pdf}
+     \caption{Merged CR \ttbar pre-fit}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/CRTT_Merged_cuts_afterFit.pdf}
+     \caption{Merged CR \ttbar post-fit}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/CRW_Merged_cuts_beforeFit.pdf}
+     \caption{Merged CR \wjets pre-fit}
+     \end{subfigure}
+     \begin{subfigure}{0.49\textwidth}
+     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/CRW_Merged_cuts_afterFit.pdf}
+     \caption{Merged CR \wjets post-fit}
+     \end{subfigure}
+
+     \caption{Pre and post-fit yields in the merged signal and control regions for a background-only fit.}
+     \label{fig:bkg_only_mgd}
+  \end{figure}
+
+	\begin{figure}[htbp]
+	  \centering
+
+	     \begin{subfigure}{0.49\textwidth}
+	     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/SR_Resolved_mS_bin_beforeFit.pdf}
+	     \caption{Resolved SR pre-fit}
+	     \end{subfigure}
+	     \begin{subfigure}{0.49\textwidth}
+	     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/SR_Resolved_mS_bin_afterFit.pdf}
+	     \caption{Resolved SR post-fit}
+	     \end{subfigure}
+	     \begin{subfigure}{0.49\textwidth}
+	     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/CRTT_Resolved_cuts_beforeFit.pdf}
+	     \caption{Resolved CR \ttbar pre-fit}
+	     \end{subfigure}
+	     \begin{subfigure}{0.49\textwidth}
+	     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/CRTT_Resolved_cuts_afterFit.pdf}
+	     \caption{Resolved CR \ttbar post-fit}
+	     \end{subfigure}
+	     \begin{subfigure}{0.49\textwidth}
+	     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/CRW_Resolved_cuts_beforeFit.pdf}
+	     \caption{Resolved CR \wjets pre-fit}
+	     \end{subfigure}
+	     \begin{subfigure}{0.49\textwidth}
+	     \includegraphics[width = 0.98\textwidth]{Figures/5/bkg_only/CRW_Resolved_cuts_afterFit.pdf}
+	     \caption{Resolved CR \wjets post-fit}
+	     \end{subfigure}
+
+	     \caption{Pre and post-fit yields in the resolved signal and control regions for a background-only fit.}
+	     \label{fig:bkg_only_res}
+	  \end{figure}
+
+		\begin{table}[h]
+		\centering
+		\small
+		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccc}
+		\toprule
+		\textbf{Uncertainty}                                    & SR\_Merged            & CRW\_Merged            & CRTT\_Merged            \\
+		\midrule
+		%%
+		Total background expectation             &  $63.36$        &  $313.99$        &  $67.99$       \\
+		%% \\
+		\midrule
+		%%
+		Total statistical $(\sqrt{N_{\mathrm{exp}}})$              & $\pm 7.96$        & $\pm 17.72$        & $\pm 8.25$       \\
+		%%
+		Total background systematic               & $\pm 11.40\ [18.00\%] $        & $\pm 17.67\ [5.63\%] $        & $\pm 8.23\ [12.11\%] $             \\
+		\midrule
+		%%
+		\mu\_Wjets\_mgd         & $\pm 13.15$          & $\pm 65.39$          & $\pm 0.07$       \\
+		%%
+		\alpha\_WJetsTheorySys         & $\pm 9.69$          & $\pm 48.18$          & $\pm 0.05$       \\
+		%%
+		\gamma\_stat\_SR\_Merged\_mS\_Bin0         & $\pm 5.22$          & $\pm 0.00$          & $\pm 0.00$       \\
+		%%
+		\alpha\_JET\_Flavor\_Composition         & $\pm 4.70$          & $\pm 11.80$          & $\pm 0.33$       \\
+		%%
+		\gamma\_stat\_SR\_Merged\_mS\_Bin1         & $\pm 3.54$          & $\pm 0.00$          & $\pm 0.00$       \\
+		%%
+		\alpha\_JET\_Flavor\_Response         & $\pm 3.27$          & $\pm 15.54$          & $\pm 1.01$       \\
+		%%
+		\alpha\_MET\_SoftTrk\_ResoPerp         & $\pm 3.10$          & $\pm 1.68$          & $\pm 0.00$       \\
+		%%
+		\alpha\_JET\_Pileup\_OffsetNPV         & $\pm 2.34$          & $\pm 2.30$          & $\pm 0.01$       \\
+		%%
+		\alpha\_JET\_EtaIntercalibration        & $\pm 1.89$          & $\pm 2.81$          & $\pm 0.40$       \\
+		%%
+		\alpha\_MET\_SoftTrk\_Scale         & $\pm 1.81$          & $\pm 0.86$          & $\pm 0.09$       \\
+		%%
+		\alpha\_MET\_SoftTrk\_ResoPara         & $\pm 1.69$          & $\pm 0.00$          & $\pm 0.46$       \\
+		%%
+		\gamma\_stat\_SR\_Merged\_mS\_Bin2         & $\pm 1.66$          & $\pm 0.00$          & $\pm 0.00$       \\
+		%%
+		\alpha\_DibosonTheorySys         & $\pm 1.52$          & $\pm 8.08$          & $\pm 0.03$       \\
+		%%
+		\alpha\_JET\_Pileup\_PtTerm         & $\pm 1.20$          & $\pm 3.35$          & $\pm 0.72$       \\
+		%%
+		\alpha\_lumiSys         & $\pm 1.07$          & $\pm 5.30$          & $\pm 1.15$       \\
+		%%
+		\alpha\_JET\_Pileup\_RhoTopology         & $\pm 0.95$          & $\pm 5.00$          & $\pm 0.34$       \\
+		%%
+		\mu\_ttbar\_mgd         & $\pm 0.83$          & $\pm 3.18$          & $\pm 15.10$       \\
+		%%
+		\alpha\_JET\_EffectiveNP\_Modelling1         & $\pm 0.71$          & $\pm 7.75$          & $\pm 0.13$       \\
+		%%
+		\alpha\_ttbarTheorySys         & $\pm 0.67$          & $\pm 2.56$          & $\pm 12.16$       \\
+		%%
+		\bottomrule
+		\end{tabular*}
+		\caption{Effect of systematic uncertainties in the merged signal and control regions for a background-only fit. Uncertainties with a magnitude <1\% of total yield are excluded.}
+		\label{tab:systs_mgd}
+		\end{table}
+
+		\begin{table}
+		\centering
+		\small
+		\begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lccc}
+		\toprule
+		\textbf{Uncertainty}                                    & SR\_Resolved            & CRW\_Resolved            & CRTT\_Resolved            \\
+		\midrule
+		%%
+		Total background expectation             &  $1460.37$        &  $1749.98$        &  $498.88$       \\
+		%% \\
+		\midrule
+		%%
+		Total statistical $(\sqrt{N_{\mathrm{exp}}})$              & $\pm 38.21$        & $\pm 41.83$        & $\pm 22.34$       \\
+		%%
+		Total background systematic               & $\pm 112.58\ [7.71\%] $        & $\pm 41.87\ [2.39\%] $        & $\pm 22.31\ [4.47\%] $             \\
+		\midrule
+		%%
+		\mu\_Wjets\_res         & $\pm 230.37$          & $\pm 289.01$          & $\pm 0.84$       \\
+		%%
+		\alpha\_WJetsTheorySys         & $\pm 207.62$          & $\pm 260.47$          & $\pm 0.76$       \\
+		%%
+		\alpha\_JET\_Flavor\_Composition         & $\pm 73.19$          & $\pm 42.72$          & $\pm 7.29$       \\
+		%%
+		\alpha\_JET\_Pileup\_RhoTopology         & $\pm 70.72$          & $\pm 17.17$          & $\pm 5.99$       \\
+		%%
+		\alpha\_JET\_Flavor\_Response         & $\pm 58.20$          & $\pm 49.70$          & $\pm 13.63$       \\
+		%%
+		\alpha\_DibosonTheorySys         & $\pm 40.64$          & $\pm 47.76$          & $\pm 0.57$       \\
+		%%
+		\gamma\_stat\_SR\_Resolved\_mS\_Bin1         & $\pm 33.27$          & $\pm 0.00$          & $\pm 0.00$       \\
+		%%
+		\gamma\_stat\_SR\_Resolved\_mS\_Bin2         & $\pm 29.72$          & $\pm 0.00$          & $\pm 0.00$       \\
+		%%
+		\gamma\_stat\_SR\_Resolved\_mS\_Bin0         & $\pm 28.50$          & $\pm 0.00$          & $\pm 0.00$       \\
+		%%
+		\mu\_ttbar\_res         & $\pm 28.35$          & $\pm 17.71$          & $\pm 96.70$       \\
+		%%
+		\alpha\_MET\_SoftTrk\_ResoPerp         & $\pm 26.81$          & $\pm 0.22$          & $\pm 11.19$       \\
+		%%
+		\alpha\_ttbarTheorySys         & $\pm 26.08$          & $\pm 16.29$          & $\pm 88.95$       \\
+		%%
+		\alpha\_lumiSys         & $\pm 24.66$          & $\pm 29.55$          & $\pm 8.42$       \\
+		%%
+		\alpha\_JET\_EffectiveNP\_Modelling1         & $\pm 22.19$          & $\pm 18.10$          & $\pm 5.48$       \\
+		%%
+		\bottomrule
+		\end{tabular*}
+		\caption{Effect of systematic uncertainties in the resolved signal and control regions for a background-only fit. Uncertainties with a magnitude <1\% of total yield are excluded.}
+		\label{tab:systs_res}
+		\end{table}
+
+\FloatBarrier
+\subsection{Exclusion Fit}
+I finally perform an exclusion fit using the signal model. I evaluate the $\text{CL}_\text{s}$ for the nominal signal strength $\mu_\text{sig} = 1$ for each signal mass point in the \ms-\mZp plane, and interpolate between mass points using a cubic interpolation. The signal regions remain blinded, so I once again replace ATLAS data with Asimov data equal to the nearest integer value to the pre-fit MC expected SM yield in those regions. I then build a contour along $\text{CL}_\text{s} = 0.05$, and the area outside this contour ($\text{CL}_\text{s} > 0.05$) would be excluded at a 95\% confidence level with the Asimov data. This provides the strongest estimate of the designed regions' sensitivity to the dark Higgs signal model prior to unblinding.
+
+I first perform an exclusion fit on the \merged analysis channel alone to assess the sensitivity of the \merged signal region selection criteria I designed. The expected exclusion contour for the \merged channel is shown in Figure \ref{fig:excl_mgd}. I then perform an exclusion fit of the \resolved channel alone, with the expected exclusion contour shown in Figure \ref{fig:excl_res} to see how it complements the \merged channel. Finally, in Figure \ref{fig:excl_comb} I show the expected exclusion contour for the combined \merged and \resolved channels, demonstrating the full expected exclusion power of the analysis. Figure \ref{fig:had_sens} shows the expected and observed exclusion limits obtained in the fully hadronic $s\rightarrow WW$ decay channel for comparison.
+
+The expected exclusion contours show that the merged region dominates sensitivity, and that we expect to substantially improve on the limits set in the fully hadronic decay channel in our analysis.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/5/fits/MERGED.pdf}
+    \caption{Expected exclusion limits for the dark Higgs signal model obtained using the \merged signal and control regions.}
+    \label{fig:excl_mgd}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/5/fits/RESOLVED.pdf}
+    \caption{Expected exclusion limits for the dark Higgs signal model obtained using the \resolved signal and control regions.}
+    \label{fig:excl_res}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/5/fits/COMBO.pdf}
+    \caption{Expected exclusion limits for the dark Higgs signal model obtained using the \merged and \resolved signal and control regions.}
+    \label{fig:excl_comb}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.8\textwidth]{Figures/5/had_analy_contour.png}
+    \caption{Expected and observed exclusion limits for the dark Higgs signal model from the fully hadronic $s\rightarrow WW$ channel from \cite{had_analy}.}
+    \label{fig:had_sens}
+\end{figure}
