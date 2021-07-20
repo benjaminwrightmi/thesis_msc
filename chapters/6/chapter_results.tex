@@ -79,7 +79,7 @@ It is clear from this equation that $m_s$ is minimized with $\phi_{\nu} = 0$, an
 m_s^2 = \left(E_l + \frac{m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})} + E_{W_H}\right)^2 - \left(|\vec{p_{W_H}}|\sin \theta_{W_l} + \frac{\sqrt{1 - \cos^2 \theta_{l\nu}}m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}\right)^2 \\- \left(E_l + |\vec{p_{W_H}}|cos \theta_{W_l} + \frac{\cos \theta_{l\nu}m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}\right)^2.
 \end{multline}
 We then vary $\theta_{l\nu}$ on the interval $[0,\pi]$ to search for the minimum $m_s$.
-Figure \ref{fig:ms} shows the signal and background distributions of \minms in both signal regions, demonstrating the strong discrimination potential and large variance between signal samples that make it an ideal model fitting variable. During model fitting we place events in 5 equal width bins in the range $125 \leq \ms \leq 375$.
+Figure \ref{fig:ms} shows the signal and background distributions of \minms in both signal regions, demonstrating the strong discrimination potential and large variance between signal samples that make it an ideal model fitting variable. During model fitting we place events in 5 equal-width bins in the range $125 \leq \ms \leq 375$ GeV.
 
 \begin{figure}[htbp]
   \centering
@@ -98,22 +98,22 @@ Figure \ref{fig:ms} shows the signal and background distributions of \minms in b
   \end{figure}
 \FloatBarrier
 \section{Systematic Uncertainties}
-While statistical fluctuations are uncorrelated between measurements and arise from a measurement consisting of a limited number of observations, systematic uncertainties are often correlated across repeated measurements, generally do not scale with the sample size, and may derive from the nature of the experiment or uncertainty in the model used to make conclusions about the data.  For this analysis we further categorize systematic uncertainties into theory uncertainties on the modelling and experimental uncertainties. The evaluation of theory uncertainties on is not within the scope of this thesis, and I assign them a flat value of 20\% of the yield on each background category. A short description of the various types of experimental systematic uncertainties considered follows.
+Statistical fluctuations are uncorrelated between measurements that use non-overlapping datasets, and arise from a measurement consisting of a limited number of observations. Systematic uncertainties, however, are often correlated in measurements that do not necessarily use overlapping datasets, generally do not scale with the sample size, and may derive from the nature of the experiment or uncertainty in the model used to make conclusions about the data.  For this analysis, we further categorize systematic uncertainties into theory uncertainties on the modelling and experimental uncertainties. The evaluation of theory uncertainties is not within the scope of this thesis, and I assign them a flat value of 20\% of the yield on each background category. I chose a value of 20\% based on the magnitude of the SM modelling uncertainties observed in the fully-hadronic channel in \cite{had_analy} as well as ongoing work internal to the analysis. What follows is a short description of the various types of experimental systematic uncertainties that we consider in this thesis.
 
 \subsection{$R=0.4$ Jets}
-Uncertainties on $R=0.4$ jets are divided into jet energy scale (JES) and jet energy resolution (JER) uncertainties. These include, but are not limited to, uncertainties on pileup, flavour composition, and punch-through of jets. We evaluate them using tools provided by the ATLAS Jet/\met group.
+Uncertainties on $R=0.4$ jets are divided into jet energy scale (JES) and jet energy resolution (JER) uncertainties. These include, but are not limited to, uncertainties on pileup, flavour composition, and punch-through of jets.
 
 \subsection{Track Uncertainties}
 These are uncertainties on the reconstruction of tracks in the ATLAS inner detector. In this analysis they are primarily propagated into the reconstruction of TAR jets in the ``merged" signal and control regions.
 
 \subsection{Muon and Electron}
-For muons and electrons we consider uncertainties on the reconstruction efficiency, isolationa and identification, and energy or momentum scale and resolution. We evaluate these uncertainties using tools provided by the ATLAS E/Gamma and Muon combined performance groups.
+For muons and electrons, we consider uncertainties on the reconstruction efficiency, isolation and identification, and energy or momentum scale and resolution.
 
 \subsection{\met}
-We propagate uncertainties on the afformentioned objects into the \met calculation, however we consider separate \met systematics which affect the reconstruction of the \met soft term. We evaluate these using the METSystematicsTool.
+We propagate uncertainties on the aformentioned objects into the \met calculation, however we consider separate \met systematics which affect the reconstruction of the \met soft term.
 
 \subsection{Luminosity}
-The integrated luminosity measured across the run-2 data taking period is known to a precision of 1.7\%. This is therefore applied as an overall systematic across the normalization of all MC events.
+The integrated luminosity measured across the run-2 data taking period is known to a precision of 1.7\% \cite{lumi_unc}. This is therefore applied as an overall systematic across the normalization of all MC events.
 
 \section{Fit Results}
 \subsection{Background Only Fit}

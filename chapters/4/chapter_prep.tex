@@ -240,13 +240,13 @@ In the ATLAS detector, the beams collide directly along the longitudinal axis. A
 The significance of the \met measurement is also assessed using the object-based \met significance \metsig. It is calculated as described in \cite{MetSig} from a combination of the uncertainties on the reconstructed objects and soft term used to calculate \met, as well as a pileup correction. A high \metsig indicates a higher degree of confidence that the \met measurement of an event comes from an unseen object rather than from particle mismeasurement.
 
 \section{Data and MC Preparation}
-Data or MC events after reconstruction (or simulated reconstruction) in the ATLAS detector are stored as Analysis Object Data files which contain all reconstructed information from each event. Data and MC samples used for this analysis are initially in ATLAS Derived Analysis Object Data (DAOD format) which are created by skimming and slimming the AODs according to the EXOT27 job options. The DAODs include information about:
+After reconstruction (or simulated reconstruction) in the ATLAS detector, data and MC events are stored as Analysis Object Data files which contain all reconstructed information from each event. Data and MC samples used for this analysis are initially in ATLAS Derived Analysis Object Data (DAOD format) which are created by skimming and slimming the AODs according to the EXOT27 job options. The DAODs include information about:
 \begin{itemize}
 	\item electrons, photons, muons, taujets,
 	\item $R=1.0$ ``Large-R" jets,
 	\item AntiKt4EMTopoJets, AntiKt4EMPFlowJets, AntiKt2LCTopoJets,
-  \item Jet b-tagging,
-	\item and InDetTrackParticles associated with AntiKt4EMTopoJets and AntiKt2LCTopoJets
+  \item Jet b-tagging, and
+	\item InDetTrackParticles associated with AntiKt4EMTopoJets and AntiKt2LCTopoJets
 \end{itemize}
 
 The DAOD files are still too large to be convenient for analysis, and some analysis variables have not yet been calculated. In order to further process the DAODs we use the XAMPP analysis framework, which is built on top of the SUSYTools framework. We use a customized version of the XAMPP framework (XAMPPMonoSlep) maintained by the analysis team to calculate all necessary analysis variables and selects physics objects according to the definitions in Section \ref{section:objects}. We use the following set of ``preselection" criteria to trim the number of events to a convenient size without cutting into any regions of sensitivity:
@@ -256,8 +256,8 @@ The DAOD files are still too large to be convenient for analysis, and some analy
 \item \met > 150 \GeV,
 \item \metsig > 5,
 \item transverse mass of \met and lepton \mtlepmet > 50 \GeV,
-\item veto on b-tagged $R=0.4$ jets,
-\item and \(\NTAR > 0\) or \(\Njets > 1\).
+\item veto on b-tagged $R=0.4$ jets, and
+\item \(\NTAR > 0\) or \(\Njets > 1\).
 \end{itemize}
 
 After processing by the XAMPPMonoSlep framework the data is stored in CERN Root files known as ntuples, which are further slimmed to include only necessary variables using XAMPPPlotting. At this stage the data and MC samples are ready to be analyzed.
