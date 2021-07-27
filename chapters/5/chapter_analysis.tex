@@ -186,11 +186,12 @@ Due to the highly boosted nature of most signal events, the hadronic $W$ decay p
   \midrule
 Fails \merged analysis region selections & Recycling strategy \\
   \Njets $\geq 2$ & \Wcand reconstruction \\
- $\Wcandm \in [60,100]~\GeV$ & \Wcand reconstruction \\
- $ \Wcandpt > 100~\GeV$ & $W$+jets Background Reduction \\
+ $\Wcandm \in [65,95]~\GeV$ & \Wcand reconstruction \\
+ $ \Wcandpt > 150~\GeV$ & $W$+jets Background Reduction \\
   $\mtlepmet > 200~\GeV$ & $W$+jets Background Reduction \\
-  $\metsig  > 14$ & Select for high \met \\
-  $\drWl  < 1.75$ & Select for boosted \Wcand+$\ell\nu$ system \\
+  $\met  > 250$ GeV & Select for high \met \\
+  $\metsig  > 16$ & Select for high \met \\
+  $\drWl  < 1.4$ & Select for boosted \Wcand+$\ell\nu$ system \\
   %Lepton \pt & $<\met-70~\GeV$ \\
   \bottomrule
   \end{tabular}
@@ -226,11 +227,11 @@ To improve this, I further extended the $b$-jet cut to require 2 or more $b$-jet
 \midrule
 \textbf{Merged SR} & \ensuremath{N (b\text{-jets})} = 0 & $\metsig > 16$\tabularnewline
 \midrule
-\textbf{Resolved SR} & \ensuremath{N (b\text{-jets})} = 0 & $\metsig > 14$\tabularnewline
+\textbf{Resolved SR} & \ensuremath{N (b\text{-jets})} = 0 & $\metsig > 16$\tabularnewline
 \midrule
 \textbf{Merged CRtt} & \ensuremath{N (b\text{-jets})} > 1 & $\metsig > 12$\tabularnewline
 \midrule
-\textbf{Resolved CRtt} & \ensuremath{N (b\text{-jets})} > 1 & $\metsig > 14$\tabularnewline
+\textbf{Resolved CRtt} & \ensuremath{N (b\text{-jets})} > 1 & $\metsig > 16$\tabularnewline
 \bottomrule
 \end{tabular}
 \caption{\label{tab:ttbar_CR} Summary of differences in selections on \ensuremath{N (b\text{-jets})} and \metsig between signal regions and \ttbar control regions.}
@@ -241,7 +242,7 @@ Table \ref{tab:ttbar_CR} summarizes the differences in selection criteria betwee
 \FloatBarrier
 \section{\wjets Control Region}
 \FloatBarrier
-This analysis employs an additional pair of control regions in order to constrain the dominant \wjets background in the signal regions. The signal regions occupy a realm of phase space very high in \mtlepmet, and we sought to better constrain the background prediction in the tail of this distribution. To achieve this we defined control regions by reversing the \drTARl and \drWl cuts in the \merged and \resolved signal regions. This reverses the direction of the neutrino and charged lepton in the leptonic $W$ decay without substantially altering the remaining kinematics of the event, keeping the region high in \mtlepmet. In the \merged \wjets control region we again reduced the \metsig cut to \metsig > 12 in order to improve statistical power.
+This analysis employs an additional pair of control regions in order to constrain the dominant \wjets background in the signal regions. The signal regions occupy a realm of phase space very high in \mtlepmet, and we sought to better constrain the background prediction in the tail of this distribution. To achieve this we defined control regions by reversing the \drTARl and \drWl cuts in the \merged and \resolved signal regions. This reverses the direction of the neutrino and charged lepton in the leptonic $W$ decay without substantially altering the remaining kinematics of the event, keeping the region high in \mtlepmet. In the \merged \wjets control region we again reduced the \metsig cut to \metsig > 12 in order to improve statistical power. We then further extended the \drTARl requirement to $\drTARl > 1.8$ in the merged control region to reduce signal contamination.
 Table \ref{tab:Wjets_CR} summarizes the differences in selection criteria between the \merged and \resolved signal and \wjets control regions.
 \begin{table}[h]
  \centering
@@ -251,11 +252,11 @@ Table \ref{tab:Wjets_CR} summarizes the differences in selection criteria betwee
 \midrule
 \textbf{Merged SR} & $\drTARl < 1.2$ & $\metsig > 16$\tabularnewline
 \midrule
-\textbf{Resolved SR} & $\drWl < 1.75$ & $\metsig > 14$\tabularnewline
+\textbf{Resolved SR} & $\drWl < 1.4$ & $\metsig > 14$\tabularnewline
 \midrule
-\textbf{Merged CRW} & $\drTARl > 1.2$ & $\metsig > 12$\tabularnewline
+\textbf{Merged CRW} & $\drTARl > 1.8$ & $\metsig > 12$\tabularnewline
 \midrule
-\textbf{Resolved CRW} & $\drWl > 1.75$ & $\metsig > 14$\tabularnewline
+\textbf{Resolved CRW} & $\drWl > 1.4$ & $\metsig > 14$\tabularnewline
 \bottomrule
 \end{tabular}
 \caption{\label{tab:Wjets_CR} Summary of differences in selections on \drWl and \metsig between signal regions and \wjets control regions.}
@@ -361,7 +362,7 @@ The ATLAS High Level Triggers (HLT) each represent a set of criteria used by the
   \label{fig:trig_mu}
 \end{figure}
 
-We hypothesized that the inefficiency was caused by high-\pT muons, which are not seen by the trigger-level \met calculation. As a result, if a muon travels in the opposite direction to the true \met, the trigger-level \met will be reduced and the trigger criteria may be failed. To confirm this, Figure \ref{fig:trig_invis} shows the \met trigger efficiency plotted against \met with signal muons treated as invisible (i.e. having their \pt subtracted from the \met). In this case full or near-full trigger efficiency for $\met > 200$~GeV is recovered. We find it desireable to obtain full trigger efficiency in order to avoid the uncertainty associated with calculating trigger scale factors to match the trigger behaviour of data and MC events. Therefore, to counter the trigger inefficiency we moved to a logical OR between the unprescaled \met triggers and the single muon triggers in Table \ref{tab:mu_trigs}. This is designed to ensure that the events with a high-\pT muon that fail the \met trigger will pass the single muon trigger and be considered. Figure \ref{fig:trig_OR} shows that this recovers full trigger efficiency.
+We hypothesized that the inefficiency was caused by high-\pT muons, which are not seen by the trigger-level \met calculation. As a result, if a muon travels in the opposite direction to the true \met, the measured trigger-level \met will be reduced and the trigger criteria may be failed. To confirm this, Figure \ref{fig:trig_invis} shows the \met trigger efficiency plotted against \met with signal muons treated as invisible (i.e. having their \pt subtracted from the \met). In this case full or near-full trigger efficiency for $\met_{no \mu} > 200$~GeV is recovered. We find it desireable to obtain full trigger efficiency in order to avoid the uncertainty associated with calculating trigger scale factors to match the trigger behaviour of data and MC events. Therefore, to counter the trigger inefficiency we moved to a logical OR between the unprescaled \met triggers and the single muon triggers in Table \ref{tab:mu_trigs}. This is designed to ensure that the events with a high-\pT muon that fail the \met trigger will pass the single muon trigger and be considered. Figure \ref{fig:trig_OR} shows that this recovers full trigger efficiency.
 
 \begin{figure}[tb]
   \centering
