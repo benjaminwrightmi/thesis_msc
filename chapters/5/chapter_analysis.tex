@@ -138,7 +138,7 @@ I found the maximum mean expected significance across the four selected signal p
   \label{tab:mergedselection_reopt}
 \end{table}
 
-In order to validate this choice of selection criteria, I produced ``$N-1$" plots which show the distribution of a variable with all but the cut on that variable applied. I also calculated the expected Asimov significance of placing a cut at each bin edge in the ``$N-1$" histogram. I then compared the optimized cut placement with the cut placement showing maximal expected significance in the plot. These plots were produced using the testing and validation data ($W$+jets and $Z$+jets samples produced in Sherpa 2.2.10), and are shown in Figure \ref{fig:SRN1}. They show that the cuts optimized using Sherpa 2.2.1 samples are still placed at optimal or near-optimal locations using the final samples, and therefore validate the choice of selection criteria.
+In order to validate this choice of selection criteria, I produced ``$N-1$" plots which show the distribution of a variable with all but the cut on that variable applied. I also calculated the expected Asimov significance of placing a cut at each bin edge in the ``$N-1$" histogram. I then compared the optimized cut placement with the cut placement showing maximal expected significance in the plot. These plots were produced using the testing and validation data ($W$+jets and $Z$+jets samples produced in Sherpa 2.2.10), and are shown in Figure \ref{fig:SRN1}. They show that the cuts optimized using Sherpa 2.2.1 samples are still placed at optimal or near-optimal locations using the final samples, and therefore validate the choice of selection criteria. To produce these plots, a single event with a large negative weight was removed from the background MC, as its weight overwhelmed the shape of the background distributions and produced sharp spikes in estimated significance. A secondary set of N-1 plots with this event included are shown in Appendix section \ref{section:N1_backup}
 
 \begin{figure}[htbp]
   \centering
@@ -252,19 +252,20 @@ Table \ref{tab:Wjets_CR} summarizes the differences in selection criteria betwee
 \midrule
 \textbf{Merged SR} & $\drTARl < 1.2$ & $\metsig > 16$\tabularnewline
 \midrule
-\textbf{Resolved SR} & $\drWl < 1.4$ & $\metsig > 14$\tabularnewline
+\textbf{Resolved SR} & $\drWl < 1.4$ & $\metsig > 16$\tabularnewline
 \midrule
 \textbf{Merged CRW} & $\drTARl > 1.8$ & $\metsig > 12$\tabularnewline
 \midrule
-\textbf{Resolved CRW} & $\drWl > 1.4$ & $\metsig > 14$\tabularnewline
+\textbf{Resolved CRW} & $\drWl > 1.4$ & $\metsig > 16$\tabularnewline
 \bottomrule
 \end{tabular}
 \caption{\label{tab:Wjets_CR} Summary of differences in selections on \drWl and \metsig between signal regions and \wjets control regions.}
 \end{table}
 
 Figures \ref{fig:Data_MC_CRdR_merged} and \ref{fig:Data_MC_CRdR_resolved} in Appendix section \ref{section:datamc} show checks of the distributions of MC and ATLAS data in the \wjets control regions. As in the \ttbar control regions, no strong correlation is observed with any particular variable.
-
+\FloatBarrier
 \section{Trigger Strategy}
+\label{section:trig}
 \FloatBarrier
 The ATLAS High Level Triggers (HLT) each represent a set of criteria used by the L2 trigger and event filter to select which events passing the L1 trigger are potentially interesting and should be further analyzed. Throughout the process of optimization and signal and control region definition, we used the unprescaled \met triggers listed in Table \ref{tab:met_trigs}, which select events with high \met. Upon closer examination, however, we found that these triggers were unexpectedly inefficient even in our analysis regions with $\met > 200$~GeV. Figures \ref{fig:trig_e} and \ref{fig:trig_mu} show the \met trigger efficiency in the \ttbar control regions in the electron and muon decay channels. In the electron channel we observe full efficiency, but not in the muon channel.
 
@@ -362,7 +363,8 @@ The ATLAS High Level Triggers (HLT) each represent a set of criteria used by the
   \label{fig:trig_mu}
 \end{figure}
 
-We hypothesized that the inefficiency was caused by high-\pT muons, which are not seen by the trigger-level \met calculation. As a result, if a muon travels in the opposite direction to the true \met, the measured trigger-level \met will be reduced and the trigger criteria may be failed. To confirm this, Figure \ref{fig:trig_invis} shows the \met trigger efficiency plotted against \met with signal muons treated as invisible (i.e. having their \pt subtracted from the \met). In this case full or near-full trigger efficiency for $\met_{no \mu} > 200$~GeV is recovered. We find it desireable to obtain full trigger efficiency in order to avoid the uncertainty associated with calculating trigger scale factors to match the trigger behaviour of data and MC events. Therefore, to counter the trigger inefficiency we moved to a logical OR between the unprescaled \met triggers and the single muon triggers in Table \ref{tab:mu_trigs}. This is designed to ensure that the events with a high-\pT muon that fail the \met trigger will pass the single muon trigger and be considered. Figure \ref{fig:trig_OR} shows that this recovers full trigger efficiency.
+We hypothesized that the inefficiency was caused by high-\pT muons, which are not seen by the trigger-level \met calculation. As a result, if a muon travels in the opposite direction to the true \met, the measured trigger-level \met will be reduced and the trigger criteria may be failed. To confirm this, Figure \ref{fig:trig_invis} shows the \met trigger efficiency plotted against \met with signal muons treated as invisible (i.e. having their \pT subtracted from the \met).
+In this case full or near-full trigger efficiency for \met $(\text{no} \mu) > 200$~GeV is recovered. We find it desireable to obtain full trigger efficiency in order to avoid the uncertainty associated with calculating trigger scale factors to match the trigger behaviour of data and MC events. Therefore, to counter the trigger inefficiency we moved to a logical OR between the unprescaled \met triggers and the single muon triggers in Table \ref{tab:mu_trigs}. This is designed to ensure that the events with a high-\pT muon that fail the \met trigger will pass the single muon trigger and be considered. Figure \ref{fig:trig_OR} shows that this recovers full trigger efficiency.
 
 \begin{figure}[tb]
   \centering

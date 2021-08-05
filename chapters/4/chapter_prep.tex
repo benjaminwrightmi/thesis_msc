@@ -34,7 +34,7 @@ In order to search for a signal such as the one described above, it is necessary
 
 \subsection{Signal MC}
 \label{subsection:mc_signal}
-Signal samples are produced using the model and parameter choices outlined in subsection \ref{subsection:dh_model}. They are produced by calculating the hard process cross-section at leading order (LO) using \mgamc 2.7.2 \cite{MadGraph} interfaced with \pythia 8.230 \cite{Pythia} for parton shower modelling. The CKKW-L \cite{CKKW} procedure with a matching scale of $min(m_s/4, 40~\text{GeV})$ is used to prevent overlap between the cross-section matrix element and parton shower. Two separate signal grids were produced, with the second covering an expanded parameter space. In the first, \mgamc is used with the NNPDF30 LO PDF set with $\alpha_s = 0.13$ \cite{PDF30}, while in the second \mgamc is used with the NNPDF23 LO PDF set with $\alpha_s = 0.13$ and LO QED \cite{PDF23}. The signals studied span a parameter space in \ms and \mZp with samples produced at the mass points shown in Figure \ref{fig:signal_grid}. After production, it was found that the second set of samples did not use the ATLAS recommended PDF set, which is in fact the NNPDF30 NLO PDF set with $\alpha_s = 0.118$. When used, the weights of events in these samples are therefore scaled to match cross-sections derived from the recommended PDF set.
+Signal samples are produced using the model and parameter choices outlined in subsection \ref{subsection:dh_model}. They are produced by calculating the hard process cross-section at leading order (LO) using \mgamc 2.7.2 \cite{MadGraph} interfaced with \pythia 8.230 \cite{Pythia} for parton shower modelling. The CKKW-L \cite{CKKW} procedure with a matching scale of $min(m_s/4, 40~\text{GeV})$ is used to prevent overlap between the cross-section matrix element and parton shower. Two separate signal grids were produced, with the second covering an expanded parameter space. In the first, \mgamc is used with the NNPDF30 LO PDF set with $\alpha_s = 0.13$ \cite{PDF30}, while in the second \mgamc is used with the NNPDF30 NLO PDF set with $\alpha_s = 0.118$ \cite{PDF30}. The signals studied span a parameter space in \ms and \mZp with samples produced at the mass points shown in Figure \ref{fig:signal_grid}.
 
 \begin{figure}[H]
     \centering
@@ -51,14 +51,14 @@ The dominant and sub-dominant SM backgrounds for this analysis are:
     \item \ttbar, containing with a top and anti-top pair, and
     \item di-boson events, containing a pair of vector bosons.
 \end{itemize}
-Additionally, \zjets and single-top quark\footnote{In some plots in this work single-top quark events are denoted by the short form ``stop". This is not to be confused with a supersymmetric partner of a top-quark often referred to as a ``stop".} events make non-negligible background contributions. All background contributions are estimated using MC simulated data, and the \wjets and \ttbar backgrounds are further constrained using data-driven control regions.
+Additionally, \zjets, tri-boson, and single-top quark\footnote{In some plots in this work single-top quark events are denoted by the short form ``stop". This is not to be confused with a supersymmetric partner of a top-quark often referred to as a ``stop".} events make non-negligible background contributions. All background contributions are estimated using MC simulated data, and the \wjets and \ttbar backgrounds are further constrained using data-driven control regions.
 
-\subsubsection{\vjets and diboson}
+\subsubsection{\vjets, Di-boson, and Tri-boson}
 Two distinct sets of \wjets and \zjets (\vjets) background samples are used. The samples are simulated with the \sherpa v2.2 MC generator \cite{Sherpa} with up to two additional parton emissions at NLO or four additional parton emissions at LO accuracy \cite{VJets}\cite{VJets_mW}. Merging of parton showers with matrix elements is acheived using CKKW \cite{CKKW} matching with the MEPS@NLO prescription extending this to NLO \cite{MEPS}. The NNPDF30 NNLO PDF set is used \cite{PDF30}.
 
 The difference is that first samples are produced using \sherpa v2.2.1, and the second with \sherpa v2.2.10. As well, additional statistics-enhanced \wjets samples are added to the second set with $m_W > 120$ GeV \cite{VJets_mW}. This greatly increases the number of simulated events in this small section of phase space that is important to this analysis. Overlap removal in $m_W$ is performed between these mass-enhanced samples and the other \wjets samples.
 
-Diboson samples are similarly generated with only a single set using either \sherpa v2.2.1 or v2.2.2 depending on the process, and CKKW matching is again used to merge parton shower and matrix element simulation.
+Di-boson and tri-boson samples are similarly generated with only a single set using either \sherpa v2.2.1 or v2.2.2 depending on the process, and CKKW matching is again used to merge parton shower and matrix element simulation.
 
 \subsubsection{\ttbar and single-top}
 MC samples for the \ttbar and single-top standard model background process are modelled using the \powhegbox v2 \cite{Powheg} generator, which gives matrix elements at NLO in the strong coupling constant $\alpha_s$. This uses the NNPDF30 NLO PDF set \cite{PDF30}. Similar to the signal samples, this is combined with \pythia 8.230 \cite{Pythia} for parton shower modelling using the NNPDF23 LO PDF set \cite{PDF23}.
@@ -89,8 +89,8 @@ where
 \item GenWeight is the generator weight from MC production,
 \item and $wf$ is a set of weight factors given by:
 \begin{equation}
-wf = EleWeight \times MuoWeight \times JetWeightJVT \times prwWeight
-\end{equation}
+wf = EleWt \times MuoWt \times JetWtJVT \times prwWt
+ \times TriggerWts \end{equation}
 where the various weights apply small corrections from the generation and reconstruction process.
 \end{itemize}
 
@@ -249,9 +249,9 @@ After reconstruction (or simulated reconstruction) in the ATLAS detector, data a
 	\item InDetTrackParticles associated with AntiKt4EMTopoJets and AntiKt2LCTopoJets
 \end{itemize}
 
-The DAOD files are still too large to be convenient for analysis, and some analysis variables have not yet been calculated. In order to further process the DAODs we use the XAMPP analysis framework, which is built on top of the SUSYTools framework. We use a customized version of the XAMPP framework (XAMPPMonoSlep) maintained by the analysis team to calculate all necessary analysis variables and selects physics objects according to the definitions in Section \ref{section:objects}. We use the following set of ``preselection" criteria to trim the number of events to a convenient size without cutting into any regions of sensitivity:
+The DAOD files are still too large to be convenient for analysis, and some analysis variables have not yet been calculated. In order to further process the DAODs we use the XAMPP analysis framework, which is built on top of the SUSYTools framework. We use a customized version of the XAMPP framework (XAMPPMonoSlep) maintained by the analysis team to calculate all necessary analysis variables and selects physics objects according to the definitions in Section \ref{section:objects}. We use the following set of ``preselection" criteria to trim the number of events to a convenient size prior to optimization, without cutting into any regions of sensitivity:
 \begin{itemize}
-\item passed \met or single muon trigger,
+\item passed \met trigger,
 \item (1 signal muon or 1 signal electron) and no additional baseline muons or electrons,
 \item \met > 150 \GeV,
 \item \metsig > 5,
@@ -260,4 +260,4 @@ The DAOD files are still too large to be convenient for analysis, and some analy
 \item \(\NTAR > 0\) or \(\Njets > 1\).
 \end{itemize}
 
-After processing by the XAMPPMonoSlep framework the data is stored in CERN Root files known as ntuples, which are further slimmed to include only necessary variables using XAMPPPlotting. At this stage the data and MC samples are ready to be analyzed.
+The trigger requirements beyond the preselection criteria are discussed in further detail in Section \ref{section:trig}.  After processing by the XAMPPMonoSlep framework the data is stored in CERN Root files known as ntuples, which are further slimmed to include only necessary variables using XAMPPPlotting. At this stage the data and MC samples are ready to be analyzed.
