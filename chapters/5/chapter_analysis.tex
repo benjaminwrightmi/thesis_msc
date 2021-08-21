@@ -26,7 +26,7 @@ The first step towards defining signal region selection criteria is to character
 \subsection{TAR Jet Lepton Disentanglement}
 Reconstructing the hadronically-decaying $W$ boson as accurately as possible is key in this analysis. As a result, it is given special attention, especially in the more sensitive merged channel. In this channel, the $W$ is reconstructed by a single $R=1.0$ TAR jet. Due to the boosted nature of the $s$-decay, however, the leptonically-decaying $W$ often lies in or very near to this jet. As a result, the charged lepton often overlaps the TAR jet, which can lead to difficulty in jet reconstruction.
 
-In order to resolve this difficulty, I made modifications to the TAR jet building process to disentangle overlapping leptons. I identify input tracks and jets that are likely to be attributable to a final state lepton and not the hadronic $W$ decay, and remove them. To achieve this, I remove tracks associated with a baseline electron or muon from the input track collection. I then also remove any \akt $R=0.2$ jet overlapping with a baseline electron (defined here as having $\Delta R(lep,jet) < 0.2$) prior to reclustering into $R=1.0$ jets. I do not remove $R=0.2$ jets overlapping muons, as muons do not leave large a calorimeter signature and are therefore unlikely to fake hadronic activity. This results in the following updated TAR jet building algorithm, where steps with a (*) are added to disentangle leptons:
+In order to resolve this difficulty,wemade modifications to the TAR jet building process to disentangle overlapping leptons. We identify input tracks and jets that are likely to be attributable to a final state lepton and not the hadronic $W$ decay, and remove them. To achieve this, we remove tracks associated with a baseline electron or muon from the input track collection. We then also remove any \akt $R=0.2$ jet overlapping with a baseline electron (defined here as having $\Delta R(lep,jet) < 0.2$) prior to reclustering into $R=1.0$ jets. We do not remove $R=0.2$ jets overlapping muons, as muons do not leave large a calorimeter signature and are therefore unlikely to fake hadronic activity. This results in the following updated TAR jet building algorithm, where steps with a (*) are added to disentangle leptons:
 
 \begin{itemize}
   \item Tracks and calibrated \akt $R=0.2$ jets are chosen as input to the algorithm.
@@ -43,13 +43,13 @@ In order to resolve this difficulty, I made modifications to the TAR jet buildin
   \item Finally, jet substructure variables and  $m^\text{TAR}$ are calculated using the rescaled matched tracks.
 \end{itemize}
 
-In order to study the potential benefit of lepton-disentanglement, I produced near-identical sets of signal MC samples, with one implementing disentanglement and the other not.
+In order to study the potential benefit of lepton-disentanglement, we produced near-identical sets of signal MC samples, with one implementing disentanglement and the other not.
 I then compared the mass of the reconstructed jets in the two samples in a region where a lepton overlaps the $R=1.0$ TAR Jet $(\Delta R(e, \text{TAR}) < 1)$, to determine how well the $W$ boson mass is reconstructed in this case.
 Figure \ref{fig:TARdisentaglementplots} demonstrates the improvement in mass resolution achieved by disentangling leptons from TAR jets. A clearly enhanced resolution in the TAR jet mass peak around the $W$ mass is visible for the lepton-disentangled jets in the electron channel. This significantly improves sensitivity in the merged signal region by allowing a much tighter selection on the TAR jet mass. Very little changes in the muon channel.
 
 I additionally compared the performance of building the TAR jets from constituent \akt $R=0.4$ jets, rather than \akt $R=0.2$ jets.
-In the electron channel I found that for high $s$ mass, $W$ mass reconstruction performance was similar between the two methods, but for low $s$ mass using \akt $R=0.4$ jets significantly impairs resolution around the $W$ mass.
-Again in the muon channel I observed few significant differences.
+In the electron channel we found that for high $s$ mass, $W$ mass reconstruction performance was similar between the two methods, but for low $s$ mass using \akt $R=0.4$ jets significantly impairs resolution around the $W$ mass.
+Again in the muon channel we observed few significant differences.
 Figure \ref{fig:R04_TAR_plots} shows a comparison of the TAR jet mass distribution built from \akt $R=0.4$ and \akt $R=0.2$ jets, for two selected signal points, in a signal-enriched region with 1 electron, $\Delta R(e, \text{TAR})< 1$, and $\mtlepmet > 150$~GeV. This clearly demonstrates the improved mass resolution for the signal point at $m_s = 160 $~GeV.
 \begin{figure}[!h]
 \centering
@@ -85,7 +85,7 @@ I optimized the \merged signal region using the expected Asimov discovery signif
 where $b$ is the expected total number of background events, $s$ is the expected total number of signal events, and $\sigma_b$ is the uncertainty on the expected total number of background events. For a given set of selection criteria and signal point, this metric is calculated from the MC simulated data by applying the criteria, counting the number of remaining signal and background events, and computing their uncertainties, then calculating the significance. It provides a metric to assess the expected sensitivity of the signal region to the signal model.
 
 \subsubsection{Optimization Approach}
-In order to optimize the signal region selection, I employed a combination of an iterative visual approach and a computational approach. Visually, I studied the distributions of analysis variables, comparing signal and background distributions, to find areas of good discrimination where a cut placement might improve sensitivity. I then compiled a list of possible cuts in each of these areas of discrimination to form a basis for the computational optimization. To determine the optimal combination of these possible cuts, I created a script to test all possible combinations while computing the expected Asimov significance of each. When calculating significance during optimization, in addition to statistical uncertainty I applied a flat 20\% systematic uncertainty on the number of background events to more realistically reflect the expected total uncertainty. Different signal points in the \ms-\mZp plane have different kinematic properties, and cross-sections and therefore have different optimal selection. As a result, I selected the following four signal points at the edge of the search window for optimization:
+In order to optimize the signal region selection, we employed a combination of an iterative visual approach and a computational approach. Visually, we studied the distributions of analysis variables, comparing signal and background distributions, to find areas of good discrimination where a cut placement might improve sensitivity. We then compiled a list of possible cuts in each of these areas of discrimination to form a basis for the computational optimization. To determine the optimal combination of these possible cuts, we created a script to test all possible combinations while computing the expected Asimov significance of each. When calculating significance during optimization, in addition to statistical uncertainty we applied a flat 20\% systematic uncertainty on the number of background events to more realistically reflect the expected total uncertainty. Different signal points in the \ms-\mZp plane have different kinematic properties, and cross-sections and therefore have different optimal selection. As a result, we selected the following four signal points at the edge of the search window for optimization:
 
 \begin{itemize}
   \item (\ms, \mZp) = (310 GeV, 500 GeV),
@@ -94,9 +94,9 @@ In order to optimize the signal region selection, I employed a combination of an
   \item and (\ms, \mZp) = (210 GeV, 2100 GeV).
 \end{itemize}
 
-I then considered the cut combination with the highest mean expected Asimov significance over these four points to be optimal. In early iterations of optimization, the number of signal events selected using the optimal selection criteria was undesireably low. As a result, I implemented an additional requirement forcing the chosen criteria to maintain an expected yield of at least 15 signal events in the \merged signal region.
+I then considered the cut combination with the highest mean expected Asimov significance over these four points to be optimal. In early iterations of optimization, the number of signal events selected using the optimal selection criteria was undesireably low. As a result, we implemented an additional requirement forcing the chosen criteria to maintain an expected yield of at least 15 signal events in the \merged signal region.
 
-In order to avoid over-tuning the optimization on single events or statistical fluctuations, I spaced the lattice of possible cuts widely enough to allow several MC events to fall between each placement. Optimizing a selection in this manner also creates a systematic bias toward an under-prediction of background in the signal region, because a low expected background yield is considered desireable. To counter this bias, I used statistically-independent optimization and fitting data sets. I performed all optimization using a set of MC samples produced when using Sherpa 2.2.1 as a training set. A set of samples produced when using Sherpa 2.2.10 then provides a statistically-independent and more statistically rich data set which I used for validation and fit model testing. This means that the MC data used for fit model testing is isolated from the optimization of selection criteria.
+In order to avoid over-tuning the optimization on single events or statistical fluctuations, we spaced the lattice of possible cuts widely enough to allow several MC events to fall between each placement. Optimizing a selection in this manner also creates a systematic bias toward an under-prediction of background in the signal region, because a low expected background yield is considered desireable. To counter this bias, we used statistically-independent optimization and fitting data sets. We performed all optimization using a set of MC samples produced when using Sherpa 2.2.1 as a training set. A set of samples produced when using Sherpa 2.2.10 then provides a statistically-independent and more statistically rich data set which we used for validation and fit model testing. This means that the MC data used for fit model testing is isolated from the optimization of selection criteria.
 
 \subsubsection{Optimization Variables}
 I examined many analysis variables for potential sensitivity, and selected those having the best discrimination potential to be tested in the final optimization. Presented below is a list of variables tested and their meaning:
@@ -114,7 +114,7 @@ I examined many analysis variables for potential sensitivity, and selected those
   \item \textbf{TAR Jet $\tau_{42}^{WTA}$ and $\tau_{21}^{WTA}$}: ``$n$-Subjettiness" ratios of the leading TAR jet, to identify two-pronged substructure \cite{Tau42}.
 \end{itemize}
 
-In addition, I considered a two-dimensional cut above or below a line with variable slope and intetcept in the \met-$p_T(\ell)$ plane during optimization.
+In addition, we considered a two-dimensional cut above or below a line with variable slope and intetcept in the \met-$p_T(\ell)$ plane during optimization.
 
 \subsubsection{Optimized Selection}
 
@@ -138,7 +138,7 @@ I found the maximum mean expected significance across the four selected signal p
   \label{tab:mergedselection_reopt}
 \end{table}
 
-In order to validate this choice of selection criteria, I produced ``$N-1$" plots which show the distribution of a variable with all but the cut on that variable applied. I also calculated the expected Asimov significance of placing a cut at each bin edge in the ``$N-1$" histogram. I then compared the optimized cut placement with the cut placement showing maximal expected significance in the plot. These plots were produced using the testing and validation data ($W$+jets and $Z$+jets samples produced in Sherpa 2.2.10), and are shown in Figure \ref{fig:SRN1}. They show that the cuts optimized using Sherpa 2.2.1 samples are still placed at optimal or near-optimal locations using the final samples, and therefore validate the choice of selection criteria. To produce these plots, a single event with a large negative weight was removed from the background MC, as its weight overwhelmed the shape of the background distributions and produced sharp spikes in estimated significance. A secondary set of N-1 plots with this event included are shown in Appendix section \ref{section:N1_backup}
+In order to validate this choice of selection criteria, we produced ``$N-1$" plots which show the distribution of a variable with all but the cut on that variable applied. We also calculated the expected Asimov significance of placing a cut at each bin edge in the ``$N-1$" histogram. We then compared the optimized cut placement with the cut placement showing maximal expected significance in the plot. These plots were produced using the testing and validation data ($W$+jets and $Z$+jets samples produced in Sherpa 2.2.10), and are shown in Figure \ref{fig:SRN1}. They show that the cuts optimized using Sherpa 2.2.1 samples are still placed at optimal or near-optimal locations using the final samples, and therefore validate the choice of selection criteria. To produce these plots, a single event with a large negative weight was removed from the background MC, as its weight overwhelmed the shape of the background distributions and produced sharp spikes in estimated significance. A secondary set of N-1 plots with this event included are shown in Appendix section \ref{section:N1_backup}
 
 \begin{figure}[htbp]
   \centering
@@ -190,7 +190,7 @@ Fails \merged analysis region selections & Recycling strategy \\
  $ \Wcandpt > 150~\GeV$ & $W$+jets Background Reduction \\
   $\mtlepmet > 200~\GeV$ & $W$+jets Background Reduction \\
   $\met  > 250$ GeV & Select for high \met \\
-  $\metsig  > 16$ & Select for high \met \\
+  $\metsig  > 16$ & Select for good \met \\
   $\drWl  < 1.4$ & Select for boosted \Wcand+$\ell\nu$ system \\
   %Lepton \pt & $<\met-70~\GeV$ \\
   \bottomrule
@@ -200,7 +200,7 @@ Fails \merged analysis region selections & Recycling strategy \\
 \section{\ttbar Control Regions}
 A control region is used to help constrain one or more sources of background in an analysis. It is designed as a region that covers a similar but non-overlapping area of phase space to the signal region, and is expected to contain many fewer signal events. As a result, the number of observed ATLAS data and MC-predicted SM events should match very closely. Any difference provides information about how MC predictions differ from data observations and is used derive a normalization factor to constrain the SM background predictions of MC in the signal region, and provide a more accurate projection.
 
-To design an effective control region, I attempted to satisfy four important criteria:
+To design an effective control region, we attempted to satisfy four important criteria:
 \begin{itemize}
   \item \textbf{Non-overlap with the signal region:} This ensures that the sample used to constrain the signal region background is statistically-independent from the signal region.
   \item \textbf{High \ttbar purity:} This selects for the background of interest in the control region to better individually constrain that background.
@@ -208,9 +208,9 @@ To design an effective control region, I attempted to satisfy four important cri
   \item \textbf{Similar kinematics to SR:} This ensures that a similar region of phase space is being studied in the control and signal regions, so that the normalization factors derived apply well to both regions.
 \end{itemize}
 
-The fact that \ttbar is one of the sub-dominant backgrounds in both signal regions motivated me to create one such control region for each signal region. As a consequence of top quarks decaying primarily to a $W$ boson and $b$-quark, the principal cut excluding \ttbar events from the signal regions is the veto of any events containing a $b$-tagged \akt $R=0.4$ jet. I therefore chose to try defining a similar but non-overlapping region rich in \ttbar events by simply reversing this cut and also requiring at least 1 $b$-tagged jet. I found this proposed region to be too rich in expected signal events, however, with signal yields as high as 10\% of background yields in the \merged region.
+The fact that \ttbar is one of the sub-dominant backgrounds in both signal regions motivated me to create one such control region for each signal region. As a consequence of top quarks decaying primarily to a $W$ boson and $b$-quark, the principal cut excluding \ttbar events from the signal regions is the veto of any events containing a $b$-tagged \akt $R=0.4$ jet. We therefore chose to try defining a similar but non-overlapping region rich in \ttbar events by simply reversing this cut and also requiring at least 1 $b$-tagged jet. We found this proposed region to be too rich in expected signal events, however, with signal yields as high as 10\% of background yields in the \merged region.
 
-To improve this, I further extended the $b$-jet cut to require 2 or more $b$-jets in the control region. This change sufficiently reduced signal contamination, but in the \merged control region it had the additional consequence of substantially reducing the number of events in the region, thereby reducing its statistical power.  In response I also loosened the \metsig cut in the \merged \ttbar control region to \metsig > 12, considerably improving the \ttbar yield. To inform this choice, I used figure \ref{fig:ttbar_metsig_placement}, which shows the number of weighted \ttbar events expected within the \merged control region for a given \metsig cut.
+To improve this, we further extended the $b$-jet cut to require 2 or more $b$-jets in the control region. This change sufficiently reduced signal contamination, but in the \merged control region it had the additional consequence of substantially reducing the number of events in the region, thereby reducing its statistical power.  In response we also loosened the \metsig cut in the \merged \ttbar control region to \metsig > 12, considerably improving the \ttbar yield. To inform this choice, we used figure \ref{fig:ttbar_metsig_placement}, which shows the number of weighted \ttbar events expected within the \merged control region for a given \metsig cut.
 
 \begin{figure}[htbp]
     \centering

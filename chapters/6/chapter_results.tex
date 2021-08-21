@@ -98,7 +98,7 @@ Figure \ref{fig:ms} shows the signal and background distributions of \minms in b
   \end{figure}
 \FloatBarrier
 \section{Systematic Uncertainties}
-Statistical fluctuations are uncorrelated between measurements that use non-overlapping datasets, and arise from a measurement consisting of a limited number of observations. Systematic uncertainties, however, are often correlated in measurements that do not necessarily use overlapping datasets, generally do not scale with the sample size, and may derive from the nature of the experiment or uncertainty in the model used to make conclusions about the data.  For this analysis, we further categorize systematic uncertainties into theory uncertainties on the modelling and experimental uncertainties. The evaluation of theory uncertainties is not within the scope of this thesis, and I assign them a flat value of 20\% of the yield on each background category. I chose a value of 20\% based on the magnitude of the SM modelling uncertainties observed in the fully-hadronic channel in \cite{had_analy} as well as ongoing work internal to the analysis. What follows is a short description of the various types of experimental systematic uncertainties that we consider in this thesis.
+Statistical fluctuations are uncorrelated between measurements that use non-overlapping datasets, and arise from a measurement consisting of a limited number of observations. Systematic uncertainties, however, are often correlated in measurements that do not necessarily use overlapping datasets, generally do not scale with the sample size, and may derive from the nature of the experiment or uncertainty in the model used to make conclusions about the data.  For this analysis, we further categorize systematic uncertainties into theory uncertainties on the modelling and experimental uncertainties. The evaluation of theory uncertainties is not within the scope of this thesis, and we assign them a flat value of 20\% of the yield on each background category. We chose a value of 20\% based on the magnitude of the SM modelling uncertainties observed in the fully-hadronic channel in \cite{had_analy} as well as ongoing work internal to the analysis. What follows is a short description of the various types of experimental systematic uncertainties that we consider in this thesis.
 
 \subsection{$R=0.4$ Jets}
 Uncertainties on $R=0.4$ jets are divided into jet energy scale (JES) and jet energy resolution (JER) uncertainties. These include, but are not limited to, uncertainties on pileup, flavour composition, and punch-through of jets.
@@ -318,7 +318,7 @@ MC exp. SM events              & $330.48 \pm 60.09$          & $742.55 \pm 124.7
     %%
     \alpha\_JET\_Pileup\_RhoTopology         & $\pm 1.27$          & $\pm 1.64$          & $\pm 0.79$       \\
     %%
-    \alpha\_JET\_EtaIntercalibration\_Modelling         & $\pm 1.05$          & $\pm 0.44$          & $\pm 0.12$       \\
+    \alpha\_JET\_EtaIntercalibration         & $\pm 1.05$          & $\pm 0.44$          & $\pm 0.12$       \\
     %%
     \alpha\_JET\_Pileup\_OffsetMu         & $\pm 0.92$          & $\pm 0.47$          & $\pm 0.02$       \\
     %%
@@ -338,7 +338,7 @@ MC exp. SM events              & $330.48 \pm 60.09$          & $742.55 \pm 124.7
     %%
     \alpha\_lumiSys         & $\pm 0.57$          & $\pm 3.46$          & $\pm 1.00$       \\
     %%
-    \alpha\_TRK\_FAKE\_RATE\_LOOSE\_ROBUST         & $\pm 0.47$          & $\pm 0.00$          & $\pm 0.05$       \\
+    \alpha\_TRK\_FAKE\_RATE\_LOOSE         & $\pm 0.47$          & $\pm 0.00$          & $\pm 0.05$       \\
     %%
     \alpha\_MET\_SoftTrk\_ResoPara         & $\pm 0.40$          & $\pm 0.21$          & $\pm 0.79$       \\
     %%
@@ -401,7 +401,7 @@ MC exp. SM events              & $330.48 \pm 60.09$          & $742.55 \pm 124.7
     %%
     \alpha\_JET\_EffectiveNP\_Modelling3         & $\pm 4.22$          & $\pm 0.03$          & $\pm 1.21$       \\
     %%
-    \alpha\_JET\_EtaIntercalibration\_NonClosure\_2018data         & $\pm 3.84$          & $\pm 1.09$          & $\pm 0.11$       \\
+    \alpha\_JET\_EtaIntercalibration         & $\pm 3.84$          & $\pm 1.09$          & $\pm 0.11$       \\
     %%
     \alpha\_JET\_EffectiveNP\_Statistical4         & $\pm 3.74$          & $\pm 0.03$          & $\pm 1.12$       \\
     %%
@@ -415,9 +415,9 @@ MC exp. SM events              & $330.48 \pm 60.09$          & $742.55 \pm 124.7
 
 \FloatBarrier
 \subsection{Exclusion Fit}
-I finally perform an exclusion fit using the signal model. I evaluate the $\text{CL}_\text{s}$ for the nominal signal strength $\mu_\text{sig} = 1$ for each signal mass point in the \ms-\mZp plane, and interpolate between mass points using a cubic interpolation. The signal regions remain blinded, so I once again replace ATLAS data with Asimov data equal to the nearest integer value to the pre-fit MC expected SM yield in those regions. I then build a contour along $\text{CL}_\text{s} = 0.05$, and the area outside this contour ($\text{CL}_\text{s} > 0.05$) would be excluded at a 95\% confidence level with the Asimov data. This provides the strongest estimate of the designed regions' sensitivity to the dark Higgs signal model prior to unblinding.
+I finally perform an exclusion fit using the signal model. We evaluate the $\text{CL}_\text{s}$ for the nominal signal strength $\mu_\text{sig} = 1$ for each signal mass point in the \ms-\mZp plane, and interpolate between mass points using a cubic interpolation. The signal regions remain blinded, so we once again replace ATLAS data with Asimov data equal to the nearest integer value to the pre-fit MC expected SM yield in those regions. We then build a contour along $\text{CL}_\text{s} = 0.05$, and the area outside this contour ($\text{CL}_\text{s} > 0.05$) would be excluded at a 95\% confidence level with the Asimov data. This provides the strongest estimate of the designed regions' sensitivity to the dark Higgs signal model prior to unblinding.
 
-I first perform an exclusion fit on the \merged analysis channel alone to assess the sensitivity of the \merged signal region selection criteria I designed. The expected exclusion contour for the \merged channel is shown in Figure \ref{fig:excl_mgd}. I then perform an exclusion fit of the \resolved channel alone, with the expected exclusion contour shown in Figure \ref{fig:excl_res} to see how it complements the \merged channel. Finally, in Figure \ref{fig:excl_comb} I show the expected exclusion contour for the combined \merged and \resolved channels, demonstrating the full expected exclusion power of the analysis. Figure \ref{fig:had_sens} shows the expected and observed exclusion limits obtained in the fully hadronic $s\rightarrow WW$ decay channel for comparison.
+I first perform an exclusion fit on the \merged analysis channel alone to assess the sensitivity of the \merged signal region selection criteria we designed. The expected exclusion contour for the \merged channel is shown in Figure \ref{fig:excl_mgd}. We then perform an exclusion fit of the \resolved channel alone, with the expected exclusion contour shown in Figure \ref{fig:excl_res} to see how it complements the \merged channel. Finally, in Figure \ref{fig:excl_comb} we show the expected exclusion contour for the combined \merged and \resolved channels, demonstrating the full expected exclusion power of the analysis. Figure \ref{fig:had_sens} shows the expected and observed exclusion limits obtained in the fully hadronic $s\rightarrow WW$ decay channel for comparison.
 
 The expected exclusion contours show that the merged region dominates sensitivity. On its own, the resolved region has very little exclusion power, but it helps to complement and strengthen the results from the merged region. As a result, we expect to substantially improve on the limits set in the fully hadronic decay channel in our analysis.
 
