@@ -36,7 +36,7 @@ where $\hat{\hat{\boldsymbol{\theta}}}$ is the set of nuisance parameters which 
 \begin{equation}
 p_{\mu} = \int_{t_{\mu_\text{obs}}}^\infty f(t_{\mu}|\mu_\text{sig}, \boldsymbol{\theta})dt_{\mu}.
 \end{equation}
-This probability distribution can be estimated by generating toy MC experiments, however in the ``asymptotic" regime with sufficiently high statistics (usually at least $\mathcal{O}(5)$ expected signal events) this distribution is known to follow a $\chi^2$ distribution according to Wilks theorem \cite{Wilks}.
+This probability distribution can be estimated by generating toy MC experiments, however in the ``asymptotic" regime with sufficiently high statistics (usually at least $\mathcal{O}(5)$ expected data events) this distribution is known to follow a $\chi^2$ distribution according to Wilks' theorem \cite{Wilks}.
 Using this $p$-value formula, we follow the $\text{CL}_\text{s}$ technique to present results \cite{CLs}. We calculate $\text{CL}_\text{s+b}$ as the $p$-value for the existence of the signal model with some $\mu_{\text{sig}} > 0$ and $1 - \text{CL}_\text{b}$ as the $p$-value for the background-only case $\mu_{\text{sig}} = 0$:
 \begin{equation}
 \begin{gathered}
@@ -79,7 +79,7 @@ It is clear from this equation that $m_s$ is minimized with $\phi_{\nu} = 0$, an
 m_s^2 = \left(E_l + \frac{m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})} + E_{W_H}\right)^2 - \left(|\vec{p_{W_H}}|\sin \theta_{W_l} + \frac{\sqrt{1 - \cos^2 \theta_{l\nu}}m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}\right)^2 \\- \left(E_l + |\vec{p_{W_H}}|cos \theta_{W_l} + \frac{\cos \theta_{l\nu}m_W^2}{2E_l(1 - \cos\ \theta_{l\nu})}\right)^2.
 \end{multline}
 We then vary $\theta_{l\nu}$ on the interval $[0,\pi]$ to search for the minimum $m_s$.
-Figure \ref{fig:ms} shows the signal and background distributions of \minms in both signal regions, demonstrating the strong discrimination potential and large variance between signal samples that make it an ideal model fitting variable. During model fitting we place events in 5 equal-width bins in the range $125 \leq \ms \leq 375$ GeV.
+Figure \ref{fig:ms} shows the signal and background distributions of \minms in both signal regions, demonstrating the strong discrimination potential and large variance between signal samples that make it an ideal model fitting variable. During model fitting we place events in 4 bins in the ``merged'' region and 5 bins in the ``resolved'' region in the range $125 \leq \ms \leq 375$ GeV. The bins in the ``merged'' region have edges at 125, 165, 190, 225, and 375 GeV, and were motivated by the requirement of at least 5 expected background events in each bin to ensure the validity of the asymptotic approximation of Wilks' theorem. In the ``resolved'' region, the bins are equidistant for simplicity.
 
 \begin{figure}[htbp]
   \centering
@@ -93,7 +93,7 @@ Figure \ref{fig:ms} shows the signal and background distributions of \minms in b
      \caption{``Resolved" SR}
      \end{subfigure}
 
-     \caption{Distributions of \minms in the \merged and \resolved signal regions.}
+     \caption{Distributions of \minms in the \merged and \resolved signal regions. Grey bands represent MC statistical uncertainty on each bin.}
      \label{fig:ms}
   \end{figure}
 \FloatBarrier
@@ -135,37 +135,37 @@ Tables \ref{tab:systs_mgd} and \ref{tab:systs_res} summarize the uncertainty on 
 Observed events          & $38$              & $205$              & $59$                    \\
 \midrule
 %%
-Fitted bkg events         & $33.80 \pm 7.91$          & $204.88 \pm 14.28$          & $59.00 \pm 7.67$              \\
+Fitted bkg events         & $33.80 \pm 7.94$          & $204.88 \pm 14.28$          & $59.00 \pm 7.67$              \\
 \midrule
 %%
-        Fitted Diboson events         & $7.40 \pm 2.26$          & $26.49 \pm 5.96$          & $0.22 \pm 0.06$              \\
+        Fitted Diboson events         & $7.40 \pm 2.22$          & $26.49 \pm 5.96$          & $0.22 \pm 0.06$              \\
 %%
-        Fitted WJets events         & $20.52 \pm 5.57$          & $150.71 \pm 16.85$          & $2.21_{-2.21}^{+3.57}$              \\
+        Fitted WJets events         & $20.52 \pm 5.74$          & $150.71 \pm 16.85$          & $2.21_{-2.21}^{+3.58}$              \\
 %%
-        Fitted ttbar events         & $3.05 \pm 1.09$          & $6.99 \pm 1.59$          & $51.02 \pm 8.44$              \\
+        Fitted ttbar events         & $3.05 \pm 0.92$          & $6.99 \pm 1.59$          & $51.02 \pm 8.46$              \\
 %%
-        Fitted ZJets events         & $0.22 \pm 0.07$          & $15.74 \pm 4.13$          & $0.00 \pm 0.00$              \\
+        Fitted ZJets events         & $0.22 \pm 0.06$          & $15.74 \pm 4.13$          & $0.00 \pm 0.00$              \\
 %%
-        Fitted stop events         & $1.46 \pm 0.45$          & $3.10 \pm 0.77$          & $5.55 \pm 1.28$              \\
+        Fitted stop events         & $1.46 \pm 0.47$          & $3.10 \pm 0.77$          & $5.55 \pm 1.28$              \\
 %%
-        Fitted Triboson events         & $1.15 \pm 0.27$          & $1.85 \pm 0.20$          & $0.00 \pm 0.00$              \\
+        Fitted Triboson events         & $1.15 \pm 0.23$          & $1.85 \pm 0.20$          & $0.00 \pm 0.00$              \\
 %%
  \midrule
 %%
 MC exp. SM events              & $38.39 \pm 9.45$          & $232.60 \pm 43.80$          & $78.98 \pm 15.07$              \\
 \midrule
 %%
-        MC exp. Diboson events         & $7.40 \pm 2.26$          & $26.49 \pm 6.00$          & $0.22 \pm 0.06$              \\
+        MC exp. Diboson events         & $7.40 \pm 2.22$          & $26.49 \pm 6.00$          & $0.22 \pm 0.06$              \\
 %%
-        MC exp. WJets events         & $23.93 \pm 6.75$          & $175.75 \pm 40.10$          & $2.58_{-2.58}^{+4.09}$              \\
+        MC exp. WJets events         & $23.93 \pm 6.94$          & $175.75 \pm 40.10$          & $2.58_{-2.58}^{+4.09}$              \\
 %%
-        MC exp. ttbar events         & $4.22 \pm 1.56$          & $9.68 \pm 2.36$          & $70.63 \pm 14.45$              \\
+        MC exp. ttbar events         & $4.22 \pm 1.34$          & $9.68 \pm 2.36$          & $70.63 \pm 14.45$              \\
 %%
-        MC exp. ZJets events         & $0.22 \pm 0.07$          & $15.74 \pm 4.15$          & $0.00 \pm 0.00$              \\
+        MC exp. ZJets events         & $0.22 \pm 0.06$          & $15.74 \pm 4.15$          & $0.00 \pm 0.00$              \\
 %%
-        MC exp. stop events         & $1.46 \pm 0.45$          & $3.10 \pm 0.77$          & $5.55 \pm 1.29$              \\
+        MC exp. stop events         & $1.46 \pm 0.47$          & $3.10 \pm 0.77$          & $5.55 \pm 1.29$              \\
 %%
-        MC exp. Triboson events         & $1.15 \pm 0.27$          & $1.85 \pm 0.20$          & $0.00 \pm 0.00$              \\
+        MC exp. Triboson events         & $1.15 \pm 0.23$          & $1.85 \pm 0.20$          & $0.00 \pm 0.00$              \\
 %%     \\
 \bottomrule
 \end{tabular*}
@@ -190,9 +190,9 @@ Fitted bkg events         & $321.79 \pm 36.33$          & $716.53 \pm 26.74$    
 %%
         Fitted Diboson events         & $50.03 \pm 10.88$          & $105.76 \pm 21.93$          & $0.58 \pm 0.14$              \\
 %%
-        Fitted WJets events         & $226.84 \pm 33.14$          & $560.43 \pm 35.99$          & $2.27_{-2.27}^{+3.00}$              \\
+        Fitted WJets events         & $226.84 \pm 33.14$          & $560.43 \pm 35.98$          & $2.27_{-2.27}^{+3.00}$              \\
 %%
-        Fitted ttbar events         & $24.05 \pm 4.79$          & $22.64 \pm 4.01$          & $73.25 \pm 10.12$              \\
+        Fitted ttbar events         & $24.05 \pm 4.79$          & $22.64 \pm 4.01$          & $73.24 \pm 10.11$              \\
 %%
         Fitted ZJets events         & $14.32 \pm 3.38$          & $18.85 \pm 5.33$          & $0.00 \pm 0.00$              \\
 %%
@@ -301,20 +301,22 @@ MC exp. SM events              & $330.48 \pm 60.09$          & $742.55 \pm 124.7
     %%
     Total statistical $(\sqrt{N_{\mathrm{exp}}})$              & $\pm 5.81$        & $\pm 14.31$        & $\pm 7.68$       \\
     %%
-    Total background systematic               & $\pm 7.91\ [23.39\%] $        & $\pm 14.28\ [6.97\%] $        & $\pm 7.67\ [13.00\%] $             \\
+    Total background systematic               & $\pm 7.94\ [23.48\%] $        & $\pm 14.28\ [6.97\%] $        & $\pm 7.67\ [13.00\%] $             \\
     \midrule
     %%
-    \gamma\_stat\_SR\_Merged\_mS\_bin\_0         & $\pm 5.88$          & $\pm 0.00$          & $\pm 0.00$       \\
+    \gamma\_stat\_SR\_Merged\_mS\_bin\_1         & $\pm 5.82$          & $\pm 0.00$          & $\pm 0.00$       \\
     %%
-    \mu\_Wjets\_mgd         & $\pm 5.49$          & $\pm 40.30$          & $\pm 0.59$       \\
+    \mu\_Wjets\_mgd         & $\pm 5.49$          & $\pm 40.31$          & $\pm 0.59$       \\
     %%
     \alpha\_WJetsTheorySys         & $\pm 4.00$          & $\pm 29.39$          & $\pm 0.43$       \\
     %%
-    \gamma\_stat\_SR\_Merged\_mS\_bin\_1         & $\pm 2.21$          & $\pm 0.00$          & $\pm 0.00$       \\
+    \gamma\_stat\_SR\_Merged\_mS\_bin\_2         & $\pm 1.86$          & $\pm 0.00$          & $\pm 0.00$       \\
+    %%
+    \gamma\_stat\_SR\_Merged\_mS\_bin\_0         & $\pm 1.59$          & $\pm 0.00$          & $\pm 0.00$       \\
     %%
     \alpha\_DibosonTheorySys         & $\pm 1.47$          & $\pm 5.26$          & $\pm 0.04$       \\
     %%
-    \gamma\_stat\_SR\_Merged\_mS\_bin\_2         & $\pm 1.30$          & $\pm 0.00$          & $\pm 0.00$       \\
+    \gamma\_stat\_SR\_Merged\_mS\_bin\_3         & $\pm 1.45$          & $\pm 0.00$          & $\pm 0.00$       \\
     %%
     \alpha\_JET\_Pileup\_RhoTopology         & $\pm 1.27$          & $\pm 1.64$          & $\pm 0.79$       \\
     %%
@@ -322,27 +324,25 @@ MC exp. SM events              & $330.48 \pm 60.09$          & $742.55 \pm 124.7
     %%
     \alpha\_JET\_Pileup\_OffsetMu         & $\pm 0.92$          & $\pm 0.47$          & $\pm 0.02$       \\
     %%
-    \mu\_ttbar\_mgd         & $\pm 0.81$          & $\pm 1.85$          & $\pm 13.51$       \\
+    \mu\_ttbar\_mgd         & $\pm 0.81$          & $\pm 1.85$          & $\pm 13.52$       \\
     %%
     \alpha\_MET\_SoftTrk\_ResoPerp         & $\pm 0.75$          & $\pm 0.19$          & $\pm 0.14$       \\
     %%
-    \alpha\_JET\_Flavor\_Composition         & $\pm 0.75$          & $\pm 2.00$          & $\pm 1.05$       \\
+    \alpha\_JET\_Flavor\_Composition         & $\pm 0.75$          & $\pm 2.00$          & $\pm 1.06$       \\
     %%
-    \alpha\_JET\_Pileup\_OffsetNPV         & $\pm 0.75$          & $\pm 1.62$          & $\pm 1.05$       \\
+    \alpha\_JET\_Pileup\_OffsetNPV         & $\pm 0.74$          & $\pm 1.62$          & $\pm 1.06$       \\
     %%
     \alpha\_JET\_EffectiveNP\_Modelling1         & $\pm 0.66$          & $\pm 1.50$          & $\pm 0.93$       \\
-    %%
-    \gamma\_stat\_SR\_Merged\_mS\_bin\_3         & $\pm 0.63$          & $\pm 0.00$          & $\pm 0.00$       \\
     %%
     \alpha\_ttbarTheorySys         & $\pm 0.61$          & $\pm 1.39$          & $\pm 10.14$       \\
     %%
     \alpha\_lumiSys         & $\pm 0.57$          & $\pm 3.46$          & $\pm 1.00$       \\
     %%
-    \alpha\_TRK\_FAKE\_RATE\_LOOSE         & $\pm 0.47$          & $\pm 0.00$          & $\pm 0.05$       \\
+    \alpha\_TRK\_FAKE\_RATE\_LR         & $\pm 0.47$          & $\pm 0.00$          & $\pm 0.05$       \\
     %%
-    \alpha\_MET\_SoftTrk\_ResoPara         & $\pm 0.40$          & $\pm 0.21$          & $\pm 0.79$       \\
+    \alpha\_MET\_SoftTrk\_ResoPara         & $\pm 0.43$          & $\pm 0.21$          & $\pm 0.79$       \\
     %%
-    \alpha\_JET\_EffectiveNP\_Detector1         & $\pm 0.38$          & $\pm 0.52$          & $\pm 0.00$       \\
+    \alpha\_JET\_EffectiveNP\_Detector1         & $\pm 0.39$          & $\pm 0.52$          & $\pm 0.00$       \\
     %%
     \alpha\_JET\_EffectiveNP\_Mixed3         & $\pm 0.34$          & $\pm 0.00$          & $\pm 0.00$       \\
     %%
@@ -377,9 +377,9 @@ MC exp. SM events              & $330.48 \pm 60.09$          & $742.55 \pm 124.7
     %%
     \gamma\_stat\_SR\_Resolved\_mS\_bin\_0         & $\pm 13.76$          & $\pm 0.00$          & $\pm 0.00$       \\
     %%
-    \alpha\_MET\_SoftTrk\_ResoPerp         & $\pm 10.14$          & $\pm 0.15$          & $\pm 0.20$       \\
-    %%
     \alpha\_JET\_Pileup\_PtTerm         & $\pm 10.14$          & $\pm 0.75$          & $\pm 0.05$       \\
+    %%
+    \alpha\_MET\_SoftTrk\_ResoPerp         & $\pm 10.14$          & $\pm 0.15$          & $\pm 0.20$       \\
     %%
     \alpha\_DibosonTheorySys         & $\pm 9.93$          & $\pm 20.99$          & $\pm 0.12$       \\
     %%
@@ -389,7 +389,7 @@ MC exp. SM events              & $330.48 \pm 60.09$          & $742.55 \pm 124.7
     %%
     \gamma\_stat\_SR\_Resolved\_mS\_bin\_2         & $\pm 7.38$          & $\pm 0.00$          & $\pm 0.00$       \\
     %%
-    \mu\_ttbar\_res         & $\pm 6.00$          & $\pm 5.64$          & $\pm 18.26$       \\
+    \mu\_ttbar\_res         & $\pm 5.99$          & $\pm 5.64$          & $\pm 18.25$       \\
     %%
     \alpha\_lumiSys         & $\pm 5.43$          & $\pm 12.10$          & $\pm 1.47$       \\
     %%

@@ -2,7 +2,7 @@
 \label{chapter:ana_prep}
 
 \section{Signal Model}
-This work concerns a search for dark matter produced in association with a dark Higgs boson as described in subsection \ref{subsection:dh_model}.  The dark Higgs boson, $s$, then decays to standard model particles with the same branching ratios as a standard model Higgs boson of variable mass, as shown in Figure \ref{fig:HiggsBR}. At low $s$ mass, this is dominated by a decay to a pair of $b$ quarks, is currently being studied via a reinterpretation of the ATLAS search for dark matter produced in association with a standard model Higgs boson decaying to $b\bar{b}$ in \cite{monos_bb}. At $s$ masses above 160 GeV, however, the decay to a pair of $W$ bosons, shown in Figure \ref{fig:dh_feynman}, becomes kinematically available on-shell. Even slightly below this threshold, $s$ decays to $WW$ are the dominant process. The pair of $W$ bosons decay rapidly, and are not detected as final state particles by the ATLAS detector. Instead, they each decay either to hadronic ($q\bar{q}$) or leptonic ($l\nu$) final states. A search in the fully hadronic channel, with both $W$ decaying to $q\bar{q}$, is complete (see \cite{had_analy}), and this work focuses on the semileptonic decay channel with one $ W \rightarrow q\bar{q} $ and one $ W \rightarrow l\nu $. When both analyses are complete, the results will be statistically combined.
+This work concerns a search for dark matter produced in association with a dark Higgs boson as described in subsection \ref{subsection:dh_model}.  The dark Higgs boson, $s$, then decays to standard model particles with the same branching ratios as a standard model Higgs boson of variable mass, as shown in Figure \ref{fig:HiggsBR}. At low $s$ mass, this is dominated by a decay to a pair of $b$ quarks, and is currently being studied via a reinterpretation of the ATLAS search for dark matter produced in association with a standard model Higgs boson decaying to $b\bar{b}$ in \cite{monos_bb}. At $s$ masses above 160 GeV, however, the decay to a pair of $W$ bosons, shown in Figure \ref{fig:dh_feynman}, becomes kinematically available on-shell. Even slightly below this threshold, $s$ decays to $WW$ are the dominant process. The pair of $W$ bosons decay rapidly, and are not detected as final state particles by the ATLAS detector. Instead, they each decay either to hadronic ($q\bar{q}$) or leptonic ($l\nu$) final states. A search in the fully hadronic channel, with both $W$ decaying to $q\bar{q}$, is complete (see \cite{had_analy}), and this work focuses on the semileptonic decay channel with one $ W \rightarrow q\bar{q} $ and one $ W \rightarrow l\nu $. When both analyses are complete, the results will be statistically combined.
 
 \begin{figure}[H]
     \centering
@@ -34,12 +34,12 @@ In order to search for a signal such as the one described above, it is necessary
 
 \subsection{Signal MC}
 \label{subsection:mc_signal}
-Signal samples are produced using the model and parameter choices outlined in subsection \ref{subsection:dh_model}. They are produced by calculating the hard process cross-section at leading order (LO) using \mgamc 2.7.2 \cite{MadGraph} interfaced with \pythia 8.230 \cite{Pythia} for parton shower modelling. The CKKW-L \cite{CKKW} procedure with a matching scale of $min(m_s/4, 40~\text{GeV})$ is used to prevent overlap between the cross-section matrix element and parton shower. Two separate signal grids were produced, with the second covering an expanded parameter space. In the first, \mgamc is used with the NNPDF30 LO PDF set with $\alpha_s = 0.13$ \cite{PDF30}, while in the second \mgamc is used with the NNPDF30 NLO PDF set with $\alpha_s = 0.118$ \cite{PDF30}. The signals studied span a parameter space in \ms and \mZp with samples produced at the mass points shown in Figure \ref{fig:signal_grid}.
+Signal samples are produced using the model and parameter choices outlined in subsection \ref{subsection:dh_model}. They are produced by calculating the hard process cross-section at leading order (LO) using \mgamc 2.7.2 \cite{MadGraph} interfaced with \pythia 8.230 \cite{Pythia} for parton shower modelling. The CKKW-L \cite{CKKW} procedure with a matching scale of min($\frac{m_s}{4}$, $40~\text{GeV}$) is used to prevent overlap between the cross-section matrix element and parton shower. Two separate signal grids were produced, with the second covering an expanded parameter space. In the first, \mgamc is used with the NNPDF30 LO PDF set with $\alpha_s = 0.13$ \cite{PDF30}, while in the second \mgamc is used with the NNPDF30 NLO PDF set with $\alpha_s = 0.118$ \cite{PDF30}. The signals studied span a parameter space in \ms and \mZp with samples produced at the mass points shown in Figure \ref{fig:signal_grid}.
 
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.8\textwidth]{Figures/3/SignalGrid.png}
-    \caption{Signal point locations in \ms vs.~\mZp parameter space. Blue points represent the original signal grid while green points are added in the second signal grid.}
+    \caption{Signal point locations in \ms vs.~\mZp parameter space. Blue points represent the original signal grid, while green points are added in the second signal grid.}
     \label{fig:signal_grid}
 \end{figure}
 
@@ -79,18 +79,19 @@ This results in a total integrated luminosity of 138.5 fb$^{-1}$.
 \label{subsubsection:mc_scaling}
 The events in MC simulated samples above must be re-weighted in order to match the total integrated luminosity of the ATLAS data used. In order to achieve this, the weight of each MC event is given by:
 \begin{equation}
-weight  = \frac{ \sigma \times (138.5~fb^{-1}) \times (k) \times (filt_{eff}) \times (GenWeight) \times (wf)}{\sum_{Events~in~AOD} GenWeight }
+\text{weight}  = \frac{ \sigma \times (138.5~\text{fb}^{-1}) \times (k) \times (\text{filt}_\text{eff}) \times (\text{GenWeight}) \times (w_f)}{\sum_{\text{Events~in~AOD}} \text{GenWeight} }
 \end{equation}
 where
 \begin{itemize}
 \item \sigma~is the cross section for the simulated process in fb,
 \item $k$ is the k-factor, which corrects for the omission of higher-order terms in event generation,
-\item $filt_{eff}$ is the filter efficiency, the fraction of events passing any filters applied during event generation to emphasize a certain phase space,
+\item $\text{filt}_\text{eff}$ is the filter efficiency, the fraction of events passing any filters applied during event generation to emphasize a certain phase space,
 \item GenWeight is the generator weight from MC production,
-\item and $wf$ is a set of weight factors given by:
+\item and $w_f$ is a set of weight factors given by:
 \begin{equation}
-wf = EleWt \times MuoWt \times JetWtJVT \times prwWt
- \times TriggerWts \end{equation}
+w_f = \text{EleWt} \times \text{MuoWt} \times \text{JetWtJVT} \times \text{prwWt}
+ \times \text{TriggerWts}
+\end{equation}
 where the various weights apply small corrections from the generation and reconstruction process.
 \end{itemize}
 
@@ -101,7 +102,7 @@ Once events have been simulated or produced in the ATLAS detector, the informati
 
 \subsection{Muons}
 \label{subsection:muons}
-From the ATLAS detector, muons are reconstructed from measurements in the Inner Detector and the Muon Spectrometer. For this analysis, two different definitions of muon candidates are used. ``\textit{Baseline}" muons use slighlty looser selection criteria than ``\textit{signal}" muons, which are designed for high purity. \textit{Baseline} muons are selected using the \textit{Loose} identification criteria as defined in \cite{muon_wp}, which is designed to maximize efficiency. \textit{Signal} muons, meanwhile, use the \textit{Medium} identification criteria, and must also be isolated from other signatures according to the \textit{Tight} track-based working point, with variable radius dependent on \pT. Additionally, all muons are rejected if they are considered ``badly reconstructed" or ``cosmic", and track-to-vertex association cuts are applied. Table \ref{tab:muon_criteria} summarizes the muon selection criteria.
+From the ATLAS detector, muons are reconstructed from measurements in the Inner Detector and the Muon Spectrometer. For this analysis, two different definitions of muon candidates are used. ``\textit{Baseline}" muons use slightly looser selection criteria than ``\textit{signal}" muons, which are designed for high purity. \textit{Baseline} muons are selected using the \textit{Loose} identification criteria as defined in \cite{muon_wp}, which is designed to maximize efficiency. \textit{Signal} muons, meanwhile, use the \textit{Medium} identification criteria, and must also be isolated from other signatures according to the \textit{Tight} track-based working point, with variable radius dependent on \pT. Additionally, all muons are rejected if they are considered ``badly reconstructed" or ``cosmic", and track-to-vertex association cuts are applied. Table \ref{tab:muon_criteria} summarizes the muon selection criteria.
 
 \begin{table}[H]
 \centering
@@ -150,7 +151,7 @@ Pseudorapidity & \(\abs{\eta} < 2.47\) & \(\abs{\eta} < 2.47\) \\
 \end{table}
 
 \subsection{Small-radius ($R=0.4$) Jets}
-In this analysis, small-$R$ jets are used to reconstruct the hadonically-decaying $W$ boson in some analysis regions. Small-$R$ jets are reconstructed using particle-flow objects \cite{PFlow} clustered with the \akt algorithm \cite{antikt} with radius $R=0.4$. A jet of radius $R$ falls within a cone satisfying:
+In this analysis, small-$R$ jets are used to reconstruct the hadronically-decaying $W$ boson in some analysis regions. Small-$R$ jets are reconstructed using particle-flow objects \cite{PFlow} clustered with the \akt algorithm \cite{antikt} with radius $R=0.4$. A jet of radius $R$ falls within a cone satisfying:
 \begin{equation}
 \Delta R(\text{axis}, \text{slant}) = R
 \end{equation}
@@ -185,7 +186,7 @@ $b$-tagger & \verb|DL1r| \\
 
 \subsection{Track-Assisted-Reclustered Jets}
 \label{ap:TARjet_object_defs}
-Track-Assisted-Reclustered (TAR) jets \cite{TAR} are used in this analysis to reconstruct hadronically decaying $W$ boson candidates in some regions. $R=0.2$ jets, constructed with the \akt algorithm \cite{antikt} from locally calibrated topological clusters \cite{TopoClusters} are used as input for building TAR Jets. As well, the TAR algorithm uses tracks fulfilling quality criteria outlined in Table \ref{tab:TARparameters}. The TAR building process involves constructing large-$R$ jets from the constituent small-$R$ jets. Tracks are then matched with the input jets and rescaled using the $p_T$ of the matched jets. The kinematic properties of the TAR jets are then calculated from the constituent $R=0.2$ jets, while the jet substructure variables are calculated from the constituent tracks. Figure \ref{fig:TAR_alg} shows a visual summary of the base TAR algorithm, and
+Track-Assisted-Reclustered (TAR) jets \cite{TAR} are used in this analysis to reconstruct hadronically-decaying $W$ boson candidates in some regions. $R=0.2$ jets, constructed with the \akt algorithm \cite{antikt} from locally-calibrated topological clusters \cite{TopoClusters} are used as input for building TAR Jets. As well, the TAR algorithm uses tracks fulfilling quality criteria outlined in Table \ref{tab:TARparameters}. The TAR building process involves constructing large-$R$ jets from the constituent small-$R$ jets. Tracks are then matched with the input jets and rescaled using the $p_T$ of the matched jets. The kinematic properties of the TAR jets are then calculated from the constituent $R=0.2$ jets, while the jet substructure variables are calculated from the constituent tracks. Figure \ref{fig:TAR_alg} shows a visual summary of the base TAR algorithm, and
 the following steps outline the algorithm in more detail:
 \begin{itemize}
   \item Tracks and calibrated \akt $R=0.2$ jets are chosen as input to the algorithm.
@@ -229,12 +230,12 @@ Track-to-jet association & \(\Delta R(\text{jet, track}) < 0.3\) \\
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.9\textwidth]{Figures/3/TAR_alg.png}
-    \caption{A visual summary of the TAR Jet algorithm.}
+    \caption{A visual summary of the TAR Jet algorithm. \cite{TAR_image}}
     \label{fig:TAR_alg}
 \end{figure}
 
 \subsection{Missing Transverse Momentum (\met)}
-In the ATLAS detector, the beams collide directly along the longitudinal axis. As a result of the conservation of momentum, all decay products from the collision should thus have a total transverse momentum of 0. Using this information, missing transverse momentum (\met) can be used to represent undetected objects. In the signal model described in Section \ref{subsection:dh_model} both the neutrino from the leptonically decaying $W$-boson and the dark matter would not be directly detected in ATLAS. It is impossible to disentangle these objects, and they are reconstructed together using \met. \met is calculated for this analysis using baseline electrons and muons as described in subsections \ref{subsection:electrons} and \ref{subsection:muons}, as well as $R=0.4$ jets with the \verb|Tight| working point applied. No photons or \tau-leptons are included in the calculation. An additional soft term, which is calculated from tracks not associated with the reconstructed objects, is also added.
+In the ATLAS detector, the beams collide directly along the longitudinal axis. As a result of the conservation of momentum, all decay products from the collision should thus have a total transverse momentum of 0. Using this information, missing transverse momentum (\met) can be used to represent undetected objects. In the signal model described in subsection \ref{subsection:dh_model} both the neutrino from the leptonically decaying $W$-boson and the dark matter would not be directly detected in ATLAS. It is impossible to disentangle these objects, and they are reconstructed together using \met. \met is calculated for this analysis using baseline electrons and muons as described in subsections \ref{subsection:electrons} and \ref{subsection:muons}, as well as $R=0.4$ jets with the \verb|Tight| working point applied. No photons or \tau-leptons are included in the calculation. An additional soft term, which is calculated from tracks not associated with the reconstructed objects, is also added.
 
 \subsubsection{\met Significance}
 The significance of the \met measurement is also assessed using the object-based \met significance \metsig. It is calculated as described in \cite{MetSig} from a combination of the uncertainties on the reconstructed objects and soft term used to calculate \met, as well as a pileup correction. A high \metsig indicates a higher degree of confidence that the \met measurement of an event comes from an unseen object rather than from particle mismeasurement.
@@ -256,8 +257,8 @@ The DAOD files are still too large to be convenient for analysis, and some analy
 \item \met > 150 \GeV,
 \item \metsig > 5,
 \item transverse mass of \met and lepton \mtlepmet > 50 \GeV,
-\item veto on b-tagged $R=0.4$ jets, and
+\item veto on $b$-tagged $R=0.4$ jets, and
 \item \(\NTAR > 0\) or \(\Njets > 1\).
 \end{itemize}
 
-The trigger requirements beyond the preselection criteria are discussed in further detail in Section \ref{section:trig}.  After processing by the XAMPPMonoSlep framework, the data is stored in CERN Root files known as ``ntuples", which are further slimmed to include only necessary variables using XAMPPPlotting. At this stage the data and MC samples are ready to be analyzed.
+The trigger requirements beyond the preselection criteria are discussed in further detail in Section \ref{section:trig}.  After processing by the XAMPPMonoSlep framework, the data is stored in CERN ROOT files known as ``ntuples", which are further slimmed to include only necessary variables using XAMPPPlotting. At this stage the data and MC samples are ready to be analyzed.
