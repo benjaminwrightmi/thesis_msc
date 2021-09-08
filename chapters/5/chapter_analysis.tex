@@ -44,10 +44,10 @@ In order to resolve this difficulty,wemade modifications to the TAR jet building
 \end{itemize}
 
 In order to study the potential benefit of lepton-disentanglement, we produced near-identical sets of signal MC samples, with one implementing disentanglement and the other not.
-I then compared the mass of the reconstructed jets in the two samples in a region where a lepton overlaps the $R=1.0$ TAR Jet $(\Delta R(e, \text{TAR}) < 1)$, to determine how well the $W$ boson mass is reconstructed in this case.
+We then compared the mass of the reconstructed jets in the two samples in a region where a lepton overlaps the $R=1.0$ TAR Jet $(\Delta R(e, \text{TAR}) < 1)$, to determine how well the $W$ boson mass is reconstructed in this case.
 Figure \ref{fig:TARdisentaglementplots} demonstrates the improvement in mass resolution achieved by disentangling leptons from TAR jets. A clearly enhanced resolution in the TAR jet mass peak around the $W$ mass is visible for the lepton-disentangled jets in the electron channel. This significantly improves sensitivity in the merged signal region by allowing a much tighter selection on the TAR jet mass. Very little changes in the muon channel.
 
-I additionally compared the performance of building the TAR jets from constituent \akt $R=0.4$ jets, rather than \akt $R=0.2$ jets.
+We additionally compared the performance of building the TAR jets from constituent \akt $R=0.4$ jets, rather than \akt $R=0.2$ jets.
 In the electron channel we found that for high $s$ mass, $W$ mass reconstruction performance was similar between the two methods, but for low $s$ mass using \akt $R=0.4$ jets significantly impairs resolution around the $W$ mass.
 Again in the muon channel we observed few significant differences.
 Figure \ref{fig:R04_TAR_plots} shows a comparison of the TAR jet mass distribution built from \akt $R=0.4$ and \akt $R=0.2$ jets, for two selected signal points, in a signal-enriched region with 1 electron, $\Delta R(e, \text{TAR})< 1$, and $\mtlepmet > 150$~GeV. This clearly demonstrates the improved mass resolution for the signal point at $m_s = 160 $~GeV.
@@ -74,7 +74,7 @@ Figure \ref{fig:R04_TAR_plots} shows a comparison of the TAR jet mass distributi
 \FloatBarrier
 \subsection{Merged Signal Region Optimization}
 \subsubsection{Asimov Significance}
-I optimized the \merged signal region using the expected Asimov discovery significance $Z$ as the figure of merit  \cite{Asimov}. This is given by:
+We optimized the \merged signal region using the expected Asimov discovery significance $Z$ as the figure of merit  \cite{Asimov}. This is given by:
 \begin{equation}
   Z = \left[ 2(s+b)\left(
     \ln\left[ \frac{(s+b)(b+\sigma_b^2)}{b^2 + (s+b)\sigma_b^2} \right]
@@ -94,12 +94,12 @@ In order to optimize the signal region selection, we employed a combination of a
   \item and (\ms, \mZp) = (210 GeV, 2100 GeV).
 \end{itemize}
 
-I then considered the cut combination with the highest mean expected Asimov significance over these four points to be optimal. In early iterations of optimization, the number of signal events selected using the optimal selection criteria was undesireably low. As a result, we implemented an additional requirement forcing the chosen criteria to maintain an expected yield of at least 15 signal events in the \merged signal region.
+We then considered the cut combination with the highest mean expected Asimov significance over these four points to be optimal. In early iterations of optimization, the number of signal events selected using the optimal selection criteria was undesireably low. As a result, we implemented an additional requirement forcing the chosen criteria to maintain an expected yield of at least 15 signal events in the \merged signal region.
 
 In order to avoid over-tuning the optimization on single events or statistical fluctuations, we spaced the lattice of possible cuts widely enough to allow several MC events to fall between each placement. Optimizing a selection in this manner also creates a systematic bias toward an under-prediction of background in the signal region, because a low expected background yield is considered desireable. To counter this bias, we used statistically-independent optimization and fitting data sets. We performed all optimization using a set of MC samples produced when using Sherpa 2.2.1 as a training set. A set of samples produced when using Sherpa 2.2.10 then provides a statistically-independent and more statistically rich data set which we used for validation and fit model testing. This means that the MC data used for fit model testing is isolated from the optimization of selection criteria.
 
 \subsubsection{Optimization Variables}
-I examined many analysis variables for potential sensitivity, and selected those having the best discrimination potential to be tested in the final optimization. Presented below is a list of variables tested and their meaning:
+We examined many analysis variables for potential sensitivity, and selected those having the best discrimination potential to be tested in the final optimization. Presented below is a list of variables tested and their meaning:
 
 \begin{itemize}
   \item \textbf{\met} and \metsig: Missing transverse momentum; and the significance of its difference from a value of zero.
@@ -118,7 +118,7 @@ In addition, we considered a two-dimensional cut above or below a line with vari
 
 \subsubsection{Optimized Selection}
 
-I found the maximum mean expected significance across the four selected signal points to be achieved using the selection shown in Table \ref{tab:mergedselection_reopt}.
+We found the maximum mean expected significance across the four selected signal points to be achieved using the selection shown in Table \ref{tab:mergedselection_reopt}.
 
 \begin{table}[t]
   \centering
