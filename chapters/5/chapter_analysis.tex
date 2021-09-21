@@ -24,6 +24,7 @@ In this analysis, there are two analysis channels which are combined statistical
 The first step towards defining signal region selection criteria is to characterize signal and background events, while searching for exploitable differences. Event characteristics explored include the relative positions of analysis objects, the transverse momenta and masses of analysis objects, along with various jet substructure variables. Figures \ref{fig:Presel1}, \ref{fig:Presel2}, and \ref{fig:Presel3} in Appendix section \ref{section:preselection} show distributions of signal and background events for many of the variables studied at preselection level.
 
 \subsection{TAR Jet Lepton Disentanglement}
+\label{subsection:disent}
 Reconstructing the hadronically-decaying $W$ boson as accurately as possible is key in this analysis. As a result, it is given special attention, especially in the more sensitive merged channel. In this channel, the $W$ is reconstructed by a single $R=1.0$ TAR jet. Due to the boosted nature of the $s$-decay, however, the leptonically-decaying $W$ often lies in or very near to this jet. As a result, the charged lepton often overlaps the TAR jet, which can lead to difficulty in jet reconstruction.
 
 In order to resolve this difficulty,wemade modifications to the TAR jet building process to disentangle overlapping leptons. We identify input tracks and jets that are likely to be attributable to a final state lepton and not the hadronic $W$ decay, and remove them. To achieve this, we remove tracks associated with a baseline electron or muon from the input track collection. We then also remove any \akt $R=0.2$ jet overlapping with a baseline electron (defined here as having $\Delta R(lep,jet) < 0.2$) prior to reclustering into $R=1.0$ jets. We do not remove $R=0.2$ jets overlapping muons, as muons do not leave large a calorimeter signature and are therefore unlikely to fake hadronic activity. This results in the following updated TAR jet building algorithm, where steps with a (*) are added to disentangle leptons:
@@ -73,6 +74,7 @@ Figure \ref{fig:R04_TAR_plots} shows a comparison of the TAR jet mass distributi
 \end{figure}
 \FloatBarrier
 \subsection{Merged Signal Region Optimization}
+\label{subsection:sr_opt}
 \subsubsection{Asimov Significance}
 We optimized the \merged signal region using the expected Asimov discovery significance $Z$ as the figure of merit  \cite{Asimov}. This is given by:
 \begin{equation}
@@ -198,6 +200,7 @@ Fails \merged analysis region selections & Recycling strategy \\
 \end{table}
 
 \section{\ttbar Control Regions}
+\label{section:CRtt}
 A control region is used to help constrain one or more sources of background in an analysis. It is designed as a region that covers a similar but non-overlapping area of phase space to the signal region, and is expected to contain many fewer signal events. As a result, the number of observed ATLAS data and MC-predicted SM events should match very closely. Any difference provides information about how MC predictions differ from data observations and is used derive a normalization factor to constrain the SM background predictions of MC in the signal region, and provide a more accurate projection.
 
 To design an effective control region, we attempted to satisfy four important criteria:
